@@ -47,7 +47,7 @@ def create_achievement(request):
 def view_pending(request):
     pending = StudentAchievement.objects.filter(is_pending=1)
     
-    return render(request, 'home/pending_achievements.html', {'achievements': pending})
+    return render(request, 'home/all_achievements.html', {'achievements': pending})
 
 @group_required('faculty', 'student')
 def view_details(request, achievement_id):
@@ -110,8 +110,10 @@ def toggle_approval(request, achievement_id):
 
         # Set the 'approved_by' field if approving
         if achievement.approved:
-            achievement.approved_by = request.user.faculty  # Replace with your actual user fetching logic
-
+            achievement.approved_by = request.user.faculty 
+            
+             # Replace with your actual user fetching logic
+        achievement.is_pending = 0
         achievement.save()
         return HttpResponseRedirect(reverse('home:achievement details',args=(achievement_id,)))
 

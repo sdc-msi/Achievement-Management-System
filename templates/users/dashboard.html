@@ -10,8 +10,7 @@
                     <div class="max-w-sm mx-5 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Add a new achievement</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            Here are the biggest enterprise technology
-                            acquisitions of 2021 so far, in reverse chronological order.
+                            Add a new achievement. The achievement and its details will be reviewed by faculty before they are displayed to all students.
                         </p>
                         <a href="{% url 'home:create achievement' %}"
                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
@@ -28,8 +27,7 @@
                     <div class="max-w-sm mx-5 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">View all achievements</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            Here are the biggest enterprise technology
-                            acquisitions of 2021 so far, in reverse chronological order.
+                            View all the currently approved achievements.
                         </p>
                         <a href="{% url 'home:student_achievments_view' %}"
                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View
@@ -44,8 +42,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="flex justify-center">
-                    <a class="m-4 text-white mx-4 lg:text-lg px-3 sm:text-sm bg-blue-600 p-2 rounded-xl mb-4 lg:mb-0"
+                <div class="flex justify-center mb-3">
+                    <a class="m-4 text-white mx-4 lg:text-md px-3 sm:text-sm bg-blue-600 p-2 rounded-xl mb-4 lg:mb-0"
                        href="{% url 'users:logout' %}">Log Out</a>
                 </div>
             </div>
@@ -57,8 +55,8 @@
                     <div class="max-w-sm mx-5 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">View all achievements</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            Here are the biggest enterprise technology
-                            acquisitions of 2021 so far, in reverse chronological order.
+                            View all approved and unapproved achievements. 
+
                         </p>
                         <a href="{% url 'home:faculty_achievments_view' %}"
                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View
@@ -78,10 +76,9 @@
                             achievements
                         </h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            Here are the biggest enterprise technology
-                            acquisitions of 2021 so far, in reverse chronological order.
+                            Review all the student achievements that are currently pending for approval.
                         </p>
-                        <a href="{% url 'home:faculty_achievments_view' %}"
+                        <a href="{% url 'home:pending_achievements' %}"
                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Review
                             Pending Achievements
                             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -94,8 +91,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="flex justify-center">
-                    <a class="m-4 text-white mx-4 lg:text-lg px-3 sm:text-sm bg-blue-600 p-2 rounded-xl mb-4 lg:mb-0"
+                <div class="flex justify-center mb-3">
+                    <a class="m-5 text-white mx-4 lg:text-md px-3 sm:text-sm bg-blue-600 p-2 rounded-xl mb-4 lg:mb-0"
                        href="{% url 'users:logout' %}">Log Out</a>
                 </div>
             </div>
