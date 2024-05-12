@@ -39,6 +39,8 @@ class Faculty(models.Model):
     employee_id = models.CharField(max_length=20, unique=True)
     shift = models.CharField(max_length=10)
     designation = models.CharField(max_length=100)
+    department = models.CharField(max_length=100,default='Computer Science')
+
 
 
     def __str__(self):

@@ -130,6 +130,7 @@ def faculty_login(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            
             user = authenticate(request, username=username, password=password)
 
             if user is not None and user.groups.filter(name='faculty').exists():
@@ -137,6 +138,7 @@ def faculty_login(request):
                 messages.success(request, 'Login successful.')
                 return HttpResponseRedirect(reverse("home:home"))  # Redirect to faculty dashboard or home page
             else:
+                
                 messages.error(request, 'Invalid login credentials or you do not have access.')
     else:
         form = FacultyLoginForm()
