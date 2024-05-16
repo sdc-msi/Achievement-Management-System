@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block heading %}
+{% endblock heading %}
+{% block content %}
+
+
+
+    <style>
+              
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            flex : 1;
+        }
+        .coordinator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .coordinator img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .faculty-list {
+            margin-top: 20px;
+        }
+        .faculty {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .faculty img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+    </style>
+
+    <div class="content">
+
+        <!-- only visible if you are student -->
+        <h2>Your Coordinator</h2>
+        <div class="coordinator">
+            <img src="teacher.png">
+            <span>Kumar Gaurav</span>
+        </div>
+
+
+
+        <h2>Other Faculty</h2>
+        <p>39 Faculties</p>
+        <div class="faculty-list">
+
+            <!-- it will be inside for loop -->
+            <div class="faculty">
+                <img src="student1.png">
+                <span>Rhythm</span>
+            </div>
+            
+           
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

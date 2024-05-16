@@ -2,7 +2,8 @@
 {% block heading %}
 {% endblock heading %}
 {% block content %}
-    <div class="flex flex-col my-6 flex-1">
+
+     {% comment %} <div class="flex flex-col my-6 flex-1">
         <div class="flex flex-col items-center md:flex-row my-4 w-4/5 mx-auto">
             <h1 class="text-center antialiased font-sans leading-tight my-auto text-transparent bg-gradient-to-tr from-slate-800 to-cyan-500 bg-clip-text text-xl font-bold text-gray-900 md:text-5xl lg:text-6xl md:ml-4 md:w-1/2">
                 Student Achievements Management System
@@ -17,5 +18,91 @@
             <a class="font-semibold text-white mx-4 lg:text-xl sm:text-sm bg-blue-600 p-3 rounded-xl mb-4 lg:mb-0"
                href="/users/facultyRegister">Faculty Register</a>
         </div>
+    </div>  {% endcomment %}
+
+
+
+
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: auto;
+            align-items: center;
+            {% comment %} height: 100vh; {% endcomment %}
+            flex: 1;
+        }
+
+        .section {
+            /* padding: 0px 200px; */
+            text-align: center;
+            width: 600px;
+        }
+
+        .section h2 {
+            color: #333;
+        }
+
+        .section p {
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                /* Change flex-direction to column */
+                align-items: center;
+                /* Center the sections horizontally */
+            }
+
+            .section {
+                margin: 20px 0;
+                /* Add some vertical spacing between sections */
+            }
+        }
+
+
+        @media (max-width: 1280px) {
+
+            .section {
+                width: 400px;
+            }
+        }
+    </style>
+    <div class="container">
+        <div class="section">
+            <h2>For Faculties</h2>
+            <p>We are the market-leading technical interview platform to identify and hire developers with the right
+                skills.</p>
+            <a href="{% url 'users:faculty_login' %}" class="button">Login</a>
+            <p>Don't have an account?<br><a href="/users/facultyRegister"> Sign up.</a></p>
+        </div>
+        <div class="section">
+            <h2>For Students</h2>
+            <p>Join over 21 million developers, practice coding skills, prepare for interviews, and get hired.</p>
+            <a href="{% url 'users:student_login' %}" class="button">Login</a>
+            <p>Don't have an account?<br><a href="/users/studentRegister"> Sign up.</a></p>
+        </div>
     </div>
+
+   
+ 
 {% endblock %}
