@@ -35,7 +35,7 @@
 
     .hero-banner {
         width: 100%;
-        height: 300px;
+        height: 220px;
     }
 
     .hero-banner img {
@@ -192,16 +192,147 @@
         color: #686868;
         text-decoration: underline;
     }
+
+
+
+
+
+
+    /* Publications */
+.publications {
+    margin-top: 50px;
+}
+
+.publication-item {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.pub-img {
+    width: 48px;
+    height: 48px;
+    margin-right: 20px;
+}
+
+.pub-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.publication-details {
+    margin-left: 20px;
+}
+
+.publication-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+.publication-journal,
+.publication-date,
+.publication-type,
+.research-area {
+    font-size: 14px;
+    color: #464646;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
+
+
+
+.publication-url a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.publication-url a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Certifications */
+.certifications {
+    margin-top: 50px;
+}
+
+.certification-item {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.cert-img {
+    width: 48px;
+    height: 48px;
+    margin-right: 20px;
+}
+
+.cert-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.certification-details {
+    margin-left: 20px;
+}
+
+.certification-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.certification-issuer{
+    font-size: 14px;
+    color: #313131;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.credential-id,
+.certification-date {
+    font-size: 14px;
+    color: #464646;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
 </style>
 
 
 <main>
     <div class="hero">
         <div class="hero-banner">
-            <img src="./assets/hero-banner.jpg" alt="">
+            <img src="https://thumbs.dreamstime.com/b/wall-backgrounds-16268126.jpg" alt="">
         </div>
         <div class="hero-avatar">
-            <img src="./assets/hero-avatar.jpg" alt="">
+            <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg" alt="">
         </div>
     </div>
     <div class="intro">
@@ -209,10 +340,9 @@
             Pd Rajan
         </div>
         <div class="intro-desc">
-            <span>BCA</span>
-            <span>2021-2024</span>
-            <p>Section : A | Shift : Morning</p>
-            <p>itspdrajan@gmail.com</p>
+            <span>Associate Professor</span>
+            <p>Computer Science (1st Shift)</p>
+            <p>Ph.D., UGC-NET</p>
 
         </div>
     </div>
@@ -259,6 +389,35 @@
 
     </section>
 
+
+
+    <section class="publications" id="publications">
+        <h2>Publications</h2>
+    
+        <!-- Inside a loop for each publication -->
+        <div class="publication-item">
+            <div class="pub-img">
+                <img src="https://ieeecs-media.computer.org/wp-media/2024/04/19031138/About-the-IEEE-Computer-Society-2024.jpg" alt="Publication Image">
+            </div>
+            <div class="publication-details">
+                <h4 class="publication-title">Title of the Research Paper</h4>
+                <div class="publication-journal">Journal Name</div>
+                <div class="publication-date">Publication Date (e.g., March 2023)</div>
+                <div class="publication-type">Publication Type (e.g., Journal Article, Conference Paper)</div>
+                <div class="publication-url">
+                    <a href="#" target="_blank">Publication URL</a>
+                </div>
+                <div class="research-area">Research Area (e.g., Computer Science, Machine Learning)</div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    
+
     <section class="education" id="education">
         <h2>Education</h2>
 
@@ -278,6 +437,23 @@
         </div>
 
 
+    </section>
+
+    <section class="certifications" id="certifications">
+        <h2>Certifications</h2>
+    
+        <!-- Inside a loop for each certification -->
+        <div class="certification-item">
+            <div class="cert-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxD3n3pbdd5pTxPGSdCBYarJ3T9GcTH2oFq7W_YapMSA&s" alt="Certification Image">
+            </div>
+            <div class="certification-details">
+                <h4 class="certification-title">Certification Title</h4>
+                <div class="certification-issuer">Issuing Organization</div>
+                <div class="certification-date">Issue Date (e.g., March 2023)</div>
+                <div class="credential-id">G-2023-W3212-0019</div>
+            </div>
+        </div>
     </section>
 
     <section class="contact" id="contact">
