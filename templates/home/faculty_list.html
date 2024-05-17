@@ -7,6 +7,17 @@
 
     <style>
               
+        .gradient-custom {
+            /* fallback for old browsers */
+            background: #f6d365;
+            
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+            
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+            }
+
         .content {
             margin-left: 220px;
             padding: 20px;
@@ -40,32 +51,33 @@
 
     </style>
 
-    <div class="content">
-
-        <!-- only visible if you are student -->
-        <h2>Your Coordinator</h2>
-        <div class="coordinator">
-            <img src="teacher.png">
-            <span>Kumar Gaurav</span>
-        </div>
-
-
-
-        <h2>Other Faculty</h2>
-        <p>39 Faculties</p>
-        <div class="faculty-list">
-
-            <!-- it will be inside for loop -->
-            <div class="faculty">
-                <img src="student1.png">
-                <span>Rhythm</span>
+    <div class="col-md-8 mx-3 card-body first shadow ">
+        
+        <h1 class="mb-4">Faculty List</h1>
+        <div class="row">
+            {% for faculty in faculties %}
+            <div class=" card w-75 shadow-lg">
+                <div class="card mb-4" style="width: 75%;">
+                    <img src="{{ faculty.user.profile_picture.url }}" class="card-img-top" alt="Profile Picture">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ faculty.user.get_full_name }}</h5>
+                        <p class="card-text">
+                            <strong>Username:</strong> {{ faculty.user.username }}<br>
+                            <strong>Department:</strong> {{ faculty.user.department }}
+                        </p>
+                    </div>
+                </div>
             </div>
-            
-           
+            {% endfor %}
         </div>
     </div>
-</body>
-</html>
+    <div class="col-md-1 card-body first shadow ">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At dolorem sint sunt architecto cumque pariatur minus unde excepturi minima quia, delectus quaerat? Ea atque vel nemo ratione reprehenderit exercitationem? Placeat totam ducimus reiciendis, iusto corrupti mollitia obcaecati rerum repudiandae aliquid illum amet ipsa corporis enim, qui commodi quibusdam ut, delectus culpa. Officiis nisi iure consequatur, autem esse eaque magni facilis neque, alias tempore blanditiis debitis, repellat possimus aperiam ab sed dolor? Ex fugiat officiis laborum rem, illum ipsa qui in maiores velit maxime porro consequuntur culpa adipisci ratione sapiente, blanditiis perspiciatis magni doloribus numquam necessitatibus aspernatur totam facere dolorum dolores.
+    </div>
+
+    </div>
+    
+
 
 
 {% endblock %}
