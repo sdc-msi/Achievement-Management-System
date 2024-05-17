@@ -58,9 +58,9 @@
             {% for faculty in faculties %}
             <div class=" card w-75 shadow-lg">
                 <div class="card mb-4" style="width: 75%;">
-                    <img src="{{ faculty.user.profile_picture.url }}" class="card-img-top" alt="Profile Picture">
+                    <img src="{{ faculty.user.profile_picture.url }}" class="card-img-top rounded-circle" alt="Profile Picture">
                     <div class="card-body">
-                        <h5 class="card-title">{{ faculty.user.get_full_name }}</h5>
+                        <a  href = "{% url 'fams:faculty_profile' faculty.id %}" class="card-title">{{ faculty.user.get_full_name }}</a>
                         <p class="card-text">
                             <strong>Username:</strong> {{ faculty.user.username }}<br>
                             <strong>Department:</strong> {{ faculty.user.department }}

@@ -28,6 +28,7 @@ class Student(models.Model):
     semester = models.IntegerField()
     section = models.CharField(max_length=10)
     shift = models.CharField(max_length=10)
+    about = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -40,6 +41,8 @@ class Faculty(models.Model):
     shift = models.CharField(max_length=10)
     designation = models.CharField(max_length=100)
     department = models.CharField(max_length=100,default='Computer Science')
+    about = models.TextField(null=True, blank=True)
+
 
 
 

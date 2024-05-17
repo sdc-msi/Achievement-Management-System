@@ -329,19 +329,19 @@
 <main>
     <div class="hero">
         <div class="hero-banner">
-            <img src="https://thumbs.dreamstime.com/b/wall-backgrounds-16268126.jpg" alt="">
+            <img src="" alt="">
         </div>
         <div class="hero-avatar">
-            <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg" alt="">
+            <img src="{{faculty.user.profile_picture.url}}" alt="">
         </div>
     </div>
     <div class="intro">
         <div class="intro-name">
-            Pd Rajan
+            {{faculty.user.first_name}} {{faculty.user.last_name}}
         </div>
         <div class="intro-desc">
-            <span>Associate Professor</span>
-            <p>Computer Science (1st Shift)</p>
+            <span>{{faculty.designation}}</span>
+            <p>{{faculty.department}}</p>
             <p>Ph.D., UGC-NET</p>
 
         </div>
@@ -350,12 +350,7 @@
     <section class="about" id="about">
         <h2>About</h2>
         <p class="about-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eius repellendus consequatur libero itaque eos
-            adipisci, quas dicta quasi nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-            cupiditate labore culpa ut perspiciatis eum recusandae blanditiis error autem consectetur impedit velit,
-            inventore maiores laborum at repudiandae architecto facere magni. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Pariatur sit officiis non similique exercitationem omnis itaque natus soluta expedita
-            nemo?
+            {{faculty.about}}
         </p>
     </section>
 
@@ -363,18 +358,18 @@
         <h2>Experience</h2>
 
         <!-- inside for loop -->
+        {% for experience  in experiences %}
         <div class="exp-item">
             <div class="org-img">
                 <img src="">
                 </div>
                 <div class=" exp-details">
-                <h4 class="role-name">Software Engineer</h4>
-                <div class="role-org-name">WheelsEye</div>
-                <div class="role-duration">Aug 2022 - Present</div>
+                <h4 class="role-name">{{experience.title}}</h4>
+                <div class="role-org-name">{{experience.company_name}}</div>
+                <div class="role-duration">{{experience.start_date}} -- {{experience.end_date_display}}</div>
                 <div class="role-desc">
                     <ul>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique assumenda iure, unde
-                            mollitia cum fugit?</li>
+                        <li>{{experience.description}}</li>
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique assumenda iure, unde
                             mollitia cum fugit?</li>
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique assumenda iure, unde
@@ -383,7 +378,7 @@
                 </div>
             </div>
         </div>
-
+        {% endfor %}
 
 
 

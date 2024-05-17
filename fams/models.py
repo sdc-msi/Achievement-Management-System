@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from datetime import date
 from users.models import Faculty
 
 def current_year():
@@ -18,6 +19,12 @@ class Experience(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     description = models.TextField()
+
+    @property
+    def end_date_display(self):
+        if self.end_date > date.today():
+            return "Present"
+        return self.end_date
 
 class Education(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name='educations')
