@@ -110,7 +110,6 @@ def add_experience(request):
 
 def add_education(request):
     if (request.method == 'POST'):
-        print(request.user)
         faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
         qualification = request.POST.get('qualification')
         field_of_study = request.POST.get('field_of_study')
@@ -119,9 +118,8 @@ def add_education(request):
         end_date = request.POST.get('end_date')
         grade = request.POST.get('grade')
         
-        faculty = Faculty.objects.get(id=faculty_id)
         education = Education.objects.create(
-            faculty_id=faculty.id,
+            faculty=faculty,
             degree=qualification,
             school=institute,
             field_of_study=field_of_study,
@@ -130,12 +128,26 @@ def add_education(request):
             grade=grade
         )
 
-        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={"faculty_id": faculty_id}))
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={"faculty_id": faculty.id}))
 
 
 def add_honor(request):
-    pass
+    if (request.method == 'POST'):
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        title = request.POST.get('title')
+        issuing_org = request.POST.get('issuing_organization')
+        year = request.POST.get('year')
+        desc = request.POST.get('description')
 
+        honor = Honors.objects.create(
+            faculty=faculty,
+            title=title,
+            issuing_organization=issuing_org,
+            issue_year=year,
+            description=desc
+        )
+
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 def add_doctoral_thesis(request):
     pass
