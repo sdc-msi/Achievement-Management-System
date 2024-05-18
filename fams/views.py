@@ -175,3 +175,7 @@ def add_publication(request):
 
 def dashboard(request):
     return render(request, 'faculty/dashboard.html')
+
+
+def batch_list(request):
+    return render(request, 'faculty/batch-list.html')

@@ -13,4 +13,5 @@ urlpatterns = [
     path('add_education/', add_education, name='add_education'),
     path('add_honor/', add_honor, name='add_honor'),
     path('dashboard/', dashboard, name='dashboard'),
+    path('batch_list/', batch_list, name='batch_list'),
 ]
