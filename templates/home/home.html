@@ -3,22 +3,7 @@
 {% endblock heading %}
 {% block content %}
 
-     {% comment %} <div class="flex flex-col my-6 flex-1">
-        <div class="flex flex-col items-center md:flex-row my-4 w-4/5 mx-auto">
-            <h1 class="text-center antialiased font-sans leading-tight my-auto text-transparent bg-gradient-to-tr from-slate-800 to-cyan-500 bg-clip-text text-xl font-bold text-gray-900 md:text-5xl lg:text-6xl md:ml-4 md:w-1/2">
-                Student Achievements Management System
-            </h1>
-            <img class="w-full mb-4 md:mb-0 md:w-1/2 order-first md:order-last"
-                 src="https://s33009.pcdn.co/wp-content/uploads/2022/11/AdobeStock_458033410.jpeg"
-                 alt="">
-        </div>
-        <div class="flex flex-col items-center sm:flex-row justify-center my-8">
-            <a class="font-semibold text-white mx-4 lg:text-xl sm:text-sm bg-blue-600 p-3 rounded-xl mb-4 lg:mb-0"
-               href="/users/studentRegister">Student Register</a>
-            <a class="font-semibold text-white mx-4 lg:text-xl sm:text-sm bg-blue-600 p-3 rounded-xl mb-4 lg:mb-0"
-               href="/users/facultyRegister">Faculty Register</a>
-        </div>
-    </div>  {% endcomment %}
+
 
 
 
@@ -34,17 +19,17 @@
 
         .container {
             display: flex;
-            justify-content: space-around;
-            margin: auto;
-            align-items: center;
-            {% comment %} height: 100vh; {% endcomment %}
-            flex: 1;
+            height: 100vh;
+            flex-wrap: nowrap
         }
 
         .section {
-            /* padding: 0px 200px; */
+            padding: 200px; 
             text-align: center;
-            width: 600px;
+            width: 50%;
+            padding-left:250px;
+            flex: 0 0 50%;
+
         }
 
         .section h2 {
@@ -57,51 +42,83 @@
 
         .button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
+            padding: 10px 15px;
+            background-color: blue;
             color: white;
             text-decoration: none;
             border-radius: 4px;
         }
 
+        .split-container { 
+            display: flex; 
+            width: 100%; 
+            height: 95%; 
+            background-color: #f0f0f0; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        } 
+  
+        .split-left, .split-right { 
+            flex: 1; 
+            overflow: hidden; 
+            text-align: center; 
+            transition: all 0.3s; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            padding-top:250px;
+            padding-bottom:250px;
+        } 
 
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-                /* Change flex-direction to column */
-                align-items: center;
-                /* Center the sections horizontally */
-            }
-
-            .section {
-                margin: 20px 0;
-                /* Add some vertical spacing between sections */
-            }
-        }
 
 
-        @media (max-width: 1280px) {
+  
 
-            .section {
-                width: 400px;
-            }
-        }
     </style>
-    <div class="container">
-        <div class="section">
-            <h2>For Faculties</h2>
+
+
+    <div class="split-container">
+        <div class="split-left content-center w-50  bg-gradient-to-r from-violet-200 to-pink-200">
+            <h5 class="text-5xl"> For Students </h5>
+            <br>
+            <p>Join over 21 million developers, practice coding skills, prepare for interviews, and get hired.</p>
+            <a href="{% url 'users:student_login' %}" class="button">Login</a>
+            <p>Don't have an account?<br><a href="/users/studentRegister"> Sign up.</a></p>
+        </div>
+        <div class="split-right content-center w-50">
+            <h1 class=" text-5xl">For Faculties</h1>
+            <br>
             <p>We are the market-leading technical interview platform to identify and hire developers with the right
                 skills.</p>
             <a href="{% url 'users:faculty_login' %}" class="button">Login</a>
             <p>Don't have an account?<br><a href="/users/facultyRegister"> Sign up.</a></p>
         </div>
-        <div class="section">
-            <h2>For Students</h2>
-            <p>Join over 21 million developers, practice coding skills, prepare for interviews, and get hired.</p>
-            <a href="{% url 'users:student_login' %}" class="button">Login</a>
-            <p>Don't have an account?<br><a href="/users/studentRegister"> Sign up.</a></p>
-        </div>
     </div>
+
+    <div class="p-5 flex justify-center items-center h-screen flex-col">
+        <h1 class="text-4xl text-center"> Welcome to the Achievement Management System (AMS) </h1>
+        <p> The Achievement Management System (AMS) is a groundbreaking platform designed to celebrate and recognize the accomplishments of students and faculty within the academic community. It serves as a virtual 'hall of fame,' allowing users to easily showcase their achievements across diverse fields without the need for individual registrations. This user-friendly and secure system aims to bridge the gap between hard-earned achievements and their acknowledgment, fostering a culture of recognition and encouragement. </p>
+        <br>
+        <p class="text-2xl font-bold"> Key Features of AMS: </p>
+        <p>
+            <br> 
+            <b> Centralized Showcase: </b> AMS provides a comprehensive platform for students and faculty to display their achievements, ensuring they receive the recognition they deserve.
+            <br>
+            <b> Seamless Submission: </b> Users can submit their accomplishments effortlessly, without the hassle of creating individual accounts, thanks to our streamlined process.
+            <br>
+            <b> Approval Process: </b> To maintain the integrity of the platform, all submissions undergo a thorough approval process by administrators and faculty members, ensuring authenticity and accuracy.
+            <br>
+            <b> Talent Discovery: </b> Faculty members can utilize AMS to identify and engage with talented students, facilitating the organization of events and initiatives.
+            <br>
+            <b> User-Friendly Interface: </b> The platform is designed for simplicity and accessibility, making it easy for users to navigate and share their milestones.
+            <br>
+            AMS is more than just a showcase; it is a catalyst for talent discovery and a transformative force in promoting a culture of recognition within the academic environment. By leveraging modern web development techniques and robust security measures, AMS offers a dynamic and inclusive ecosystem for celebrating achievements and fostering academic excellence. </p>
+        </p>    
+        <br>
+        <p> Beyond its role as a showcase, AMS functions as a strategic tool for talent identification and engagement. Faculty members can leverage the platform to discover and interact with promising students, thereby facilitating the organization of academic events and initiatives. The system is designed with a focus on simplicity and accessibility, providing an intuitive and seamless experience for all users.
+            By offering a secure and efficient platform for the recognition of achievements, AMS bridges the gap between accomplishments and their acknowledgment. It aims to create a dynamic and inclusive academic environment that not only celebrates success but also encourages continuous growth and excellence. The Achievement Management System stands as a testament to the institution's commitment to fostering an environment where every achievement is duly recognized and valued. Welcome to AMS, where academic and extracurricular accomplishments are given the prominence they deserve.</p>
+        </div>
+
 
    
  
