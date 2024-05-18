@@ -1021,14 +1021,19 @@
                 {% endfor %}
             </div>
 
-            <form id="research-projects-section-form" style="display: none;">
+            <form method='post' action={% url "fams:add_research_project" %} id="research-projects-section-form" style="display: none;">
+                {% csrf_token %}
                 <div>
-                    <label for="project-title">* Title of the project</label>
-                    <input type="text" id="project-title" name="project-title" placeholder="Title of the Project">
+                    <label for="project-title"> Title of the project *</label>
+                    <input type="text" id="project-title" name="project-title" placeholder="Title of the Project" required>
                 </div>
                 <div>
-                    <label for="start-date-month">* Start date</label>
-                    <select id="start-date-month" name="start-date-month">
+                    <label for="description"> Description of the project *</label>
+                    <textarea id="description" name="description" placeholder="Description of the Project" required></textarea>
+                </div>
+                <div>
+                    <label for="start-date"> Start date *</label>
+                    {% comment %} <select id="start-date-month" name="start-date-month">
                         <option value="">Month</option>
                         <!-- Add month options -->
                         <option value="1">January</option>
@@ -1043,12 +1048,12 @@
                         <option value="10">October</option>
                         <option value="11">November</option>
                         <option value="12">December</option>
-                    </select>
-                    <input type="number">
+                    </select> {% endcomment %}
+                    <input name="start_date" id="start-date" type="date" required/>
                 </div>
                 <div>
-                    <label for="end-date-month">End date</label>
-                    <select id="end-date-month" name="end-date-month">
+                    <label for="end-date">End date </label>
+                    {% comment %} <select id="end-date-month" name="end-date-month">
                         <option value="">Month</option>
                         <!-- Add month options -->
                         <option value="1">January</option>
@@ -1063,18 +1068,18 @@
                         <option value="10">October</option>
                         <option value="11">November</option>
                         <option value="12">December</option>
-                    </select>
-                    <input type="number">
+                    </select> {% endcomment %}
+                    <input name="end_date" id="end-date"type="date">
                     <label for="ongoing">Ongoing</label>
                     <input type="checkbox" id="ongoing" name="ongoing">
                 </div>
                 <div>
-                    <label for="role">* Role</label>
-                    <input type="text" id="role" name="role" placeholder="Enter Role">
+                    <label for="role"> Role *</label>
+                    <input type="text" id="role" name="role" placeholder="Enter Role" required>
                 </div>
                 <div>
-                    <label for="funding-agency">* Funding agency</label>
-                    <input type="text" id="funding-agency" name="funding-agency" placeholder="Enter Funding Agency">
+                    <label for="funding-agency"> Funding agency *</label>
+                    <input type="text" id="funding-agency" name="funding-agency" placeholder="Enter Funding Agency" required>
                 </div>
                 <div>
                     <label for="grant-no">Grant No.</label>
@@ -1084,17 +1089,17 @@
                     <label for="status">Status</label>
                     <select id="status" name="status">
                         <!-- Add status options -->
-                        <option value="">Select Status</option>
-                        <option value="approved">Ongoing</option>
-                        <option value="pending">Completed</option>
+                        <option value=None>Select Status</option>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="completed">Completed</option>
                     </select>
                 </div>
                 <div>
-                    <label for="amount">* Amount</label>
-                    <input type="text" id="amount" name="amount" placeholder="Enter Amount">
+                    <label for="amount"> Amount *</label>
+                    <input type="text" id="amount" name="amount" placeholder="Enter Amount" required>
                 </div>
 
-                <button type="submit">Save</button>
+                <input type="submit" value="Save"/>
                 <button type="button" onclick="toggleResearchProjects()">Cancel</button>
             </form>
         </div>

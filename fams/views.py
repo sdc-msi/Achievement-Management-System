@@ -178,7 +178,35 @@ def add_committee_membership(request):
 
 
 def add_research_project(request):
-    pass
+    if (request.method == 'POST'):
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        title = request.POST.get('project-title')
+        desc = request.POST.get('description')
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+        ongoing = request.POST.get('ongoing', False)
+        role = request.POST.get('role')
+        funding_agency = request.POST.get('funding-agency')
+        grant_no = request.POST.get('grant-no')
+        status = request.POST.get('status', "ongoing")
+        amount = request.POST.get('amount')
+
+        print(ongoing)
+        research_project = ResearchProject.objects.create(
+            faculty=faculty,
+            title=title,
+            description=desc,
+            start_date=start_date,
+            end_date=end_date,
+            ongoing=ongoing,
+            role=role,
+            funding_agency=funding_agency,
+            grant_number=grant_no,
+            status=status,
+            amount=amount
+        )
+
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 
 def add_patent(request):
