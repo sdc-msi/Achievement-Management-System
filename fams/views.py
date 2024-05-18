@@ -109,7 +109,28 @@ def add_experience(request):
 
 
 def add_education(request):
-    pass
+    if (request.method == 'POST'):
+        print(request.user)
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        qualification = request.POST.get('qualification')
+        field_of_study = request.POST.get('field_of_study')
+        institute = request.POST.get('institute')
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+        grade = request.POST.get('grade')
+        
+        faculty = Faculty.objects.get(id=faculty_id)
+        education = Education.objects.create(
+            faculty_id=faculty.id,
+            degree=qualification,
+            school=institute,
+            field_of_study=field_of_study,
+            start_date=start_date,
+            end_date=end_date,
+            grade=grade
+        )
+
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={"faculty_id": faculty_id}))
 
 
 def add_honor(request):

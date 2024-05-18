@@ -794,29 +794,48 @@
                 </div>
             </div>
 
-            <form id="education-qualification-section-form" style="display: none;">
+            <form method="post" action={% url 'fams:add_education'%} id="education-qualification-section-form" style="display: none;">
+                {% csrf_token %}
                 <div class="form-group">
-                    <label for="qualification">* Qualification</label>
-                    <input type="text" id="qualification" placeholder="Ex:Ph.D">
+                    <label for="qualification"> Qualification *</label>
+                    <input name="qualification" type="text" id="qualification" placeholder="Ex:Ph.D" required>
                 </div>
                 <div class="form-group">
-                    <label for="institute">* Institute</label>
-                    <input type="text" id="institute" placeholder="Enter institute">
-                    <input type="checkbox" id="add-institute">
-                    <label for="add-institute">Add Institute</label>
+                    <label for="field-of-study"> Field of Study * </label>
+                    <input name="field_of_study" type="text" id="field-of-study" placeholder="Ex: Computer Science" required>
                 </div>
-                <small>[ Select the institute name from the auto suggestion or click on "Add Institute Name" to include
+                <div class="form-group">
+                    <label for="institute"> Institute *</label>
+                    <input name="institute" type="text" id="institute" placeholder="Enter institute" required>
+                    {% comment %} <input name="institute_checkbox" type="checkbox" id="add-institute">
+                    <label for="add-institute">Add Institute</label> {% endcomment %}
+                </div>
+                <div class="form-group">
+                    <label for="start-date"> Start Date *</label>
+                    <input name="start_date" type="date" id="start-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="end-date"> End Date *</label>
+                    <input name="end_date" type="date" id="end-date" required>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="grade"> Grade *</label>
+                        <input name="grade" type="text" id="grade" placeholder="Ex: A+" required>
+                    </div>
+                </div>
+                {% comment %} <small>[ Select the institute name from the auto suggestion or click on "Add Institute Name" to include
                     in the
-                    list. ]</small>
-                <div class="form-group">
+                    list. ]</small> {% endcomment %}
+                {% comment %} <div class="form-group">
                     <label for="subject">* Subject</label>
-                    <input type="text" id="subject" placeholder="Enter Subject">
+                    <input name="subject" type="text" id="subject" placeholder="Enter Subject">
                 </div>
                 <div class="form-group">
                     <label for="year">* Passing Year</label>
-                    <input type="number">
-                </div>
-                <button type="submit">Save</button>
+                    <input name="year" type="number">
+                </div> {% endcomment %}
+                <input type="submit" value="Submit">
                 <button type="button" onclick="toggleEducationQualification()">Cancel</button>
             </form>
         </div>

@@ -10,4 +10,5 @@ urlpatterns = [
     path('faculty_list/', faculty_list, name="faculty_list"),
     path('profile/<int:faculty_id>/', faculty_profile, name="faculty_profile"),
     path('add_experience/',add_experience, name='add_experience'),
+    path('add_education/', add_education, name='add_education'),
 ]
