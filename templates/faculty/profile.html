@@ -206,7 +206,7 @@
         background: #ddd;
         top: 0;
         bottom: 0;
-        left: 40.5px;
+        left: 54.5px;
     }
 
     .event {
@@ -223,7 +223,7 @@
         border-radius: 50%;
         background: #838383;
         top: 28px;
-        left: -24px;
+        left: -10px;
     }
 
     .dates {
@@ -692,8 +692,8 @@
                     {% for exp in experiences %}
                     <div class="event">
                         <div class="dates">
-                            <div class="start-date">{{ exp.start_date|date:"Y" }}</div>
-                            <div class="end-date">{{ exp.end_date|date:"Y" }}</div>
+                            <div class="start-date">{{ exp.start_date |date:"M, Y" }}</div>
+                            <div class="end-date">{{ exp.end_date_display }}</div>
                         </div>
                         <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ exp.title }}</strong>{{ exp.employment_type }}<br>{{ exp.company_name }}
                         </p>
