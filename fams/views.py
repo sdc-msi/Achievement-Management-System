@@ -42,12 +42,44 @@ def faculty_profile(request,faculty_id):
     return render(request, 'faculty/profile.html',context)
 
 
+# def add_experience(request):
+#      print("csdhbvmndakfhjbcndkjfknsv,mkcvjkds cnjkvbdn")
+#      if request.method == 'POST':
+#         print("HEHEHEHE")
+#         #faculty id is id of current logged in user
+#         faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+#         title = request.POST['designation']
+#         department = request.POST['department']
+#         employment_type = request.POST['organisation']
+#         company_name = request.POST['institute']
+#         location = request.POST['location']
+#         start_date = request.POST['startdate']
+#         end_date = request.POST['enddate']
+#         description = request.POST['description']
+
+#         print("all data",faculty,title,department,employment_type,company_name,location,start_date,end_date,description)
+
+#         experience = Experience.objects.create(
+#             faculty=faculty,
+#             title=title,
+#             department=department,
+#             employment_type=employment_type,
+#             company_name=company_name,
+#             location=location,
+#             start_date=start_date,
+#             end_date=end_date,
+#             description=description
+#         )
+
+#         return HttpResponseRedirect(reverse('fams:faculty_profile',kwargs={'faculty_id': faculty}))  
+
+from django.shortcuts import get_object_or_404
+
 def add_experience(request):
-     print("csdhbvmndakfhjbcndkjfknsv,mkcvjkds cnjkvbdn")
-     if request.method == 'POST':
-        print("HEHEHEHE")
-        #faculty id is id of current logged in user
-        faculty = request.user.faculty.id
+    if request.method == 'POST':
+        # Get the logged-in user's faculty instance
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        
         title = request.POST['designation']
         department = request.POST['department']
         employment_type = request.POST['organisation']
@@ -57,8 +89,23 @@ def add_experience(request):
         end_date = request.POST['enddate']
         description = request.POST['description']
 
-        print("all data",faculty,title,department,employment_type,company_name,location,start_date,end_date,description)
-        return HttpResponseRedirect(reverse('faculty_profile',faculty_id=request.user.faculty.id))  
+
+
+        # Create the Experience instance
+        experience = Experience.objects.create(
+            faculty=faculty,
+            title=title,
+            employment_type=employment_type,
+            company_name=company_name,
+            location=location,
+            start_date=start_date,
+            end_date=end_date,
+            description=description
+        )
+
+        # Redirect to the faculty profile page
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
 
 
 def add_education(request):
