@@ -150,8 +150,24 @@ def add_honor(request):
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 def add_doctoral_thesis(request):
-    pass
+    if (request.method == 'POST'):
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        researcher_names = request.POST.get('researcher_names')
+        title = request.POST.get('title')
+        institute = request.POST.get('institute')
+        awarded_year = request.POST.get('awarded_year')
+        desc = request.POST.get('description')
 
+        doctoral_thesis = Doctoral_thesis.objects.create(
+            faculty=faculty,
+            researchers_name=researcher_names,
+            title=title,
+            institute=institute,
+            description=desc,
+            awarded_year=awarded_year
+        )
+
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 def add_professional_membership(request):
     pass
