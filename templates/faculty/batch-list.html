@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% block heading %}
+{% endblock heading %}
+{% block content %}
+
+<main>
+
+    <style>
+        main {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            flex: 1;
+        }
+
+        .main-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-right: 1px solid #ddd;
+        }
+
+        .menu-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .menu-item span {
+            font-weight: bold;
+        }
+
+        .submenu {
+            padding-left: 20px;
+        }
+
+        .submenu-item {
+            padding: 5px 0;
+        }
+
+        .submenu-item .subtext {
+            display: block;
+            font-size: 0.9em;
+            color: gray;
+        }
+
+        .main-content {
+            padding: 20px;
+            width: 700px;
+            background-color: #fff;
+        }
+
+        .coordinator {
+            padding: 0 0 30px 0;
+        }
+
+        .h2-heading {
+            color: #673ab7;
+            border-bottom: 2px solid #673ab7;
+            font-size: 20px;
+            padding-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .teacher {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .student {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .teacher img,
+        .student img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .students-list {
+            margin-top: 10px;
+        }
+
+        .student-name {
+            flex-grow: 1;
+        }
+
+        .approvals {
+            background-color: #673ab7;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="sidebar">
+
+        <div class="menu-item">
+            <span>Assigned Batches</span>
+            <div class="submenu">
+                <div class="submenu-item">BCA 2021<br><span class="subtext">Morning</span></div>
+                <div class="submenu-item">BCA 2021<br><span class="subtext">Evening</span></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="main-container">
+        <div class="main-content">
+            <div class="coordinator">
+
+                <h2 class="h2-heading">Coordinator</h2>
+                <div class="teacher">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Teacher Avatar">
+                    <span>Pd Rajan (You)</span>
+                </div>
+
+            </div>
+            <h2 class="h2-heading">Students</h2>
+            <div class="students-list">
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Khattar">
+                    <span class="student-name">Khattar</span>
+                    <span class="approvals">3</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Shivodit">
+                    <span class="student-name">Shivodit</span>
+                    <span class="approvals">2</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Pandey">
+                    <span class="student-name">Pandey</span>
+                    <span class="approvals">5</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Khattar">
+                    <span class="student-name">Khattar</span>
+                    <span class="approvals">3</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Shivodit">
+                    <span class="student-name">Shivodit</span>
+                    <span class="approvals">2</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Pandey">
+                    <span class="student-name">Pandey</span>
+                    <span class="approvals">5</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Khattar">
+                    <span class="student-name">Khattar</span>
+                    <span class="approvals">3</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Shivodit">
+                    <span class="student-name">Shivodit</span>
+                    <span class="approvals">2</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Pandey">
+                    <span class="student-name">Pandey</span>
+                    <span class="approvals">5</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Khattar">
+                    <span class="student-name">Khattar</span>
+                    <span class="approvals">3</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Shivodit">
+                    <span class="student-name">Shivodit</span>
+                    <span class="approvals">2</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Pandey">
+                    <span class="student-name">Pandey</span>
+                    <span class="approvals">5</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Khattar">
+                    <span class="student-name">Khattar</span>
+                    <span class="approvals">3</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Shivodit">
+                    <span class="student-name">Shivodit</span>
+                    <span class="approvals">2</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Pandey">
+                    <span class="student-name">Pandey</span>
+                    <span class="approvals">5</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Khattar">
+                    <span class="student-name">Khattar</span>
+                    <span class="approvals">3</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Shivodit">
+                    <span class="student-name">Shivodit</span>
+                    <span class="approvals">2</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Pandey">
+                    <span class="student-name">Pandey</span>
+                    <span class="approvals">5</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Khattar">
+                    <span class="student-name">Khattar</span>
+                    <span class="approvals">3</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Shivodit">
+                    <span class="student-name">Shivodit</span>
+                    <span class="approvals">2</span>
+                </div>
+                <div class="student">
+                    <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
+                        alt="Pandey">
+                    <span class="student-name">Pandey</span>
+                    <span class="approvals">5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
