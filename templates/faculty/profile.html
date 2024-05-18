@@ -863,26 +863,31 @@
                 {% endfor %}
             </div>
             <!-- ******************************** -->
-            <form id="honours-and-awards-section-form" style="display: none;">
+            <form method="post" action= {% url "fams:add_honor" %} id="honours-and-awards-section-form" style="display: none;">
+                {% csrf_token %}
                 <div>
                     <div>
-                        <label for="">Awarded year</label>
-                        <input id="fname" type="number">
+                        <label for="title-input"> Title * </label>
+                        <input name="title" id="title-input" type="text" required>
                     </div>
                     <div>
-                        <label for="">* Award name</label>
-                        <input id="fname" type="text">
+                        <label for="issuing-organization">Issuing Organization * </label>
+                        <input name="issuing_organization" id="issuing-organization" type="text" required>
                     </div>
                     <div>
-                        <label for="">* Awarded by</label>
-                        <input id="fname" type="text">
+                        <label for="year">Year *</label>
+                        <input name="year" id="year" type="number" min="1910" max="2099" step="1" value="2024" required/>
                     </div>
-
+                    <div>
+                        <label for="description">Description * </label>
+                        <textarea name="description" id="description" type="textarea" required></textarea>
+                    </div>
                 </div>
-                <button type="submit">Save</button>
+                <input type="submit" value="Save"/>
                 <button type="button" onclick="toggleHonoursAndAwarda()">Cancel</button>
             </form>
         </div>
+
 
         <!-- Doctoral Theses Guided      -->
         <div class="section">
@@ -905,28 +910,31 @@
                 {% endfor %}
             </div>
 
-            <form id="doctoral-theses-guided-section-form" style="display: none;">
+            <form method='post' action={% url 'fams:add_doctoral_thesis' %} id="doctoral-theses-guided-section-form" style="display: none;">
+                {% csrf_token %}
                 <div>
-
                     <div>
-                        <label for="">* Name</label>
-                        <input id="fname" type="text">
+                        <label for="researcher-names">Names of Researchers Involved * </label>
+                        <input name="researcher_names" id="researcher-names" type="text" required>
                     </div>
                     <div>
-                        <label for="">* Title</label>
-                        <input id="fname" type="text">
+                        <label for="title">Title *</label>
+                        <input name="title" id="title" type="text" required>
                     </div>
                     <div>
-                        <label for="">* Institute</label>
-                        <input id="fname" type="text">
+                        <label for="institute">Institute * </label>
+                        <input name="institute" id="institute" type="text" required>
                     </div>
                     <div>
-                        <label for="">Awarded year</label>
-                        <input id="fname" type="number">
+                        <label for="awarded-year">Awarded year * </label>
+                        <input name="awarded_year" id="awarded-year" type="number" min="1910" max="2099" step="1" value="2024" required>
                     </div>
-
+                    <div>
+                        <label for="description">Description * </label>
+                        <textarea name="description" id="description" type="textarea" required></textarea>
+                    </div>
                 </div>
-                <button type="submit">Save</button>
+                <input type="submit" value="Save"/>
                 <button type="button" onclick="toggleDoctoralThesesGuided()">Cancel</button>
             </form>
         </div>
