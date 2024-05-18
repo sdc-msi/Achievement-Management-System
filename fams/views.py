@@ -24,10 +24,13 @@ def faculty_profile(request,faculty_id):
     patents = faculty.patents.all()
     publications = faculty.publications.all()
 
+    education_string = list(educations.values_list('degree', flat=True))
+
     context = {
         'faculty': faculty,
         'experiences': experiences,
         'educations': educations,
+        'education_string': education_string,
         'honors': honors,
         'doctoral_theses': doctoral_theses,
         'professional_memberships': professional_memberships,
