@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from users.models import Faculty
 from django.shortcuts import get_object_or_404
+
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import Experience, Education, Honors, Doctoral_thesis, Professional_membership, Committee_membership, ResearchProject, Patent, Publication
 # Create your views here.
 def faculty_list(request):
@@ -34,4 +37,56 @@ def faculty_profile(request,faculty_id):
         'publications': publications,
     }
     return render(request, 'faculty/profile.html',context)
+
+
+def add_experience(request):
+     print("csdhbvmndakfhjbcndkjfknsv,mkcvjkds cnjkvbdn")
+     if request.method == 'POST':
+        print("HEHEHEHE")
+        #faculty id is id of current logged in user
+        faculty = request.user.faculty.id
+        title = request.POST['designation']
+        department = request.POST['department']
+        employment_type = request.POST['organisation']
+        company_name = request.POST['institute']
+        location = request.POST['location']
+        start_date = request.POST['startdate']
+        end_date = request.POST['enddate']
+        description = request.POST['description']
+
+        print("all data",faculty,title,department,employment_type,company_name,location,start_date,end_date,description)
+        return HttpResponseRedirect(reverse('faculty_profile',faculty_id=request.user.faculty.id))  
+
+
+def add_education(request):
+    pass
+
+
+def add_honor(request):
+    pass
+
+
+def add_doctoral_thesis(request):
+    pass
+
+
+def add_professional_membership(request):
+    pass
+
+
+def add_committee_membership(request):
+    pass
+
+
+def add_research_project(request):
+    pass
+
+
+def add_patent(request):
+    pass
+
+
+def add_publication(request):
+    pass
+
 

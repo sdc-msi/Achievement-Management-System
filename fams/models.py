@@ -12,9 +12,10 @@ def year_choices():
 
 class Experience(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name='experiences')
-    title = models.CharField(max_length=225)
-    employment_type = models.CharField(max_length=100)
-    company_name = models.CharField(max_length=225)
+    title = models.CharField(max_length=225) #designation
+    department = models.CharField(max_length=225,default="Computer Applications")
+    employment_type = models.CharField(max_length=100)#organization type
+    company_name = models.CharField(max_length=225)#institution name
     location = models.CharField(max_length=225)
     start_date = models.DateField()
     end_date = models.DateField()
