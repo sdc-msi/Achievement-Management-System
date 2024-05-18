@@ -14,7 +14,7 @@ def faculty_list(request):
 def faculty_profile(request,faculty_id):
 
     faculty = get_object_or_404(Faculty, id=faculty_id)
-    experiences = faculty.experiences.all()
+    experiences = faculty.experiences.all().order_by("start_date")
     educations = faculty.educations.all()
     honors = faculty.honors.all()
     doctoral_theses = faculty.doctoral_theses.all()

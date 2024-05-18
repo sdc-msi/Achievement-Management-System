@@ -689,33 +689,16 @@
 
             <div id="experience-section-body" class="section-body">
                 <div class="timeline">
+                    {% for exp in experiences %}
                     <div class="event">
                         <div class="dates">
-                            <div>2012</div>
-                            <div class="end-date">2018</div>
+                            <div class="start-date">{{ exp.start_date|date:"Y" }}</div>
+                            <div class="end-date">{{ exp.end_date|date:"Y" }}</div>
                         </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">Post-Doctoral
-                                Fellow</strong>Physics<br>University of Porto, Porto, Portugal, Porto
+                        <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ exp.title }}</strong>{{ exp.employment_type }}<br>{{ exp.company_name }}
                         </p>
                     </div>
-                    <div class="event">
-                        <div class="dates">
-                            <div>2018</div>
-                            <div class="end-date">Present</div>
-                        </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">Assistant
-                                Professor</strong>Department of Physics<br>National College, Tirucirappalli
-                        </p>
-                    </div>
-                    <div class="event">
-                        <div class="dates">
-                            <div>2018</div>
-                            <div class="end-date">Present</div>
-                        </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">Assistant
-                                Professor</strong>Department of Physics<br>National College, Tirucirappalli
-                        </p>
-                    </div>
+                    {% endfor %}
                 </div>
             
             </div>
@@ -799,20 +782,15 @@
 
             <div id="education-qualification-section-body" class="section-body">
                 <div class="timeline">
+                    {% for edu in educations %}
                     <div class="event">
                         <div class="dates">
-                            <div>2012</div>
+                            <div>{{ edu.start_date|date:"Y" }}</div>
+                            <div class="end-date">{{ edu.end_date|date:"Y" }}</div>
                         </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">Post-Doctoral
-                                Fellow</strong>University of Porto, Porto, Portugal, Porto</p>
+                        <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ edu.degree }}</strong>{{ edu.school }}</p>
                     </div>
-                    <div class="event">
-                        <div class="dates">
-                            <div>2018</div>
-                        </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">Assistant
-                                Professor</strong>National College, Tirucirappalli</p>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -855,20 +833,15 @@
             </div>
             <!-- ******************************** -->
             <div id="honours-and-awards-section-body" class="section-body">
+                {% for hons in honors %}
                 <div class="award-item">
-                    <div class="year-box">2023</div>
+                    <div class="year-box">{{ hons.issue_year }}</div>
                     <div class="honours-and-awards-details">
-                        <span class="award-title">Resource Person in Six Day Faculty Development Program</span>
-                        <span class="award-institution">Nehru Institute of Technology, Coimbatore</span>
+                        <span class="award-title">{{ hons.title }}</span>
+                        <span class="award-institution">{{ hons.issuing_organization }}</span>
                     </div>
                 </div>
-                <div class="award-item">
-                    <div class="year-box">2022</div>
-                    <div class="honours-and-awards-details">
-                        <span class="award-title">Chief Guest for National Science Day program</span>
-                        <span class="award-institution">Ganesar College of Arts and Science, Pudukkottai, TN</span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <!-- ******************************** -->
             <form id="honours-and-awards-section-form" style="display: none;">
@@ -900,16 +873,17 @@
             </div>
 
             <div id="doctoral-theses-guided-section-body" class="section-body">
+                {% for thesis in doctoral_theses %}
                 <div class="doctoral-theses-guided-item">
-                    <div class="year-box">2013</div>
+                    <div class="year-box">{{ thesis.awarded_year }}</div>
                     <div class="doctoral-theses-guided-details">
-                        <span class="doctoral-theses-guided-title">This is the title of thesis guided. i need to sleep
-                            but i also need to finish mpr</span>
+                        <span class="doctoral-theses-guided-title">{{ thesis.title }}</span>
                         <div class="doctoral-theses-guided-institute-and-researcher">
-                            <span>Maharaja surajmal institute,</span><span>Researcher's Name</span>
+                            <span>{{ thesis.institute }}, </span><span>{{ thesis.researchers_name }}</span>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
 
             <form id="doctoral-theses-guided-section-form" style="display: none;">
@@ -950,22 +924,16 @@
 
             <div id="membership-in-committees-section-body" class="section-body">
                 <div class="timeline">
+                    {% for item in committee_memberships %}
                     <div class="event">
                         <div class="dates">
-                            <div>2012</div>
+                            <div>{{ item.start_date|date:"Y" }}</div>
+                            <div class="end-date">{{ item.end_date|date:"Y" }}</div>
                         </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">Brazilian Physics
-                                Society</strong>Member</p>
+                        <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ item.organization }}</strong>{{ item.name }}</p>
                     </div>
-                    <div class="event">
-                        <div class="dates">
-                            <div>2018</div>
-                        </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">Brazilian BIO Society</strong>Head
-                        </p>
-                    </div>
+                    {% endfor %}
                 </div>
-
             </div>
 
             <form id="membership-in-committees-section-form" style="display: none;">
@@ -1000,28 +968,30 @@
             </div>
 
             <div id="research-projects-section-body" class="section-body">
+                {% for item in research_projects %}
                 <div class="each-research-project">
 
-                    <div class="project-title">Enhancing magneto-transport property in nanostructured materials</div>
+                    <div class="project-title">{{ item.title }}</div>
                     <div class="funding-agency">
-                        <i class="fas fa-briefcase"></i> Funding Agency: DST-SERB
+                        <i class="fas fa-briefcase"></i> Funding Agency: {{ item.funding_agency }}
                     </div>
                     <div class="research-projects-details">
                         <div class="research-projects-detail-item">
-                            <i class="fas fa-thumbs-up"></i> On-going
+                            <i class="fas fa-thumbs-up"></i> {{ item.status|capfirst }}
                         </div>
                         <div class="research-projects-detail-item">
-                            <i class="fas fa-user"></i> Principal Investigator
+                            <i class="fas fa-user"></i> {{ item.role }}
                         </div>
                         <div class="research-projects-detail-item">
-                            <i class="fas fa-rupee-sign"></i> ₹ 18,50,000.00
+                            <i class="fas fa-rupee-sign">₹</i>  {{ item.amount }}
                         </div>
                         <div class="research-projects-detail-item">
-                            <i class="fas fa-calendar-alt"></i> 2019 - 2022
+                            <i class="fas fa-calendar-alt"></i> {{ item.start_date|date:"Y" }} - {{ item.end_date|date:"Y" }}
                         </div>
                     </div>
 
                 </div>
+                {% endfor %}
             </div>
 
             <form id="research-projects-section-form" style="display: none;">
@@ -1104,9 +1074,6 @@
 
 
 
-
-
-
         <!-- Patent       -->
         <div class="section">
             <div class="section-head">
@@ -1115,17 +1082,18 @@
             </div>
 
             <div id="patent-section-body" class="section-body">
+                {% for item in patents %}
                 <div class="each-patent">
-                    <span class="title">This is the title of patent</span>
-                    <span><i class="fas fa-user icon"></i> Mr. Inversor</span>
+                    <span class="title">{{ item.title }}</span>
+                    <span><i class="fas fa-user icon"></i> {{ item.inventors }}</span>
                     <span><i class="fas fa-university icon"></i> MSIT JanakPURI</span>
-                    <span><i class="fas fa-file-alt icon"></i> Patent No. 68776876</span>
-                    <span><i class="fas fa-seedling icon"></i> Agricultural Sciences <i
-                            class="fas fa-check approved icon"></i> Approved</span>
-                    <span><i class="fas fa-calendar-alt icon"></i> Filed 2024-05-01 <i class="fas fa-calendar icon"></i>
-                        Published 2024-05-31</span>
-
+                    <span><i class="fas fa-file-alt icon"></i> Patent No. {{ item.patent_number }}</span>
+                    <span><i class="fas fa-seedling icon"></i> {{ item.subject_category }} <i
+                            class="fas fa-check approved icon"></i> {{ item.status|capfirst }}</span>
+                    <span><i class="fas fa-calendar-alt icon"></i> Filed {{ item.filing_date }} <i class="fas fa-calendar icon"></i>
+                        Published {{ item.publication_date }}</span>
                 </div>
+                {% endfor %}
 
             </div>
 
@@ -1203,22 +1171,22 @@
             </div>
 
             <div id="publications-section-body" class="section-body">
+                {% for item in publications %}
                 <div class="each-publication">
-
                     <div class="publications-title">
-                        This is title chapter, this should be a bit big, maybe a bit more
+                        {{ item.title }}
                     </div>
                     <div class="publications-authors">
-                        Pd, Shivo, Khattar, Pandey
+                        {{ item.authors }}
                     </div>
                     <div class="publications-footer">
-                        <span class="publications-tag">conference paper</span>
-                        <span class="publications-journal-details">Journal/Book Title, <span
-                                class="publications-volume">Volume 345</span>, <span class="publications-year">Year
-                                2015</span>, <span class="publications-pages">Pages 67</span></span>
+                        <span class="publications-tag">Conference Paper</span>
+                        <span class="publications-journal-details">{{ item.journal_name }} <span
+                                class="publications-volume"> {{ item.volume }}</span>, <span class="publications-year">Year
+                                {{ item.year }}</span>, <span class="publications-pages">{{ item.page_number }}</span></span>
                     </div>
-
                 </div>
+                {% endfor %}
             </div>
 
             <form id="publications-section-form" style="display: none;">
