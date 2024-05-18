@@ -161,3 +161,5 @@ def add_publication(request):
     pass
 
 
+def dashboard(request):
+    return render(request, 'faculty/dashboard.html')
