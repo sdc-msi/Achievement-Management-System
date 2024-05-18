@@ -434,9 +434,9 @@
                     Pd Rajan
                 </div>
                 <div class="intro-desc">
-                    <span>Associate Professor</span>
+                    <span>{{ faculty.designation|capfirst }}</span>
                     <p>New Delhi, Delhi, India</p>
-                    <p>Ph.D., UGC-NET</p>
+                    <p>{{ education_string | join:", " }}</p>
 
                 </div>
             </div>
@@ -556,7 +556,7 @@
             </div>
 
             <div id="email-section-body" class="section-body">
-                <p class="section-body-para">iceiscold001@gmail.com</p>
+                <p> {{ faculty.user.email }} </p>
             </div>
 
             <form id="email-section-form" style="display: none;">
@@ -580,7 +580,7 @@
             </div>
 
             <div id="personal-info-section-body" class="section-body">
-                <p class="personal-info-name">Mr. Pd Rajan</p>
+                <p class="personal-info-name"> {{ faculty.user.first_name }} {{ faculty.user.last_name }}</p>
                 <div class="personal-info-dob-gender">
                     <span>25-06-2003</span>
                     <span>Male</span>
