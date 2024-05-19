@@ -424,14 +424,14 @@
                     <img src="https://thumbs.dreamstime.com/b/wall-backgrounds-16268126.jpg" alt="">
                 </div>
                 <div class="hero-avatar">
-                    <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+                    <img src="{{faculty.user.profile_picture.url}}"
                         alt="">
                 </div>
             </div>
 
             <div class="intro">
                 <div class="intro-name">
-                    Pd Rajan
+                {{faculty.user.first_name }} {{faculty.user.last_name}}
                 </div>
                 <div class="intro-desc">
                     <span>{{ faculty.designation|capfirst }}</span>
@@ -963,20 +963,26 @@
                 </div>
             </div>
 
-            <form id="membership-in-committees-section-form" style="display: none;">
+            <form  method="POST" id="membership-in-committees-section-form" style="display: none;" action="{% url 'fams:add_committee_membership' %}">
+
+                {% csrf_token %}
                 <div>
 
                     <div>
-                        <label for="">* Name</label>
-                        <input id="fname" type="text">
+                        <label for="">* Organisation</label>
+                        <input id="fname" type="text" name="organisation">
                     </div>
                     <div>
                         <label for="">* Designation</label>
-                        <input id="fname" type="text">
+                        <input id="fname" type="text" name="designation">
                     </div>
                     <div>
-                        <label for="">* Year</label>
-                        <input id="fname" type="number">
+                        <label for="">* Start Date </label>
+                        <input id="fname" type="date" name="startdate">
+                    </div>
+                    <div>
+                        <label for="">* End Date </label>
+                        <input id="fname" type="date" name="enddate">
                     </div>
 
                 </div>

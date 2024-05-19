@@ -69,6 +69,12 @@ class Committee_membership(models.Model):
     end_date = models.DateField()
     description = models.TextField()
 
+    @property
+    def end_date_display(self):
+        if self.end_date > date.today():
+            return "Present"
+        return self.end_date
+
 class ResearchProject(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name='research_projects')
     title = models.CharField(max_length=225)

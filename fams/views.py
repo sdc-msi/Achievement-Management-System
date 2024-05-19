@@ -169,12 +169,27 @@ def add_doctoral_thesis(request):
 
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
-def add_professional_membership(request):
-    pass
-
 
 def add_committee_membership(request):
-    pass
+    if request.method == 'POST':
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        designation = request.POST['designation'] # designation
+        organization = request.POST['organisation']
+        start_date = request.POST['startdate']
+        end_date = request.POST['enddate']
+        description = request.POST['designation']
+
+        print("all data : ",designation,organization,start_date,end_date,description)
+        committee_membership = Committee_membership.objects.create(
+            faculty=faculty,
+            name=designation,
+            organization=organization,
+            start_date=start_date,
+            end_date=end_date,
+            description=description
+        )
+
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 
 def add_research_project(request):
