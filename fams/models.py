@@ -127,6 +127,7 @@ class Publication(models.Model):
     year = models.IntegerField(choices=year_choices(), default=current_year())
     journal_name = models.CharField(max_length=225,default="ABC Journal")
     authors = models.CharField(max_length=225,default=faculty.name)
+    doi = models.CharField(max_length=225, null=True, blank=True)
     issuing_organization = models.CharField(max_length=225,default="Unknown Organization")
     issue_date = models.DateField()
     url = models.URLField(null=True,blank=True)
