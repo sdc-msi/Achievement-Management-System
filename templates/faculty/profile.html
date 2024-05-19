@@ -1226,21 +1226,21 @@
                     <label for="work-type">* Work Type</label>
                     <select id="work-type" name="work-type" required>
                         <option value="">Type</option>
-                        <option value="art">Art</option>
+                        {% comment %} <option value="art">Art</option> {% endcomment %}
                         <option value="article">Article</option>
-                        <option value="article-in-press">Article-in-Press (AIP)</option>
+                        <option value="article_in_press">Article-in-Press (AIP)</option>
                         <option value="book">Book</option>
-                        <option value="book-chapter">Book Chapter</option>
-                        <option value="conference-paper">Conference Paper</option>
-                        <option value="conference-proceedings">Conference Proceedings</option>
-                        <option value="data-paper">Data Paper</option>
+                        <option value="book_chapter">Book Chapter</option>
+                        <option value="conference_paper">Conference Paper</option>
+                        <option value="conference_proceedings">Conference Proceedings</option>
+                        {% comment %} <option value="data-paper">Data Paper</option> {% endcomment %}
                         <option value="editorial">Editorial</option>
                         <option value="erratum">Erratum</option>
                         <option value="letter">Letter</option>
                         <option value="note">Note</option>
-                        <option value="retracted-article">Retracted Article</option>
                         <option value="review">Review</option>
-                        <option value="short-survey">Short Survey</option>
+                        <option value="retracted_article">Retracted Article</option>
+                        <option value="short_survey">Short Survey</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
@@ -1258,16 +1258,31 @@
 
                 <div>
                     <label for="year">Year</label>
-                    <input type="number" id="year" name="year" placeholder="Year">
+                    <input type="number" id="year" name="year" min="1910" max="2099" value="2024" placeholder="Year">
                 </div>
 
                 <div>
-                    <label for="author">* Author</label>
+                    <label for="author">* Author(s)</label>
                     <input type="text" id="author" name="author" placeholder="Enter Author" required>
                     <p>(Maintain the uniformity in the author name and also separate the author by (,, or , or and) to
                         generate
                         co-author network)</p>
                 </div>
+
+                <div>
+                    <label for="issue_date">* Issuing date</label>
+                    <input type="date" id="issue_date" name="issue_date" required>
+                </div>
+
+                <div>
+                    <label for="issue_org">* Issuing organization</label>
+                    <input type="text" id="issue_org" name="issue_org" required>
+                </div>
+
+                {% comment %} <div>
+                    <label for="doi">Doi</label>
+                    <input type="text" id="doi" name="doi" placeholder="Enter Doi">
+                </div> {% endcomment %}
 
                 <div>
                     <label for="url">Url</label>
@@ -1289,17 +1304,16 @@
                     <input type="number" id="page-no" name="page-no" placeholder="Enter Page No">
                 </div>
 
-                <div>
+                {% comment %} <div>
                     <label for="editor">Editor</label>
                     <input type="text" id="editor" name="editor" placeholder="Enter Editor Name">
-                </div>
+                </div> {% endcomment %}
                 <div>
                     <label for="publisher">Publisher</label>
                     <input type="text" id="publisher" name="publisher" placeholder="Enter Publisher Name">
                 </div>
 
-
-                <button type="submit">Save</button>
+                <input type="submit" value="Save"/>
                 <button type="button" onclick="togglePublications()">Cancel</button>
             </form>
         </div>

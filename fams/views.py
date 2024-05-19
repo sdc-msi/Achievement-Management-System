@@ -238,7 +238,14 @@ def add_patent(request):
 
 
 def add_publication(request):
-    pass
+    if (request.method == 'POST'):
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        title = request.POST.get('title')
+        # wrok_type = 
+
+        
+
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 
 def dashboard(request):
