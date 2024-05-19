@@ -1227,7 +1227,8 @@
                 {% endfor %}
             </div>
 
-            <form id="publications-section-form" style="display: none;">
+            <form method="post" action={% url "fams:add_publication" %} id="publications-section-form" style="display: none;">
+                {% csrf_token %}
                 <div>
                     <label for="work-type">* Work Type</label>
                     <select id="work-type" name="work-type" required>
@@ -1319,8 +1320,14 @@
                     <input type="text" id="publisher" name="publisher" placeholder="Enter Publisher Name">
                 </div>
 
+                <div>
+                    <label for="pub_file">* Upload publication: </label>
+                    <input type="file" id="pub_file" name="pub_file" placeholder="Enter Publisher Name" required>
+                </div>
+
                 <input type="submit" value="Save"/>
                 <button type="button" onclick="togglePublications()">Cancel</button>
+                
             </form>
         </div>
 

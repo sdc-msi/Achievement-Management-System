@@ -15,6 +15,7 @@ urlpatterns = [
     path('add_doctoral_thesis/', add_doctoral_thesis, name='add_doctoral_thesis'),
     path('add_research_project/', add_research_project, name='add_research_project'),
     path('add_patent/', add_patent, name='add_patent'),
+    path('add_publication/', add_publication, name='add_publication'),
     path('add_committee_membership/',add_committee_membership, name='add_committee_membership'),
     path('dashboard/', dashboard, name='dashboard'),
     path('batch_list/', batch_list, name='batch_list'),
