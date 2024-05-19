@@ -19,4 +19,5 @@ urlpatterns = [
     path('add_committee_membership/',add_committee_membership, name='add_committee_membership'),
     path('dashboard/', dashboard, name='dashboard'),
     path('batch_list/', batch_list, name='batch_list'),
+    path('faculty_list/', faculty_list, name='faculty_list'),
 ]

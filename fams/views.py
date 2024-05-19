@@ -312,3 +312,7 @@ def dashboard(request):
 
 def batch_list(request):
     return render(request, 'faculty/batch-list.html')
+
+
+def faculty_list(request):
+    return render(request, 'faculty/faculty_list.html')

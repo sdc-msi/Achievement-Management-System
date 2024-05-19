@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% block heading %}
+{% endblock heading %}
+{% block content %}
+
+
+<style>
+    .faculty-list-container {
+        margin: 0 auto;
+        padding: 20px;
+        width: 100%;
+        max-width: 1030px;
+    }
+
+    .faculty-list-heading {
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .top-hr {
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+
+    .faculty-grid {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(457px, 1fr));
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .faculty-card {
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        max-width: 500px;
+        width: 100%;
+        height: 235px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .faculty-card img {
+        width: 235px;
+        height: 235px;
+        object-fit: cover;
+    }
+
+    .faculty-details {
+        padding: 10px 20px;
+        flex: 1;
+    }
+
+    .faculty-details h3 {
+        margin: 0 0 10px;
+        color: #333;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1em;
+    }
+
+    .faculty-details p {
+        margin: 2px 0;
+        color: #555;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+    }
+
+    .faculty-details p .icon {
+        margin-right: 8px;
+        font-size: 18px;
+    }
+
+    .faculty-details a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .faculty-details a:hover {
+        text-decoration: underline;
+    }
+
+    .faculty-details hr {
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 10px 0;
+    }
+
+    .faculty-details button {
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        width: 140px;
+        height: 28px;
+        cursor: pointer;
+        margin-top: 7px;
+    }
+
+    .faculty-details button:hover {
+        background-color: #c9302c;
+    }
+
+    /* Media Queries for Responsiveness */
+
+
+    /* @media (max-width: 974px) {
+    .faculty-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .faculty-card {
+        flex-direction: column;
+        align-items: center;
+        max-width: 280px;
+        width: 100%;
+        height: auto;
+    }
+
+    .faculty-card img {
+        width: 100%;
+        height: auto;
+        max-width: none;
+    }
+
+    .faculty-details {
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .faculty-details h3 {
+        font-size: 16px;
+    }
+
+    .faculty-details p {
+        font-size: 14px;
+    }
+} */
+
+
+
+    @media (max-width: 974px) {
+        .faculty-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            /* gap: 20px; */
+            justify-content: center;
+            /* Center the cards horizontally */
+        }
+
+        .faculty-card {
+            flex-direction: column;
+            align-items: center;
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            /* Center each card */
+        }
+
+        .faculty-card img {
+            width: 100%;
+            height: auto;
+            max-width: none;
+        }
+
+        .faculty-details {
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .faculty-details h3 {
+            font-size: 16px;
+        }
+
+        .faculty-details p {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="faculty-list-container">
+    <h1 class="faculty-list-heading">Faculty</h1>
+    <hr class="top-hr">
+    <div class="faculty-grid">
+        <div class="faculty-card">
+            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
+                alt="Prof. (Dr.) Harish Singh">
+            <div class="faculty-details">
+                <h3>Prof. (Dr.) Harish Singh</h3>
+                <p><span class="icon">📘</span> Professor & Director</p>
+                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
+                <hr>
+                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
+                <p><span class="icon">📧</span> <a
+                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
+                <button>View Publications</button>
+            </div>
+        </div>
+        <div class="faculty-card">
+            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
+                alt="Prof. (Dr.) Harish Singh">
+            <div class="faculty-details">
+                <h3>Prof. (Dr.) Harish Singh</h3>
+                <p><span class="icon">📘</span> Professor & Director</p>
+                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
+                <hr>
+                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
+                <p><span class="icon">📧</span> <a
+                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
+                <button>View Publications</button>
+            </div>
+        </div>
+        <div class="faculty-card">
+            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
+                alt="Prof. (Dr.) Harish Singh">
+            <div class="faculty-details">
+                <h3>Prof. (Dr.) Harish Singh</h3>
+                <p><span class="icon">📘</span> Professor & Director</p>
+                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
+                <hr>
+                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
+                <p><span class="icon">📧</span> <a
+                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
+                <button>View Publications</button>
+            </div>
+        </div>
+        <div class="faculty-card">
+            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
+                alt="Prof. (Dr.) Harish Singh">
+            <div class="faculty-details">
+                <h3>Prof. (Dr.) Harish Singh</h3>
+                <p><span class="icon">📘</span> Professor & Director</p>
+                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
+                <hr>
+                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
+                <p><span class="icon">📧</span> <a
+                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
+                <button>View Publications</button>
+            </div>
+        </div>
+        <div class="faculty-card">
+            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
+                alt="Prof. (Dr.) Harish Singh">
+            <div class="faculty-details">
+                <h3>Prof. (Dr.) Harish Singh</h3>
+                <p><span class="icon">📘</span> Professor & Director</p>
+                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
+                <hr>
+                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
+                <p><span class="icon">📧</span> <a
+                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
+                <button>View Publications</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
