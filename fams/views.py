@@ -191,7 +191,6 @@ def add_research_project(request):
         status = request.POST.get('status', "ongoing")
         amount = request.POST.get('amount')
 
-        print(ongoing)
         research_project = ResearchProject.objects.create(
             faculty=faculty,
             title=title,
@@ -210,7 +209,32 @@ def add_research_project(request):
 
 
 def add_patent(request):
-    pass
+    if (request.method == 'POST'):
+        faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+        title = request.POST.get('title')
+        inventors = request.POST.get('inventors')
+        application_no = request.POST.get('app-number')
+        patent_no = request.POST.get('patent-number')
+        filing_country = request.POST.get('filing-country')
+        subject_category = request.POST.get('subject-category')
+        filing_date = request.POST.get('filing-date')
+        publication_date = request.POST.get('publication-date')
+        status = request.POST.get('status', "pending")
+
+        patent = Patent.objects.create(
+            faculty=faculty,
+            title=title,
+            inventors=inventors,
+            application_number=application_no,
+            patent_number=patent_no,
+            filing_country=filing_country,
+            subject_category=subject_category,
+            filing_date=filing_date,
+            publication_date=publication_date,
+            status=status,
+        )
+
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 
 def add_publication(request):

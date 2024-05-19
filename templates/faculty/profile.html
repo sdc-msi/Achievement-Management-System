@@ -1129,7 +1129,8 @@
 
             </div>
 
-            <form id="patent-section-form" style="display: none;">
+            <form method="post" action={% url "fams:add_patent" %} id="patent-section-form" style="display: none;">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="title">* Title of the Patent</label>
                     <input type="text" id="title" name="title" placeholder="Title of the Patent" required>
@@ -1151,14 +1152,15 @@
                     <input type="text" id="patent-number" name="patent-number" placeholder="Patent Number">
                 </div>
                 <div class="form-group">
-                    <label for="filing-country">Filing Country</label>
-                    <input type="text">
+                    <label for="filing-country">* Filing Country</label>
+                    <input type="text" id="filing-country" name="filing-country" required>
                 </div>
                 <div class="form-group">
                     <label for="subject-category">Subject Category</label>
                     <select id="subject-category" name="subject-category">
                         <option value="">Select Category</option>
                         <option value="agricultural-sciences">Agricultural Sciences</option>
+                        <option value="biological-sciences">Artificial Intelligence</option>
                         <option value="arts-humanities">Arts and Humanities</option>
                         <option value="biological-sciences">Biological Sciences</option>
                         <option value="chemical-sciences">Chemical Sciences</option>
@@ -1181,15 +1183,13 @@
                     <label for="status">* Status</label>
                     <select id="status" name="status" required>
                         <option value="">Select Status</option>
-                        <option value="">Filed</option>
-                        <option value="">Published</option>
-                        <option value="">Granted</option>
+                        <option value="pending">Pending</option>
+                        <option value="published">Published</option>
+                        <option value="granted">Granted</option>
                         <!-- Add more status options here -->
                     </select>
                 </div>
-
-
-                <button type="submit">Save</button>
+                <input type="submit" value="Save"/>
                 <button type="button" onclick="togglePatent()">Cancel</button>
             </form>
         </div>
