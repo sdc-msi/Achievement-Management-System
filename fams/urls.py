@@ -15,6 +15,7 @@ urlpatterns = [
     path('add_doctoral_thesis/', add_doctoral_thesis, name='add_doctoral_thesis'),
     path('add_research_project/', add_research_project, name='add_research_project'),
     path('add_patent/', add_patent, name='add_patent'),
+    path('add_publication/', add_publication, name='add_publication'),
     path('add_committee_membership/',add_committee_membership, name='add_committee_membership'),
     path('add_publication/', add_publication, name='add_publication'),
     path('dashboard/', dashboard, name='dashboard'),
@@ -27,4 +28,5 @@ urlpatterns = [
     path('edit_research_projects/<int:pk>/', edit_research_projects, name='edit_research_projects'),
     path('edit_patent/<int:pk>/', edit_patent, name='edit_patent'),
     
+    path('faculty_list/', faculty_list, name='faculty_list'),
 ]

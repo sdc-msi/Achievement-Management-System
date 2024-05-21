@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from users.models import Faculty
 from django.shortcuts import get_object_or_404
-
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Experience, Education, Honors, Doctoral_thesis, Professional_membership, Committee_membership, ResearchProject, Patent, Publication
+from django.conf import settings
+
 # Create your views here.
 def faculty_list(request):
     faculties = Faculty.objects.select_related('user').all()
@@ -12,7 +13,6 @@ def faculty_list(request):
 
 
 def faculty_profile(request,faculty_id):
-
     faculty = get_object_or_404(Faculty, id=faculty_id)
     experiences = faculty.experiences.all().order_by("start_date")
     educations = faculty.educations.all()
@@ -222,6 +222,15 @@ def add_patent(request):
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 from time import timezone
+# Method to handle uploaded file for add_publication
+# def handle_uploaded_publication(file):
+#     print("===============")
+#     print(settings.MEDIA_ROOT+file.name)
+#     print("===============")
+#     filepath = "publications/" + file.name()
+#     with open(settings.MEDIA_ROOT + filepath, "wb+") as destination:
+#         for chunk in f.chunks():
+#             destination.write(chunk)
 
 def add_publication(request):
     if (request.method == 'POST'):
@@ -398,3 +407,7 @@ def dashboard(request):
 
 def batch_list(request):
     return render(request, 'faculty/batch-list.html')
+
+
+def faculty_list(request):
+    return render(request, 'faculty/faculty_list.html')
