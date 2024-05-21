@@ -42,36 +42,6 @@ def faculty_profile(request,faculty_id):
     return render(request, 'faculty/profile.html',context)
 
 
-# def add_experience(request):
-#      print("csdhbvmndakfhjbcndkjfknsv,mkcvjkds cnjkvbdn")
-#      if request.method == 'POST':
-#         print("HEHEHEHE")
-#         #faculty id is id of current logged in user
-#         faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
-#         title = request.POST['designation']
-#         department = request.POST['department']
-#         employment_type = request.POST['organisation']
-#         company_name = request.POST['institute']
-#         location = request.POST['location']
-#         start_date = request.POST['startdate']
-#         end_date = request.POST['enddate']
-#         description = request.POST['description']
-
-#         print("all data",faculty,title,department,employment_type,company_name,location,start_date,end_date,description)
-
-#         experience = Experience.objects.create(
-#             faculty=faculty,
-#             title=title,
-#             department=department,
-#             employment_type=employment_type,
-#             company_name=company_name,
-#             location=location,
-#             start_date=start_date,
-#             end_date=end_date,
-#             description=description
-#         )
-
-#         return HttpResponseRedirect(reverse('fams:faculty_profile',kwargs={'faculty_id': faculty}))  
 
 from django.shortcuts import get_object_or_404
 
@@ -251,6 +221,7 @@ def add_patent(request):
 
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
+from time import timezone
 # Method to handle uploaded file for add_publication
 # def handle_uploaded_publication(file):
 #     print("===============")
@@ -265,44 +236,168 @@ def add_publication(request):
     if (request.method == 'POST'):
         faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
         title = request.POST.get('title')
-        work_type = request.POST.get('work-type')
-        journal_name = request.POST.get('journal-title')
+        work_type = request.POST.get('work_type')
+        title = request.POST.get('title')
+        journal_name = request.POST.get('journal_name')
         year = request.POST.get('year')
-        authors = request.POST.get('author')
-        issue_date = request.POST.get('issue_date')
-        issue_org = request.POST.get('issue_org')
-        url = request.POST.get('url')
+        authors = request.POST.get('authors')
         doi = request.POST.get('doi')
+        issuing_organization = request.POST['io']
+        issue_date = request.POST.get('issue_date')
+        url = request.POST.get('url')
         volume = request.POST.get('volume')
-        page_number = request.POST.get('page-no')
-        publisher_name = request.POST.get('publisher')
-        file = request.FILES.get('pub_file')
+        page_number = request.POST.get('page_number')
+        publisher_name = request.POST.get('publisher_name')
+        file = request.FILES.get('file')
+        print(issuing_organization,title)
 
-        print("===============")
-        for key, val in request.FILES.items():
-            print(f"{key}: {val}")
-            print("===============")
+        publication = Publication(
+            faculty=request.user.faculty,
+            work_type=work_type,
+            title=title,
+            journal_name=journal_name,
+            year=year,
+            authors=authors,
+            doi=doi,
+            issuing_organization=issuing_organization,
+            issue_date=issue_date,
+            url=url,
+            volume=volume,
+            page_number=page_number,
+            publisher_name=publisher_name,
+            file=file,
+        )
+        publication.save()
+        print("Data Saved Successfully : ",publication.title)
 
-        # handle_uploaded_publication(file)
-        # handle_uploaded_file(file)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
         
-        # publication = Publication.objects.create(
-        #     faculty=faculty,
-        #     work_type=work_type,
-        #     title=title,
-        #     year=year,
-        #     journal_name=journal_name,
-        #     authors=authors,
-        #     doi=doi,
-        #     issuing_organization=issue_org,
-        #     issue_date=issue_date,
-        #     url=url,
-        #     volume=volume,
-        #     page_number=page_number,
-        #     publisher_name=publisher_name
-        #     file=file # IMPLEMENT THIS
-        # )
 
+    
+
+
+# edit profile views
+
+
+def edit_experience(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    experience = get_object_or_404(Experience,faculty=faculty, pk=pk)
+    if request.method == 'POST':
+        experience.title = request.POST['designation']
+        experience.department = request.POST['department']
+        experience. employment_type = request.POST['organisation']
+        experience.company_name = request.POST['institute']
+        experience.location = request.POST['location']
+        experience.start_date = request.POST['startdate']
+        experience.end_date = request.POST['enddate']
+        experience.description = request.POST['description']
+
+        print("edit experience done : ",experience.title)
+        experience.save()
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+    
+
+def edit_education(request,  pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    education = get_object_or_404(Education, faculty=faculty, pk=pk)
+    if request.method == 'POST':
+        education.degree = request.POST.get('qualification')
+        education.field_of_study = request.POST['field_of_study']
+        education.school = request.POST.get('institute')
+        education.start_date = request.POST['start_date']
+        education.end_date = request.POST['end_date']
+        education.grade = request.POST['grade']
+        education.save()
+        print("Edit education done : ", education.degree)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+def edit_honor(request, pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    honor = get_object_or_404(Honors, faculty=faculty, pk=pk)
+    if request.method == 'POST':
+        title = request.POST['title']
+        organization = request.POST['issuing_organization']
+        issue_year = request.POST['year']
+        description = request.POST['description']
+        
+        honor.title = title
+        honor.issuing_organization = organization
+        honor.issue_year = issue_year
+        honor.description = description
+        honor.save()
+        print("Edit education done : ", honor.title)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+    
+def edit_doctoral_thesis(request, pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    thesis =  get_object_or_404(Doctoral_thesis, faculty=faculty, pk=pk)
+    if request.method == 'POST':
+        print(request.POST.get('researcher_names'))
+        thesis.researchers_name = request.POST.get('researcher_names')
+        print(thesis.researchers_name)
+        thesis.title = request.POST.get('title')
+        thesis.institute = request.POST.get('institute')
+        thesis.awarded_year = request.POST.get('awarded_year')
+        thesis.desc = request.POST.get('description')
+        thesis.save()
+        print(" Thesis Edit Done : ",thesis.title,thesis.researchers_name)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+
+
+def edit_committee_membership(request, pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    committee_membership = get_object_or_404(Committee_membership, pk=pk)
+    if request.method == 'POST':
+        committee_membership.organization = request.POST['organisation']
+        committee_membership.designation = request.POST['designation']
+        committee_membership.start_date = request.POST['startdate']
+        committee_membership.end_date = request.POST['enddate']
+        committee_membership.save()
+        print("Commmittee Membership edit done : ",committee_membership.organization)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+def edit_research_projects(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    projects = get_object_or_404(ResearchProject,pk=pk)
+    if request.method == 'POST':
+        projects.title = request.POST.get('project-title')
+        projects.description = request.POST.get('description')
+        projects.start_date = request.POST.get('start_date')
+        projects.end_date = request.POST.get('end_date')
+        projects.ongoing = request.POST.get('ongoing', False)
+        projects.role = request.POST.get('role')
+        projects.funding_agency = request.POST.get('funding-agency')
+        projects.grant_number = request.POST.get('grant-no')
+        projects.status = request.POST.get('status', "ongoing")
+        projects.amount = request.POST.get('amount')
+
+        projects.save()
+        print(" Research project Edit Done : ",projects.title, projects.amount)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+
+def edit_patent(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    patent = get_object_or_404(Patent, pk=pk)
+    if request.method == 'POST':
+        patent.title = request.POST.get('title')
+        patent.inventors = request.POST.get('inventors')
+        patent.application_number = request.POST.get('app-number')
+        patent.patent_number = request.POST.get('patent-number')
+        patent.filing_country = request.POST.get('filing-country')
+        patent.subject_category = request.POST.get('subject-category')
+        patent.filing_date = request.POST.get('filing-date')
+        patent.publication_date = request.POST.get('publication-date')
+        patent.status = request.POST.get('status', "pending")
+
+        patent.save()
+        print(" Patent Edit Done : ",patent.title)
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 
