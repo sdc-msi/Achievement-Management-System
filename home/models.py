@@ -41,6 +41,9 @@ class Experience(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     description = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    approved_by = models.ForeignKey(Faculty, on_delete=models.PROTECT, null=True, blank=True)
+    is_pending = models.BooleanField(default=True)
 
     @property
     def end_date_display(self):
@@ -63,6 +66,10 @@ class Honors(models.Model):
     issuing_organization = models.CharField(max_length=225)
     issue_year = models.IntegerField(choices=year_choices(), default=current_year())
     description = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    approved_by = models.ForeignKey(Faculty, on_delete=models.PROTECT, null=True, blank=True, related_name='approving_faculty')
+    is_pending = models.BooleanField(default=True)
+
 
 class Committee_membership(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='committee_memberships')
@@ -90,6 +97,10 @@ class ResearchProject(models.Model):
     grant_number = models.CharField(max_length=225)
     status = models.CharField(max_length=50,choices=[('completed', 'Completed'), ('ongoing', 'Ongoing')])
     amount = models.DecimalField(max_digits=10, decimal_places=2)
+    is_approved = models.BooleanField(default=False)
+    approved_by = models.ForeignKey(Faculty, on_delete=models.PROTECT, null=True, blank=True)
+    is_pending = models.BooleanField(default=True)
+
 
 class Patent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='patents')
@@ -102,6 +113,10 @@ class Patent(models.Model):
     filing_date = models.DateField()
     publication_date = models.DateField()
     status = models.CharField(max_length=50, choices=[('pending', 'Pending'),('published','Published'), ('granted', 'Granted')])
+    is_approved = models.BooleanField(default=False)
+    approved_by = models.ForeignKey(Faculty, on_delete=models.PROTECT, null=True, blank=True)
+    is_pending = models.BooleanField(default=True)
+
 
 work_type_choices = [
     ('article', 'Article'),
@@ -136,3 +151,6 @@ class Publication(models.Model):
     page_number = models.CharField(max_length=225,null=True,blank=True)
     publisher_name = models.CharField(max_length=225,null=True,blank=True)
     file = models.FileField(upload_to='publications/')
+    is_approved = models.BooleanField(default=False)
+    approved_by = models.ForeignKey(Faculty, on_delete=models.PROTECT, null=True, blank=True)
+    is_pending = models.BooleanField(default=True)
