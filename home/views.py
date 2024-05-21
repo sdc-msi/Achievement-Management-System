@@ -22,6 +22,9 @@ def home(request):
     print(user_is_faculty(request.user))
     return render(request, 'home/home.html', {'title': 'Home'})
 
+def home_new(request):
+    return render(request, 'home/home_new.html')
+
 
 @group_required('student')
 def create_achievement(request):
