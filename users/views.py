@@ -178,7 +178,8 @@ def dashboard_view(request):
     if user_is_faculty(request.user):
         usertype = 'faculty'
 
-    return render(request, 'users/dashboard.html', {'user_name': username, 'usertype': usertype})
+    # return render(request, 'users/dashboard.html', {'user_name': username, 'usertype': usertype})
+    return render(request, 'student/dashboard.html', {'user_name': username, 'usertype': usertype})
 
 def logout_user(request):
     logout(request)

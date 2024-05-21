@@ -63,8 +63,8 @@
         }
 
         .h2-heading {
-            color: #673ab7;
-            border-bottom: 2px solid #673ab7;
+            color: #3B444B;
+            border-bottom: 2px solid #3B444B;
             font-size: 20px;
             padding-bottom: 5px;
             font-weight: 600;
@@ -101,7 +101,7 @@
         }
 
         .approvals {
-            background-color: #673ab7;
+            background-color: #3B444B;
             color: white;
             border-radius: 50%;
             width: 24px;
@@ -112,9 +112,39 @@
             font-size: 0.8em;
             font-weight: bold;
         }
+
+        .filter-form{
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 0 10px;
+        }
+        .filter-form input,.filter-form select{
+            
+            outline: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 9px -1px;
+            font-size: 20px;
+            color: #9ca3af;
+            text-align: center;
+            width: 250px;
+            height: 35px;
+            border-radius: 5px;
+            margin: 0 15px;
+        }
+        
+        .filter-form button{
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 9px -1px;
+            background-color: #3B444B;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 20px;
+            margin: 0 15px;
+            width: 150px;
+        }
     </style>
 
-    <div class="sidebar">
+    <!-- <div class="sidebar">
 
         <div class="menu-item">
             <span>Assigned Batches</span>
@@ -124,7 +154,7 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
     <div class="main-container">
         <div class="main-content">
             <div class="coordinator">
@@ -138,6 +168,25 @@
 
             </div>
             <h2 class="h2-heading">Students</h2>
+
+
+            <div class="filter-form">
+                <input type="text" placeholder="Name">
+                <!-- <select name="" id="">
+                    <option value="">Shift</option>
+                    <option value="">Morning</option>
+                    <option value="">Evening</option>
+                </select>
+                <select name="" id="">
+                    <option value="">Section</option>
+                    <option value="">A</option>
+                    <option value="">B</option>
+                </select> -->
+
+                <button>Search</button>
+            </div>
+
+
             <div class="students-list">
                 <div class="student">
                     <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg"
