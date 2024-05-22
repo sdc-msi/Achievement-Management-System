@@ -91,6 +91,7 @@ class Student(models.Model):
     # Add additional fields for student profile
     enrollment_number = models.CharField(max_length=20)
     batch = models.ForeignKey(Batch, on_delete=models.PROTECT, null=True, blank=True)
+    course = models.CharField(max_length=100,default='bca')
     batch_year = models.IntegerField()
     semester = models.IntegerField()
     section = models.CharField(max_length=10)

@@ -114,41 +114,34 @@
 
     <div class="main-container">
         <h3 class="heading">Search Student Profile</h3>
-        <div class="filter-form">
-            <input type="number" placeholder="Batch Year" id="batch-year">
+        <form method="GET" action={% url 'home:search_student' %} class="filter-form">
+            <input type="number" placeholder="Batch Year" id="batch-year" name="batch_year">
             <select name="course" id="course">
                 <option value="">Course</option>
-                <option value="BCA">BCA</option>
-                <option value="BBA">BBA</option>
+                <option value="bca">BCA</option>
+                <option value="bba">BBA</option>
             </select>
             <select name="shift" id="shift">
                 <option value="">Shift</option>
-                <option value="Morning">Morning</option>
-                <option value="Evening">Evening</option>
+                <option value="1">Morning</option>
+                <option value="2">Evening</option>
             </select>
             <select name="section" id="section">
                 <option value="">Section</option>
                 <option value="A">A</option>
                 <option value="B">B</option>
             </select>
-            <button>Filter</button>
-        </div>
+            <button type="submit">Filter</button>
+        </form>
         <div class="students-list">
+            {% for student in students %}
             <div class="student">
-                <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg" alt="Khattar">
-                <span class="student-name">Khattar</span>
+                <img src="{{student.user.profile_picture.url}}" alt="dp">
+                <span class="student-name">{{student.user.get_full_name}}</span>
                 <span class="view-profile">View Profile</span>
             </div>
-            <div class="student">
-                <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg" alt="Shivodit">
-                <span class="student-name">Shivodit</span>
-                <span class="view-profile">View Profile</span>
-            </div>
-            <div class="student">
-                <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg" alt="Pandey">
-                <span class="student-name">Pandey</span>
-                <span class="view-profile">View Profile</span>
-            </div>
+            {% endfor %}
+            
         </div>
     </div>
 
