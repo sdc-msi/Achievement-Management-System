@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
-
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -26,7 +26,47 @@ def home_new(request):
     return render(request, 'home/home_new.html')
 
 def search_student(request):
-    return render(request, 'student/student-search.html')
+    
+    batch_year = request.GET.get('batch_year', '')
+    course = request.GET.get('course', '')
+    shift = request.GET.get('shift', '')
+    section = request.GET.get('section', '')
+    print(shift,course,section,batch_year)
+    if shift=="Morning":
+        shift=1
+    elif shift=="Evening":
+        shift=2
+    
+    filters = Q()
+    if batch_year:
+        filters |= Q(batch__year=batch_year)
+    if course:
+        filters |= Q(batch__course=course)
+    if shift:
+        filters |= Q(batch__shift=shift)
+    if section:
+        filters |= Q(batch__section=section)
+    
+
+    if filters:
+        
+        print(filters)
+        students = Student.objects.filter(filters)
+    else:
+        
+        students = Student.objects.all()
+        print(students)
+
+    if not students:
+        print("No Student found in this query")
+
+    context = {
+        "students": students,
+        
+        
+    }
+    
+    return render(request, 'student/student-search.html',context=context)
 
 
 @group_required('student')
