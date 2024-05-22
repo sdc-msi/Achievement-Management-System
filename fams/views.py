@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from users.models import Faculty, Batch
+from users.models import Faculty, Batch, Student
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Experience, Education, Honors, Doctoral_thesis, Professional_membership, Committee_membership, ResearchProject, Patent, Publication
 from django.conf import settings
+from django.db.models import Count
 
 # Create your views here.
 def faculty_list(request):
@@ -589,8 +590,10 @@ def delete_publication(request,pk):
 def dashboard(request):
 
     faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
-    assigned_batches = Batch.objects.filter(assigned_to=faculty)
+    assigned_batches = Batch.objects.filter(assigned_to=faculty).annotate(count = Count("student"))
     
+    print("Id: ", assigned_batches[0].id)
+    print("Count: ", assigned_batches[0].count)
 
     context = {
         "faculty": faculty,
