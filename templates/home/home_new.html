@@ -3,6 +3,12 @@
 {% endblock heading %}
 {% block content %}
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Petit+Formal+Script&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
 <style>
     body {
         margin: 0;
@@ -25,9 +31,16 @@
     }
 
     .hero-heading {
-        font-size: 4.4em;
+        font-size: 7em;
         /* letter-spacing:-0.15rem; */
         text-align: center;
+
+
+
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        /* font-weight: bold; */
+        font-style: normal;
     }
 
 
@@ -263,8 +276,54 @@
         justify-content: space-between;
     }
 
-    .faq{
-        margin-top: 30px;;
+    .faq {
+        margin-top: 30px;
+        ;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    @import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+    /* body {
+        background: #111;
+    } */
+
+    .hidden {
+        opacity: 0;
+    }
+
+    .console-container {
+
+        font-family: Khula;
+        font-size: 7em;
+        text-align: center;
+        height: 200px;
+        /* width: 600px; */
+        display: block;
+        position: absolute;
+        color: white;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.7);
+        margin: auto;
+    }
+
+    .console-underscore {
+        display: inline-block;
+        position: relative;
+        top: -0.14em;
+        left: 10px;
     }
 </style>
 
@@ -273,9 +332,72 @@
 <home-container>
 
     <div class="hero">
-        <p class="hero-heading heading-1">Maharaja Surajmal Institute</p>
-        <p class="hero-heading heading-2">Achievement Management System</p>
+        <!-- <p class="hero-heading heading-1">Maharaja Surajmal Institute</p>
+        <p class="hero-heading heading-2">Achievement Management System</p> -->
+
+
+
+
+        <div class='console-container'><span id='text'></span>
+            <div class='console-underscore' id='console'>&#95;</div>
+        </div>
     </div>
+
+
+
+    <script>
+        consoleText(['Maharaja Surajmal Institute', 'Achievement Management System'], 'text', ['tomato', 'black']);
+
+        function consoleText(words, id, colors) {
+            if (colors === undefined) colors = ['#fff'];
+            var visible = true;
+            var con = document.getElementById('console');
+            var letterCount = 1;
+            var x = 1;
+            var waiting = false;
+            var target = document.getElementById(id)
+            target.setAttribute('style', 'color:' + colors[0])
+            window.setInterval(function () {
+
+                if (letterCount === 0 && waiting === false) {
+                    waiting = true;
+                    target.innerHTML = words[0].substring(0, letterCount)
+                    window.setTimeout(function () {
+                        var usedColor = colors.shift();
+                        colors.push(usedColor);
+                        var usedWord = words.shift();
+                        words.push(usedWord);
+                        x = 1;
+                        target.setAttribute('style', 'color:' + colors[0])
+                        letterCount += x;
+                        waiting = false;
+                    }, 1000)
+                } else if (letterCount === words[0].length + 1 && waiting === false) {
+                    waiting = true;
+                    window.setTimeout(function () {
+                        x = -1;
+                        letterCount += x;
+                        waiting = false;
+                    }, 1000)
+                } else if (waiting === false) {
+                    target.innerHTML = words[0].substring(0, letterCount)
+                    letterCount += x;
+                }
+            }, 20)
+            window.setInterval(function () {
+                if (visible === true) {
+                    con.className = 'console-underscore hidden'
+                    visible = false;
+
+                } else {
+                    con.className = 'console-underscore'
+
+                    visible = true;
+                }
+            }, 400)
+        }</script>
+
+
 
     <div class="about-the-faculty">
         <div class="left">
@@ -378,7 +500,7 @@
                 and spotlights.
             </p>
             <div class="button-wrapper">
-                <a href={% url 'home:search_student'%}>
+                <a href={% url 'home:search_student' %}>
                     <span>Meet our students</span>
                     <span><i class="fa-solid fa-arrow-right"></i></span>
                 </a>

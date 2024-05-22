@@ -52,15 +52,20 @@
     }
 
     .add-edit-btn {
-        background-color: darkblue;
+        background-color: #3b444bd5;
         color: white;
         border: none;
-        padding: 3px 5px;
+        /* padding: 3px 3px; */
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 3px;
     }
 
     .add-edit-btn:hover {
-        background-color: #2d4373;
+        /* background-color: #2d4373; */
     }
 
     /* Hero & Intro */
@@ -77,6 +82,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 8px 8px 0 0 ;
         object-position: center;
     }
 
@@ -262,7 +268,7 @@
     }
 
     .year-box {
-        background-color: #3b5998;
+        background-color: #3B444B;
         color: white;
         padding: 8px 15px;
         font-size: 18px;
@@ -399,7 +405,7 @@
     .each-patent,
     .each-research-project {
         border: 1px solid rgb(194, 194, 194);
-        border-top: 3px solid darkblue;
+        border-top: 3px solid #3B444B;
         padding: 20px;
 
         
@@ -457,7 +463,7 @@
     position: relative;
     padding: 20px;
     border: 1px solid rgb(194, 194, 194);
-        border-top: 3px solid darkblue;
+        border-top: 3px solid #3B444B;
         padding: 20px;
     /* padding-right: 100px;  */
 }
@@ -479,7 +485,7 @@
     /* border-radius: 5px; */
 
     border: 1px solid rgb(194, 194, 194);
-    border-top: 3px solid darkblue;
+    border-top: 3px solid #3B444B;
     padding: 20px;
 }
 
@@ -524,7 +530,7 @@
     margin-bottom: 20px;
 
     border: 1px solid rgb(194, 194, 194);
-        border-top: 3px solid darkblue;
+        border-top: 3px solid #3B444B;
         padding: 20px;
 }
 
@@ -541,7 +547,7 @@
                 border: 1px solid #ccc;
                 margin-bottom: 1rem;
                 border: 1px solid rgb(194, 194, 194);
-                border-top: 3px solid darkblue;
+                border-top: 3px solid #3B444B;
                 padding: 20px;
             }
         
@@ -553,19 +559,19 @@
                 gap: 10px;
             }
         
-            .btn-update, .btn-delete {
+            /* .btn-update, .btn-delete {
                 background-color: #007bff;
                 color: white;
                 border: none;
                 padding: 0.25rem 0.5rem;
                 border-radius: 4px;
                 cursor: pointer;
-            }
+            } */
         
-            .btn-delete {
+            /* .btn-delete {
                 background-color: #dc3545;
             }
-        
+         */
             .btn-update:hover, .btn-delete:hover {
                 opacity: 0.8;
             }
@@ -595,9 +601,9 @@
 }
 
 .publication-buttons button, .patent-buttons button, .update-delete-button-container button {
-    background-color: #007bff;
+    background-color: darkblue;
     border: none;
-    color: white;
+    color: #ffffff;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
@@ -650,7 +656,7 @@
 
             <div class="section-head">
                 <span class="section-name">About</span>
-                <button class="add-edit-btn" onclick="toggleAbout()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleAbout()"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
 
             <p id="about-para" class="about-desc section-body-para">
@@ -675,7 +681,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Expertise</span>
-                <button class="add-edit-btn" onclick="toggleExpertise()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleExpertise()"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
 
             <div id="expertise-body" class="section-body">
@@ -734,7 +740,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Email Information</span>
-                <button class="add-edit-btn" onclick="toggleEmail()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleEmail()"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
 
             <div id="email-section-body" class="section-body">
@@ -761,7 +767,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Personal Information</span>
-                <button class="add-edit-btn" onclick="togglePersonalInfo()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="togglePersonalInfo()"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
 
             <div id="personal-info-section-body" class="section-body">
@@ -799,7 +805,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Contact Information</span>
-                <button class="add-edit-btn" onclick="toggleContactInfo()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleContactInfo()"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
 
             <div id="contact-info-section-body" class="section-body">
@@ -835,7 +841,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Experience</span>
-                <button class="add-edit-btn" onclick="toggleExperience()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleExperience()"><i class="fa-solid fa-plus"></i></button>
             </div>
         
             <div id="experience-section-body" class="section-body">
@@ -1039,7 +1045,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Education Qualification</span>
-                <button class="add-edit-btn" onclick="toggleEducationQualification()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleEducationQualification()"><i class="fa-solid fa-plus"></i></button>
             </div>
         
             <div id="education-qualification-section-body" class="section-body">
@@ -1180,7 +1186,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Membership in Committees</span>
-                <button class="add-edit-btn" onclick="toggleMembershipInCommittees()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleMembershipInCommittees()"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div id="membership-in-committees-section-body" class="section-body">
                 <div class="timeline">
@@ -1299,7 +1305,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Honours and Awards</span>
-                <button class="add-edit-btn" onclick="toggleHonoursAndAwarda()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleHonoursAndAwarda()"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div id="honours-and-awards-section-body" class="section-body">
                 {% for hons in honors %}
@@ -1415,7 +1421,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Doctoral Theses Guided</span>
-                <button class="add-edit-btn" onclick="toggleDoctoralThesesGuided()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleDoctoralThesesGuided()"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div id="doctoral-theses-guided-section-body" class="section-body">
                 {% for thesis in doctoral_theses %}
@@ -1545,7 +1551,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Research Projects</span>
-                <button class="add-edit-btn" onclick="toggleResearchProjects()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="toggleResearchProjects()"><i class="fa-solid fa-plus"></i></button>
             </div>
         
             <div id="research-projects-section-body" class="section-body">
@@ -1724,7 +1730,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Patent</span>
-                <button class="add-edit-btn" onclick="togglePatent()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="togglePatent()"><i class="fa-solid fa-plus"></i></button>
             </div>
         
             <div id="patent-section-body" class="section-body">
@@ -1920,7 +1926,7 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Publications</span>
-                <button class="add-edit-btn" onclick="togglePublications()">Add / Edit</button>
+                <button class="add-edit-btn" onclick="togglePublications()"><i class="fa-solid fa-plus"></i></button>
             </div>
         
             <div id="publications-section-body" class="section-body">
