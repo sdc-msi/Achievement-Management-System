@@ -200,8 +200,8 @@
                 <hr>
                 <p><span class="icon"><i class="fa-solid fa-user-graduate"></i></span> M.Sc., Ph.D.</p>
                 <p><span class="icon"><i class="fa-solid fa-envelope"></i></span> <a
-                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
-                <button>View Profile</button>
+                        href="mailto:{{ faculty.user.email }}">{{ faculty.user.email }}</a></p>
+                <a href={% url 'fams:faculty_profile' faculty_id=faculty.id%}><button>View Profile</button></a>
             </div>
         </div>
         {% endfor %}
