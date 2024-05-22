@@ -640,7 +640,7 @@
 
             <div class="intro">
                 <div class="intro-name">
-                {{faculty.user.first_name }} {{faculty.user.last_name}}
+                {{ faculty.user.first_name }} {{ faculty.user.last_name }}
                 </div>
                 <div class="intro-desc">
                     <span>{{ faculty.designation|capfirst }}</span>
@@ -651,7 +651,7 @@
             </div>
         </div>
 
-
+        {% if faculty.about %}
         <div class="section" id="about">
 
             <div class="section-head">
@@ -662,8 +662,7 @@
             <p id="about-para" class="about-desc section-body-para">
                 {{faculty.about}}
             </p>
-
-           
+        
             <form id="about-form" style="display: none;" method="POST" action="{% url 'fams:add_about' %}">
                 {% csrf_token %}
 
@@ -672,11 +671,12 @@
                 <button type="button" onclick="toggleAbout()">Cancel</button>
             </form>
         </div>
+        {% endif %}
 
 
 
 
-
+        {% if faculty.expertise %}
         <!-- Expertise -->
         <div class="section">
             <div class="section-head">
@@ -732,10 +732,10 @@
             </form>
         
         </div>
+        {% endif %}
 
 
-
-
+        {% if faculty.user.email %}
         <!-- Email Information -->
         <div class="section">
             <div class="section-head">
@@ -759,6 +759,7 @@
                 <button type="button" onclick="toggleEmail()">Cancel</button>
             </form>
         </div>
+        {% endif %}
 
 
 
@@ -800,7 +801,7 @@
         </div>
 
 
-
+        {% if faculty.address or  faculty.contact_number %}
         <!-- Contact Information -->
         <div class="section">
             <div class="section-head">
@@ -835,8 +836,9 @@
                 <button type="button" onclick="toggleContactInfo()">Cancel</button>
             </form>
         </div>
+        {% endif %}
 
-
+        {% if experiences %}
         <!--  Experience -->
         <div class="section">
             <div class="section-head">
@@ -1036,11 +1038,12 @@
                 </div>
             </form>
         </div>
+        {% endif %}
         
-        
 
 
 
+        {% if educations %}
         <!--  Education Qualification -->
         <div class="section">
             <div class="section-head">
@@ -1174,15 +1177,11 @@
                 <button type="button" onclick="toggleEducationQualification()">Cancel</button>
             </form>
         </div>
-        
-
-
-
-
-        
+        {% endif %}
 
 
         <!-- Membership in Committees   -->
+        {% if committee_memberships %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Membership in Committees</span>
@@ -1296,12 +1295,11 @@
                 <button type="button" onclick="toggleMembershipInCommittees()">Cancel</button>
             </form>
         </div>
-
-
-
+        {% endif %}
 
 
         <!-- Honours and Awards  -->
+        {% if honors %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Honours and Awards</span>
@@ -1414,10 +1412,11 @@
                 <button type="button" onclick="toggleHonoursAndAwarda()">Cancel</button>
             </form>
         </div>
-        
+        {% endif %}
 
 
         <!-- Doctoral Theses Guided      -->
+        {% if doctoral_theses %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Doctoral Theses Guided</span>
@@ -1540,14 +1539,10 @@
                 <button type="button" onclick="toggleDoctoralThesesGuided()">Cancel</button>
             </form>
         </div>
-        
-
-
-        
-
-
+        {% endif %}
 
         <!-- Research Projects       -->
+        {% if research_projects %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Research Projects</span>
@@ -1721,12 +1716,10 @@
                 <button type="button" onclick="toggleResearchProjects()">Cancel</button>
             </form>
         </div>
-        
-        
-
-
+        {% endif %}
 
         <!-- Patent       -->
+        {% if patents %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Patent</span>
@@ -1916,13 +1909,10 @@
                 <button type="button" onclick="togglePatent()">Cancel</button>
             </form>
         </div>
-        
-       
-        
-        
-
+        {% endif %}
 
         <!-- Publications -->
+        {% if publications %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Publications</span>
@@ -2147,7 +2137,7 @@
                 <button type="button" onclick="togglePublications()">Cancel</button>
             </form>
         </div>
-        
+        {% endif %}
 
     </div>
 
