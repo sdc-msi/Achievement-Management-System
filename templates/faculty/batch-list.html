@@ -176,10 +176,10 @@
             <h2 class="h2-heading">Students</h2>
 
 
-            <div class="filter-form" method="POST" action="{% url 'fams:batch_list' batch.id %}">
-                <input type="text"  placeholder="Search by Name" name="search">
+            <form class="filter-form" method="GET" action="{% url 'fams:batch_list' batch.id %}">
+                <input type="text"  placeholder="Search by Name" name="search" value="{{search_query}}">
                 <button type="submit" class="bg-blue-700 p-2.5 m-2 rounded-md">Search</button>
-            </div>
+            </form>
 
 
             <div class="students-list">

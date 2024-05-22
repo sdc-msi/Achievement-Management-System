@@ -615,7 +615,7 @@ def batch_list(request,pk):
     batch = get_object_or_404(Batch,assigned_to=faculty,id=pk)
     print(batch)
 
-    search_query = request.POST.get('search', '')
+    search_query = request.GET.get('search', '')
     if search_query:
         students = Student.objects.filter(batch=batch, user__first_name__icontains=search_query)
     else:
@@ -625,8 +625,9 @@ def batch_list(request,pk):
     
     context ={
         "students":students,
-        "batch":batch
-    }
+        "batch":batch,
+        "search_query" : search_query
+    }   
 
     return render(request, 'faculty/batch-list.html',context=context)
 
