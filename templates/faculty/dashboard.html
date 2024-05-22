@@ -412,31 +412,14 @@
                         <!-- </div> -->
                     </div>
                     <div class="content">
-                        <p>Kumar Gaurav</p>
+                        <p>{{ faculty.user.first_name }} {{ faculty.user.last_name }}</p>
                     </div>
                     <div class="footer">
-                        <span class="icon">👤60</span>
+                        <span class="icon">👤 {{ batch.count }} </span>
                         <span class="icon">⚠️14</span>
                     </div>
                 </div>
                 {% endfor %}
-
-
-
-                <div class="batch">
-                    <div class="header green">
-                        <h4>BCA 2021</h4>
-                        <p>Evening</p>
-                        <img class="avatar" src="" alt="">
-                    </div>
-                    <div class="content">
-                        <p>Vinita Tomar</p>
-                    </div>
-                    <div class="footer">
-                        <span class="icon">👤79</span>
-                        <span class="icon">⚠️11</span>
-                    </div>
-                </div>
             </div>
         </div>
 
