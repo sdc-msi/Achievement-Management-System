@@ -403,6 +403,7 @@
 
 
                 {% for batch in assigned_batches %}
+                <a href="{% url 'fams:batch_list' batch.id %}">
                 <div class="batch">
                     <div class="header green">
                         <h4>{{ batch.course| upper }} {{ batch.year }}</h4>
@@ -419,6 +420,7 @@
                         <span class="icon">⚠️14</span>
                     </div>
                 </div>
+            </a>
                 {% endfor %}
             </div>
         </div>
@@ -447,6 +449,7 @@
 
             <div class="batches">
                 {% for batch in other_batches %}
+
                 <div class="batch">
                     <div class="header gray">
                         <h4>{{ batch.course| upper }} {{ batch.year }}</h4>

@@ -610,9 +610,35 @@ def dashboard(request):
     return render(request, 'faculty/dashboard.html', context=context)
 
 
-def batch_list(request):
-    return render(request, 'faculty/batch-list.html')
+def batch_list(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    batch = get_object_or_404(Batch,assigned_to=faculty,id=pk)
+    print(batch)
+
+    search_query = request.GET.get('search', '')
+    if search_query:
+        students = Student.objects.filter(batch=batch, user__first_name__icontains=search_query)
+    else:
+        students = Student.objects.filter(batch=batch)
+
+    
+    
+    context ={
+        "students":students,
+        "batch":batch,
+        "search_query" : search_query
+    }   
+
+    return render(request, 'faculty/batch-list.html',context=context)
 
 
 def faculty_list(request):
-    return render(request, 'faculty/faculty_list.html')
+    faculties = Faculty.objects.all()
+
+    print(faculties.values())
+
+    context = {
+        'faculties': faculties,
+    }
+
+    return render(request, 'faculty/faculty_list.html', context=context)
