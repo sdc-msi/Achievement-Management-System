@@ -77,6 +77,14 @@ class Batch(models.Model):
 
     def assigned_to_name(self):
         return self.assigned_to.user.first_name +" "+  self.assigned_to.user.last_name
+    
+    def batch_shift(self):
+        if self.shift==1:
+            return "Morning"
+        elif self.shift==2:
+            return "Evening"
+        else:
+            return"Invalid batch"
 
 class Student(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
