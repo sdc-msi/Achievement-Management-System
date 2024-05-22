@@ -290,13 +290,78 @@ def add_publication(request):
 
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
+def add_about(request):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    
 
-        
+    if request.method == 'POST':
+        about = request.POST.get('about')
+        print(about)
+        faculty.about = about
+        faculty.save()
+        print("About section added: ",faculty.about)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
     
+def add_expertise(request):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+
+    if request.method == 'POST':
+        exp = request.POST.get('expertise')
+        print(exp)
+        faculty.expertise = exp
+        faculty.save()
+        print("expertise section added: ",faculty.expertise)
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+
+
+def add_email(request):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        faculty.user.email = email
+        faculty.user.save()
+        print("Faculty Email Added")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+def add_personal_info(request):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    if request.method == 'POST':
+        dob = request.POST.get('dob')
+        gender = request.POST.get('gender')
+        faculty.dob = dob
+        faculty.gender = gender
+        faculty.save()
+        print("Personal Data Saved successfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+
+
+
+
+def add_contact_info(request):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    if request.method == 'POST':
+        address = request.POST.get('address')
+        contact = request.POST.get('contact')
+        faculty.address = address
+        faculty.contact_number = contact
+        faculty.save()
+        print("Contact Info Saved successfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+
 
 
 # edit profile views
+
+
+
 
 
 def edit_experience(request,pk):
@@ -418,6 +483,69 @@ def edit_patent(request,pk):
         print(" Patent Edit Done : ",patent.title)
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
+    
+#delete views
+def delete_experience(request, pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    experience = get_object_or_404(Experience, id=pk, faculty=request.user.faculty)
+
+    if request.method == 'POST':
+        experience.delete()
+        print("Experience object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+def delete_education(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    education = get_object_or_404(Education, id=pk, faculty=request.user.faculty)
+
+    if request.method == 'POST':
+        education.delete()
+        print("Education object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+def delete_honors(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    honor = get_object_or_404(Honors, id=pk, faculty=request.user.faculty)
+    if request.method == 'POST':
+        honor.delete()
+        print("Honor/Award object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+def delete_doctoral_thesis(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    thesis = get_object_or_404(Doctoral_thesis, id=pk, faculty=request.user.faculty)
+    if request.method == 'POST':
+        thesis.delete()
+        print("Doctoral Thesis object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+
+def delete_committee_membership(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    cm = get_object_or_404(Committee_membership, id=pk, faculty=request.user.faculty)
+    if request.method == 'POST':
+        cm.delete()
+        print("Membership object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+    
+
+def delete_research_project(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    rp = get_object_or_404(ResearchProject, id=pk, faculty=request.user.faculty)
+    if request.method == 'POST':
+        rp.delete()
+        print("Research Project object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+    
+
+def delete_patent(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    patent = get_object_or_404(Patent, id=pk, faculty=request.user.faculty)
+    if request.method == 'POST':
+        patent.delete()
+        print("Research Project object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
     
 
 

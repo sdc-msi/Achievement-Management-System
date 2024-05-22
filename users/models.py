@@ -46,7 +46,7 @@ class Faculty(models.Model):
     dob = models.DateField(null=True, blank=True)
     contact_number = models.CharField(max_length=15, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
-
+    gender = models.CharField(null=True,blank=True, max_length=15)
     
 
 
