@@ -649,7 +649,9 @@
 
             <div class="section-head">
                 <span class="section-name">About</span>
+                {% if  is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleAbout()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <p id="about-para" class="about-desc section-body-para">
@@ -674,7 +676,9 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Expertise</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleExpertise()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="expertise-body" class="section-body">
@@ -733,7 +737,9 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Email Information</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleEmail()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="email-section-body" class="section-body">
@@ -761,7 +767,9 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Personal Information</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="togglePersonalInfo()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="personal-info-section-body" class="section-body">
@@ -799,18 +807,18 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Contact Information</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleContactInfo()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="contact-info-section-body" class="section-body">
                 <div>
-                    {{faculty.address}}
+                    {{ faculty.address }}
                 </div>
                 <div>
-                   {{faculty.contact_number}}
+                   {{ faculty.contact_number }}
                 </div>
-
-
             </div>
 
             <form id="contact-info-section-form" style="display: none;" method="POST" action="{% url 'fams:add_contact_info' %}">
@@ -836,17 +844,21 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Experience</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleExperience()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
         
             <div id="experience-section-body" class="section-body">
                 <div class="timeline">
                     {% for exp in experiences %}
                     <div class="event">
+                        {% if is_own_profile %}
                         <div class="update-delete-button-container">
                             <button class="update-button" data-modal-target="experience-modal-{{exp.id}}" data-modal-toggle="experience-modal-{{exp.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
                             <button class="delete-button" data-modal-target="del-exp-modal-{{exp.id}}" data-modal-toggle="del-exp-modal-{{exp.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
                         </div>
+                        {% endif %}
                         <div class="dates">
                             <div class="start-date">{{ exp.start_date |date:"M, Y" }}</div>
                             <div class="end-date">{{ exp.end_date_display }}</div>
@@ -1041,17 +1053,21 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Education Qualification</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleEducationQualification()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
         
             <div id="education-qualification-section-body" class="section-body">
                 <div class="timeline">
                     {% for edu in educations %}
                     <div class="event">
+                        {% if is_own_profile %}
                         <div class="update-delete-button-container">
                             <button class="update-button" data-modal-target="education-modal-{{edu.id}}" data-modal-toggle="education-modal-{{edu.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
                             <button class="delete-button" data-modal-target="del-edu-modal-{{edu.id}}" data-modal-toggle="del-edu-modal-{{edu.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
                         </div>
+                        {% endif %}
                         <div class="dates">
                             <div>{{ edu.start_date|date:"Y" }}</div>
                             <div class="end-date">{{ edu.end_date|date:"Y" }}</div>
@@ -1178,7 +1194,9 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Membership in Committees</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleMembershipInCommittees()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
             <div id="membership-in-committees-section-body" class="section-body">
                 <div class="timeline">
@@ -1191,10 +1209,12 @@
                         <p style="font-size: 14px;">
                             <strong style="font-size: 16px;">{{ item.organization }}</strong>{{ item.name }}
                         </p>
+                        {% if is_own_profile %}
                         <div class="update-delete-button-container">
                             <button class="update-button" data-modal-target="committee-modal-{{item.id}}" data-modal-toggle="committee-modal-{{item.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
                             <button class="delete-button" data-modal-target="del-cm-modal-{{item.id}}" data-modal-toggle="del-cm-modal-{{item.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
                         </div>
+                        {% endif %}
                     </div>
         
                     <!-- Edit Committee Membership Modal -->
@@ -1296,15 +1316,19 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Honours and Awards</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleHonoursAndAwarda()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
             <div id="honours-and-awards-section-body" class="section-body">
                 {% for hons in honors %}
                 <div class="award-item">
+                    {% if is_own_profile %}
                     <div class="update-delete-button-container">
                         <button class="update-button" data-modal-target="honor-modal-{{hons.id}}" data-modal-toggle="honor-modal-{{hons.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
                         <button class="delete-button" data-modal-target="del-hons-modal-{{hons.id}}" data-modal-toggle="del-hons-modal-{{hons.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
                     </div>
+                    {% endif %}
                     <div class="year-box">{{ hons.issue_year }}</div>
                     <div class="honours-and-awards-details">
                         <span class="award-title">{{ hons.title }}</span>
@@ -1413,15 +1437,19 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Doctoral Theses Guided</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleDoctoralThesesGuided()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
             <div id="doctoral-theses-guided-section-body" class="section-body">
                 {% for thesis in doctoral_theses %}
                 <div class="doctoral-theses-guided-item">
+                    {% if is_own_profile %}
                     <div class="update-delete-button-container">
                         <button class="update-button" data-modal-target="thesis-modal-{{thesis.id}}" data-modal-toggle="thesis-modal-{{thesis.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
                         <button class="delete-button" data-modal-target="del-thesis-modal-{{thesis.id}}" data-modal-toggle="del-thesis-modal-{{thesis.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
                     </div>
+                    {% endif %}
                     <div class="year-box">{{ thesis.awarded_year }}</div>
                     <div class="doctoral-theses-guided-details">
                         <span class="doctoral-theses-guided-title">{{ thesis.title }}</span>
@@ -1539,7 +1567,9 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Research Projects</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="toggleResearchProjects()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
         
             <div id="research-projects-section-body" class="section-body">
@@ -1564,10 +1594,12 @@
                         </div>
                     </div>
                 
+                    {% if is_own_profile %}
                     <div class="update-delete-button-container">
                         <button class="update-button" data-modal-target="rp-modal-{{item.id}}" data-modal-toggle="rp-modal-{{item.id}}" class="update-button" type="button"><i class="fa-solid fa-pen"></i></button>
                         <button class="delete-button" data-modal-target="del-rp-modal-{{item.id}}" data-modal-toggle="del-rp-modal-{{item.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
                     </div>
+                    {% endif %}
         
                     <!-- Update Modal -->
                     <div id="rp-modal-{{item.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -1716,16 +1748,20 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Patent</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="togglePatent()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
         
             <div id="patent-section-body" class="section-body">
                 {% for item in patents %}
                 <div class="each-patent relative">
+                    {% if is_own_profile %}
                     <div class="patent-buttons absolute top-0 right-0 space-x-2">
                         <button data-modal-target="patent-modal-{{item.id}}" data-modal-toggle="patent-modal-{{item.id}}" class="btn-update" type="button"><i class="fa-solid fa-pen"></i></button>
                         <button data-modal-target="del-patent-modal-{{item.id}}" data-modal-toggle="del-patent-modal-{{item.id}}" class="btn-delete" type="button"><i class="fa-solid fa-trash"></i></button>
                     </div>
+                    {% endif %}
                     <span class="title">{{ item.title }}</span>
                     <span><i class="fas fa-user icon"></i> {{ item.inventors }}</span>
                     <span><i class="fas fa-university icon"></i> MSIT JanakPURI</span>
@@ -1909,7 +1945,9 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Publications</span>
+                {% if is_own_profile %}
                 <button class="add-edit-btn" onclick="togglePublications()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
         
             <div id="publications-section-body" class="section-body">
@@ -1930,10 +1968,12 @@
                         </span>
                     </div>
         
+                    {% if is_own_profile %}
                     <div class="publication-buttons">
                         <button data-modal-target="pub-modal-{{item.id}}" data-modal-toggle="pub-modal-{{item.id}}" class="btn-update"><i class="fa-solid fa-pen"></i></button>
                         <button data-modal-target="del-pub-modal-{{item.id}}" data-modal-toggle="del-pub-modal-{{item.id}}" class="btn-delete"><i class="fa-solid fa-trash"></i></button>
                     </div>
+                    {% endif %}
         
                     <!-- Edit Publication Modal -->
                     <div id="pub-modal-{{item.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">

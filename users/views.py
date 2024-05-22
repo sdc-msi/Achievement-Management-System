@@ -170,16 +170,16 @@ def user_is_student(user):
         return hasattr(user, 'student')
     except Student.DoesNotExist:
         return False
-# @login_required(login_url="/users/studentLogin/")
-# def dashboard_view(request):
-#     username = request.user.get_full_name()
+@login_required(login_url="/users/studentLogin/")
+def dashboard_view(request):
+    username = request.user.get_full_name()
 
-#     usertype = 'student'
-#     if user_is_faculty(request.user):
-#         usertype = 'faculty'
+    usertype = 'student'
+    if user_is_faculty(request.user):
+        usertype = 'faculty'
 
-#     # return render(request, 'users/dashboard.html', {'user_name': username, 'usertype': usertype})
-#     return render(request, 'student/dashboard.html', {'user_name': username, 'usertype': usertype})
+    # return render(request, 'users/dashboard.html', {'user_name': username, 'usertype': usertype})
+    return render(request, 'student/dashboard.html', {'user_name': username, 'usertype': usertype})
 
 
 

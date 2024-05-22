@@ -27,6 +27,14 @@ def faculty_profile(request,faculty_id):
 
     education_string = list(educations.values_list('degree', flat=True))
 
+    is_own_profile = False
+
+    if request.user.is_authenticated:
+        if hasattr(request.user, 'faculty'):
+            is_own_profile = request.user.faculty == faculty
+
+    print(f"is_own_profile = {is_own_profile}")
+
     context = {
         'faculty': faculty,
         'experiences': experiences,
@@ -39,6 +47,7 @@ def faculty_profile(request,faculty_id):
         'research_projects': research_projects,
         'patents': patents,
         'publications': publications,
+        'is_own_profile': is_own_profile,
     }
     return render(request, 'faculty/profile.html',context)
 
