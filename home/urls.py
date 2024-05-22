@@ -10,6 +10,7 @@ app_name = "home"
 
 urlpatterns = [
     path('',home_new,name="home"),
+    path('search-student/',search_student,name="search_student"),
     # path('',home,name="home"),
     path('new_achievement/', create_achievement, name="create achievement"),
     path('pendingAchievements/', view_pending, name="pending achievements"),
