@@ -371,13 +371,13 @@
                 class="cover-photo">
             <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
                 alt="Profile Photo" class="profile-photo">
-            <h2>Priyadarshani Rajan</h2>
-            <p>Associate Professor</p>
+            <h2>{{ faculty.user.first_name }} {{ faculty.user.last_name }}</h2>
+            <p>{{ faculty.designation }}</p>
             <p>Ph.D., UGC-NET</p>
             <div class="stats">
                 <div>
                     <p>Batches Assigned</p>
-                    <p>2</p>
+                    <p>{{ assigned_batches.count }}</p>
                 </div>
                 <div>
                     <p>Pending Approval</p>
@@ -402,11 +402,11 @@
             <div class="batches">
 
 
-
+                {% for batch in assigned_batches %}
                 <div class="batch">
                     <div class="header green">
-                        <h4>BCA 2021</h4>
-                        <p>Morning</p>
+                        <h4>{{ batch.course| upper }} {{ batch.year }}</h4>
+                        <p>Shift {{ batch.shift }}</p>
                         <!-- <div class="avatar"> -->
                             <img class="avatar" src="" alt="">
                         <!-- </div> -->
@@ -419,6 +419,7 @@
                         <span class="icon">⚠️14</span>
                     </div>
                 </div>
+                {% endfor %}
 
 
 

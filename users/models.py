@@ -1,7 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser,Group
+import datetime
 # Create your models here.
 # users/models.py
+
+def current_year():
+    return datetime.date.today().year
+
+def year_choices():
+    return [(r, r) for r in range(1980, current_year() + 1)]
 
 class CustomUser(AbstractUser):
     profile_picture = models.ImageField(upload_to='profile_pics/', default='profile_pics/default.png')
@@ -20,20 +27,6 @@ class CustomUser(AbstractUser):
 faculty_group, created = Group.objects.get_or_create(name='faculty')
 student_group, created = Group.objects.get_or_create(name='student')
 
-class Student(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    # Add additional fields for student profile
-    enrollment_number = models.CharField(max_length=20)
-    batch_year = models.IntegerField()
-    semester = models.IntegerField()
-    section = models.CharField(max_length=10)
-    shift = models.CharField(max_length=10)
-    about = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return self.user.username
-
-
 class Faculty(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     # Add additional fields for faculty profile
@@ -48,9 +41,52 @@ class Faculty(models.Model):
     address = models.TextField(null=True, blank=True)
     gender = models.CharField(null=True,blank=True, max_length=15)
     
+    def __str__(self):
+        return self.user.username
+
+shift_type = [
+    (1, 'Morning'),
+    (2, 'Evening'),
+]
+
+course_types = [
+    ('bca', 'Bachelor of Computer Applications'),
+    ('bba', 'Bachelor of Business Administration'),
+    ('mba', 'Masters of Business Administration'),
+    ('bcom', 'Bachelor of Commerce'),
+    ('bed', 'Bachelor of Education'),
+    ('ballb', 'Bachelor of Law'),
+    ('btech', 'Bachelor of Technology'),
+]
+
+sections = [
+    ('a', 'A'),
+    ('b', 'B'),
+]
+
+class Batch(models.Model):
+    year = models.IntegerField(choices=year_choices(), default=current_year)
+    section = models.CharField(max_length=5, choices=sections, default='a')
+    shift = models.IntegerField(choices=shift_type, default='1')
+    course = models.CharField(max_length=50, choices=course_types, default='bca')
+    assigned_to = models.ForeignKey(Faculty, on_delete=models.PROTECT, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.course.upper()} {self.year}, Section {self.section.upper()}, Shift {self.shift}"
 
 
-
+class Student(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    # Add additional fields for student profile
+    enrollment_number = models.CharField(max_length=20)
+    batch = models.ForeignKey(Batch, on_delete=models.PROTECT, null=True, blank=True)
+    batch_year = models.IntegerField()
+    semester = models.IntegerField()
+    section = models.CharField(max_length=10)
+    shift = models.CharField(max_length=10)
+    about = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.user.username
+
+

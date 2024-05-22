@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from users.models import Faculty
+from users.models import Faculty, Batch
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -589,10 +589,12 @@ def delete_publication(request,pk):
 def dashboard(request):
 
     faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
-
+    assigned_batches = Batch.objects.filter(assigned_to=faculty)
+    
 
     context = {
         "faculty": faculty,
+        "assigned_batches" : assigned_batches,
         
     }
 
