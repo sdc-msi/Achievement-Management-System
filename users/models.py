@@ -75,6 +75,9 @@ class Batch(models.Model):
         return f"{self.course.upper()} {self.year}, Section {self.section.upper()}, Shift {self.shift}"
 
 
+    def assigned_to_name(self):
+        return self.assigned_to.user.first_name +" "+  self.assigned_to.user.last_name
+
 class Student(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     # Add additional fields for student profile
