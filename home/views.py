@@ -26,6 +26,7 @@ def home_new(request):
     return render(request, 'home/home_new.html')
 
 def search_student(request):
+    
     batch_year = request.GET.get('batch_year', '')
     course = request.GET.get('course', '')
     shift = request.GET.get('shift', '')
@@ -33,9 +34,9 @@ def search_student(request):
     print(shift,course,section,batch_year)
     if shift=="Morning":
         shift=1
-    else:
+    elif shift=="Evening":
         shift=2
-
+    
     filters = Q()
     if batch_year:
         filters |= Q(batch__year=batch_year)
@@ -45,8 +46,17 @@ def search_student(request):
         filters |= Q(batch__shift=shift)
     if section:
         filters |= Q(batch__section=section)
+    
 
-    students = Student.objects.filter(filters)
+    if filters:
+        
+        print(filters)
+        students = Student.objects.filter(filters)
+    else:
+        
+        students = Student.objects.all()
+        print(students)
+
     if not students:
         print("No Student found in this query")
 
