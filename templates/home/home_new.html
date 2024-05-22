@@ -15,23 +15,20 @@
             url("/static/img2.png");
         background-size: cover;
         background-position: center;
+        font-family: "";
         width: 100%;
         height: 700px;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
     }
 
-    .hero-heading {
-        font-family: 'Canela Web';
-        font-size: 7rem;
-        font-weight: 400;
-        text-align: center;
-        width: 60%;
-        padding: 64px 0 48px 0;
-        z-index: 1;
-        line-height: 1.2;
-        letter-spacing: -0.1px;
+    .hero .heading-1 {
+        font-size: 4em;
+    }
+    .hero .heading-2 {
+       font-size: 4em;
     }
 
     @media (max-width: 768px) {
@@ -274,13 +271,14 @@
 <home-container>
 
     <div class="hero">
-        <p class="hero-heading">Celebrating the Class of 2024</p>
+        <p class="hero-heading heading-1">Maharaja Surajmal Institute</p>
+        <p class="hero-heading heading-2">Achievement Management System</p>
     </div>
 
     <div class="about-the-faculty">
         <div class="left">
             <h3>About the Faculty</h3>
-            <img src="/static/img2.png" alt="Faculty Image">
+            <img src="https://media.istockphoto.com/id/1366724877/photo/rear-view-of-mature-teacher-talking-to-his-student-during-lecture-at-university-classroom.jpg?s=612x612&w=0&k=20&c=PYpAFHxiUKX2i1D8w_ElnGsm1B64GBleyF-DfYTLcN0=" alt="Faculty Image">
         </div>
         <div class="right">
             <p>Lorem ipsum dolere, sequi temporibus voluptatem natus deleniti commodi asperiores omnis dignissimos quam
@@ -330,23 +328,25 @@
         <div class="faculty-spotlight-container">
             <div class="faculty-spotlight-header">
                 <h3>Faculty Spotlights</h3>
-                <a href="#">View all faculty spotlights <span class="arrow"></span></a>
+                <!-- <a href="#">View all faculty spotlights <span class="arrow"></span></a> -->
             </div>
             <div class="spotlights">
                 <div class="spotlight">
-                    <img src="/static/img2.png" alt="Ali Asani">
-                    <h2>Ali Asani</h2>
-                    <p>Samantha '21 Alumni</p>
+                    <img src="https://www.msijanakpuri.com/wp-content/uploads/2019/10/14-500x500.jpg" alt="Ali Asani">
+                    <h2>Neetu Narwal</h2>
+                    <p>Associate Professor</p>
                 </div>
                 <div class="spotlight">
-                    <img src="/static/img2.png" alt="Nancy Etcoff">
-                    <h2>Nancy Etcoff</h2>
-                    <p>Ada '24</p>
+                    <img src="https://www.msijanakpuri.com/wp-content/uploads/Kirti-Dahiya-500x500.jpg" alt="Nancy Etcoff">
+                    <h2>Dr. Kirti Dahiya</h2>
+                    <p>Associate Professor</p>
+                    
                 </div>
                 <div class="spotlight">
-                    <img src="/static/img2.png" alt="Prineha Narang">
-                    <h2>Prineha Narang</h2>
-                    <p>Samantha '21 Alumni</p>
+                    <img src="https://www.msijanakpuri.com/wp-content/uploads/2019/10/38-500x500.jpg" alt="Prineha Narang">
+                    <h2>Rhythm Choudhoury</h2>
+                    <p>Associate Professor</p>
+                    
                 </div>
             </div>
         </div>
@@ -359,7 +359,7 @@
         <div class="content">
             <h2 class="title">Meet Our Students</h2>
             <p>
-                Browse bios of current Harvard students and get to know some of the voices behind our student stories
+                Browse profiles of current MSI students and get to know some of the voices behind our student stories
                 and spotlights.
             </p>
             <div class="button-wrapper">

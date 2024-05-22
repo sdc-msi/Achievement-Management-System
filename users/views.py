@@ -181,6 +181,12 @@ def dashboard_view(request):
     # return render(request, 'users/dashboard.html', {'user_name': username, 'usertype': usertype})
     return render(request, 'student/dashboard.html', {'user_name': username, 'usertype': usertype})
 
+
+
+
+def profile(request):
+    return render(request, 'student/profile.html')
+
 def logout_user(request):
     logout(request)
     messages.success(request, 'You have been logged out.')

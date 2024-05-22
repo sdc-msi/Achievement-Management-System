@@ -157,11 +157,8 @@
     
         .profile-card .saved-items {
             padding: 16px;
-            background: #202020;
+            background: #f9fafb;
             border-top: 1px solid #e1e1e1;
-        }
-        .profile-card .saved-items p{
-            color: white;
         }
     
     
@@ -271,9 +268,12 @@
         .batch .header.blue {
             background-color: #1a73e8;
         }
+        .batch .header.gray {
+            background-color: #3B444B;
+        }
     
         .batch .header.green {
-            background-color: #34a853;
+            background-color: #17B169;
         }
     
         .batch .header h4 {
@@ -320,6 +320,38 @@
             font-size: 14px;
             color: #5f6368;
         }
+
+
+
+        .filter-form{
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 0 10px;
+        }
+        .filter-form input,.filter-form select{
+            
+            outline: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 9px -1px;
+            font-size: 20px;
+            color: #9ca3af;
+            text-align: center;
+            width: 150px;
+            height: 35px;
+            border-radius: 5px;
+            margin: 0 15px;
+        }
+        
+        .filter-form button{
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 9px -1px;
+            background-color: #1967d2;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 20px;
+            margin: 0 15px;
+            width: 150px;
+        }
     </style>
 
 
@@ -359,7 +391,7 @@
 
 
         <div class="assigned-batches">
-            <h3>Your Batch</h3>
+            <h3>Assigned Batches</h3>
             <div class="batches">
 
 
@@ -382,6 +414,21 @@
                 </div>
 
 
+
+                <div class="batch">
+                    <div class="header green">
+                        <h4>BCA 2021</h4>
+                        <p>Evening</p>
+                        <img class="avatar" src="" alt="">
+                    </div>
+                    <div class="content">
+                        <p>Vinita Tomar</p>
+                    </div>
+                    <div class="footer">
+                        <span class="icon">👤79</span>
+                        <span class="icon">⚠️11</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -390,9 +437,26 @@
 
         <div class="other-batches">
             <h3>Other Batches</h3>
+
+            <div class="filter-form">
+                <input type="number" placeholder="Batch Year">
+                <select name="" id="">
+                    <option value="">Shift</option>
+                    <option value="">Morning</option>
+                    <option value="">Evening</option>
+                </select>
+                <select name="" id="">
+                    <option value="">Section</option>
+                    <option value="">A</option>
+                    <option value="">B</option>
+                </select>
+
+                <button>Filter</button>
+            </div>
+
             <div class="batches">
                 <div class="batch">
-                    <div class="header blue">
+                    <div class="header gray">
                         <h4>BCA 2022</h4>
                         <p>Morning</p>
                         <img class="avatar" src="" alt="">
@@ -407,7 +471,7 @@
                 </div>
                 <!-- Add more batch cards here as needed -->
                 <div class="batch">
-                    <div class="header blue">
+                    <div class="header gray">
                         <h4>BCA 2022</h4>
                         <p>Evening</p>
                         <img class="avatar" src="" alt="">
@@ -420,7 +484,7 @@
                     </div>
                 </div>
                 <div class="batch">
-                    <div class="header blue">
+                    <div class="header gray">
                         <h4>BCA 2022</h4>
                         <p>Evening</p>
                         <img class="avatar" src="" alt="">
@@ -433,7 +497,7 @@
                     </div>
                 </div>
                 <div class="batch">
-                    <div class="header blue">
+                    <div class="header gray">
                         <h4>BCA 2022</h4>
                         <p>Evening</p>
                         <img class="avatar" src="" alt="">
@@ -446,7 +510,7 @@
                     </div>
                 </div>
                 <div class="batch">
-                    <div class="header blue">
+                    <div class="header gray">
                         <h4>BCA 2022</h4>
                         <p>Evening</p>
                         <img class="avatar" src="" alt="">
@@ -459,7 +523,7 @@
                     </div>
                 </div>
                 <div class="batch">
-                    <div class="header blue">
+                    <div class="header gray">
                         <h4>BCA 2022</h4>
                         <p>Evening</p>
                         <img class="avatar" src="" alt="">
@@ -487,7 +551,7 @@
     <!-- ****************sidebar-right************** -->
     <div class="sidebar-right">
         <div class="sidebar">
-            <h2>Faculties</h2>
+            <h2>Other Faculties</h2>
             <ul class="faculty-list">
                 <li class="faculty">
                     <img src="photo-url" alt="Avatar" class="avatar">
