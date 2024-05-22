@@ -224,7 +224,8 @@ def add_patent(request):
 from time import timezone
 
 def add_publication(request):
-    if (request.method == 'POST'):
+    if request.method == 'POST' and request.FILES['file']:
+
         faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
         title = request.POST.get('title')
         work_type = request.POST.get('work-type')
@@ -233,14 +234,14 @@ def add_publication(request):
         year = request.POST.get('year')
         authors = request.POST.get('author')
         doi = request.POST.get('doi')
-        issuing_organization = request.POST.get('issue_org')
+        issuing_organization = request.POST.get('io')
         issue_date = request.POST.get('issue_date')
         url = request.POST.get('url')
         volume = request.POST.get('volume')
         page_number = request.POST.get('page-no')
         publisher_name = request.POST.get('publisher')
-        file = request.FILES['pub_file']
-        print(issuing_organization,title)
+        file = request.FILES['file']
+        
 
         values = {'title': title,
                 'work_type': work_type,
@@ -472,6 +473,44 @@ def edit_patent(request,pk):
         patent.save()
         print(" Patent Edit Done : ",patent.title)
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+    
+
+def edit_publication(request,pk):
+    publication = get_object_or_404(Publication, id=pk, faculty=request.user.faculty)
+    
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        work_type = request.POST.get('work-type')
+        journal_name = request.POST.get('journal-title')
+        year = request.POST.get('year')
+        authors = request.POST.get('author')
+        doi = request.POST.get('doi')
+        issuing_organization = request.POST.get('io')
+        issue_date = request.POST.get('issue_date')
+        url = request.POST.get('url')
+        volume = request.POST.get('volume')
+        page_number = request.POST.get('page-no')
+        publisher_name = request.POST.get('publisher')
+
+        publication.title = title
+        publication.work_type = work_type
+        publication.journal_name = journal_name
+        publication.year = year
+        publication.authors = authors
+        publication.doi = doi
+        publication.issuing_organization = issuing_organization
+        publication.issue_date = issue_date
+        publication.url = url
+        publication.volume = volume
+        publication.page_number = page_number
+        publication.publisher_name = publisher_name
+
+        if 'file' in request.FILES:
+            publication.file = request.FILES['file']
+
+        publication.save()
+        print("Publication object edited successfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': request.user.faculty.id}))
 
     
 #delete views
@@ -537,6 +576,14 @@ def delete_patent(request,pk):
         print("Research Project object deleted succesfully")
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
     
+
+def delete_publication(request,pk):
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    publication = get_object_or_404(Publication, id=pk, faculty=request.user.faculty)
+    if request.method == 'POST':
+        publication.delete()
+        print("Publication object deleted succesfully")
+        return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 
 def dashboard(request):

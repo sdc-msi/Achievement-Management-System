@@ -32,6 +32,7 @@ urlpatterns = [
     path('edit_committee_membership/<int:pk>/', edit_committee_membership, name='edit_committee_membership'),
     path('edit_research_projects/<int:pk>/', edit_research_projects, name='edit_research_projects'),
     path('edit_patent/<int:pk>/', edit_patent, name='edit_patent'),
+    path('edit_publication/<int:pk>/', edit_publication, name='edit_publication'),
     path('delete_experience/<int:pk>',delete_experience, name='delete_experience'),
     path('delete_education/<int:pk>',delete_education, name='delete_education'),
     path('delete_honors/<int:pk>',delete_honors, name='delete_honors'),
@@ -39,6 +40,7 @@ urlpatterns = [
     path('delete_committee_membership/<int:pk>', delete_committee_membership, name='delete_committee_membership'),
     path('delete_research_project/<int:pk>', delete_research_project, name='delete_research_project'),
     path('delete_patent/<int:pk>', delete_patent, name='delete_patent'),
+    path('delete_publication/<int:pk>', delete_publication, name='delete_publication'),
 
     path('faculty_list/', faculty_list, name='faculty_list'),
 ]
