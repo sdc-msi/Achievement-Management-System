@@ -369,7 +369,7 @@
         <div class="profile-card">
             <img src="https://thumbs.dreamstime.com/b/wall-backgrounds-16268126.jpg" alt="Cover Photo"
                 class="cover-photo">
-            <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+            <img src="{{faculty.user.profile_picture.url}}"
                 alt="Profile Photo" class="profile-photo">
             <h2>{{ faculty.user.first_name }} {{ faculty.user.last_name }}</h2>
             <p>{{ faculty.designation }}</p>
@@ -406,9 +406,9 @@
                 <div class="batch">
                     <div class="header green">
                         <h4>{{ batch.course| upper }} {{ batch.year }}</h4>
-                        <p>Shift {{ batch.shift }}</p>
+                        <p>{{ batch.batch_shift }}</p>
                         <!-- <div class="avatar"> -->
-                            <img class="avatar" src="" alt="">
+                            <img class="avatar" src="{{faculty.user.profile_picture.url}}" alt="">
                         <!-- </div> -->
                     </div>
                     <div class="content">
@@ -446,86 +446,24 @@
             </div>
 
             <div class="batches">
+                {% for batch in other_batches %}
                 <div class="batch">
                     <div class="header gray">
-                        <h4>BCA 2022</h4>
-                        <p>Morning</p>
-                        <img class="avatar" src="" alt="">
+                        <h4>{{ batch.course| upper }} {{ batch.year }}</h4>
+                        <p>{{batch.batch_shift}}</p>
+                        <img class="avatar" src="{{batch.assigned_to.user.profile_picture.url}}" alt="">
                     </div>
                     <div class="content">
-                        <p>Another Name</p>
+                        <p>{{batch.assigned_to_name}}</p>
                     </div>
                     <div class="footer">
                         <span class="icon">👤68</span>
                         <!-- <span class="icon">📂</span> -->
                     </div>
                 </div>
+                {% endfor %}
                 <!-- Add more batch cards here as needed -->
-                <div class="batch">
-                    <div class="header gray">
-                        <h4>BCA 2022</h4>
-                        <p>Evening</p>
-                        <img class="avatar" src="" alt="">
-                    </div>
-                    <div class="content">
-                        <p>Another Name</p>
-                    </div>
-                    <div class="footer">
-                        <span class="icon">👤68</span>
-                    </div>
-                </div>
-                <div class="batch">
-                    <div class="header gray">
-                        <h4>BCA 2022</h4>
-                        <p>Evening</p>
-                        <img class="avatar" src="" alt="">
-                    </div>
-                    <div class="content">
-                        <p>Another Name</p>
-                    </div>
-                    <div class="footer">
-                        <span class="icon">👤68</span>
-                    </div>
-                </div>
-                <div class="batch">
-                    <div class="header gray">
-                        <h4>BCA 2022</h4>
-                        <p>Evening</p>
-                        <img class="avatar" src="" alt="">
-                    </div>
-                    <div class="content">
-                        <p>Another Name</p>
-                    </div>
-                    <div class="footer">
-                        <span class="icon">👤68</span>
-                    </div>
-                </div>
-                <div class="batch">
-                    <div class="header gray">
-                        <h4>BCA 2022</h4>
-                        <p>Evening</p>
-                        <img class="avatar" src="" alt="">
-                    </div>
-                    <div class="content">
-                        <p>Another Name</p>
-                    </div>
-                    <div class="footer">
-                        <span class="icon">👤68</span>
-                    </div>
-                </div>
-                <div class="batch">
-                    <div class="header gray">
-                        <h4>BCA 2022</h4>
-                        <p>Evening</p>
-                        <img class="avatar" src="" alt="">
-                    </div>
-                    <div class="content">
-                        <p>Another Name</p>
-                    </div>
-                    <div class="footer">
-                        <span class="icon">👤68</span>
-                    </div>
-                </div>
+                
                 <!-- Add more batch cards here as needed -->
             </div>
         </div>
@@ -544,43 +482,13 @@
         <div class="sidebar">
             <h2>Other Faculties</h2>
             <ul class="faculty-list">
+                {% for fac in other_faculties %}
                 <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
+                    <img src="{{fac.user.profile_picture.url}}" alt="Avatar" class="avatar">
+                    <div class="name">{{fac.user.first_name}} {{fac.user.last_name}}</div>
                 </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-                <li class="faculty">
-                    <img src="photo-url" alt="Avatar" class="avatar">
-                    <div class="name">Pd Rajan</div>
-                </li>
-
+                {% endfor %}
+                
             </ul>
             <a href="#" class="view-more">View More</a>
         </div>

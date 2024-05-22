@@ -588,9 +588,14 @@ def delete_publication(request,pk):
 
 
 def dashboard(request):
+    print("hoolalalala")
 
     faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+    print(faculty)
     assigned_batches = Batch.objects.filter(assigned_to=faculty).annotate(count = Count("student"))
+    other_batches = Batch.objects.exclude(assigned_to=faculty).annotate(count = Count("student"))
+    other_faculties = Faculty.objects.all().exclude(id=faculty.id)
+    print(other_faculties)
     
     print("Id: ", assigned_batches[0].id)
     print("Count: ", assigned_batches[0].count)
@@ -598,7 +603,8 @@ def dashboard(request):
     context = {
         "faculty": faculty,
         "assigned_batches" : assigned_batches,
-        
+        "other_batches" : other_batches,
+        "other_faculties": other_faculties,
     }
 
     return render(request, 'faculty/dashboard.html', context=context)
