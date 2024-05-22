@@ -633,4 +633,12 @@ def batch_list(request,pk):
 
 
 def faculty_list(request):
-    return render(request, 'faculty/faculty_list.html')
+    faculties = Faculty.objects.all()
+
+    print(faculties.values())
+
+    context = {
+        'faculties': faculties,
+    }
+
+    return render(request, 'faculty/faculty_list.html', context=context)

@@ -189,13 +189,14 @@
     <h1 class="faculty-list-heading">Faculty</h1>
     <hr class="top-hr">
     <div class="faculty-grid">
+        {% for faculty in faculties %}
         <div class="faculty-card">
-            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
-                alt="Prof. (Dr.) Harish Singh">
+            <img src="{{faculty.user.profile_picture.url}}"
+                alt="{{ faculty.user.first_name }} {{ faculty.user.last_name }}">
             <div class="faculty-details">
-                <h3>Prof. (Dr.) Harish Singh</h3>
-                <p><span class="icon"><i class="fa-solid fa-bookmark"></i></span> Professor & Director</p>
-                <p><span class="icon"><i class="fa-solid fa-building"></i></span> Business Administration (1st Shift)</p>
+                <h3>{{ faculty.user.first_name }} {{ faculty.user.last_name }}</h3>
+                <p><span class="icon"><i class="fa-solid fa-bookmark"></i></span> {{ faculty.designation }}</p>
+                <p><span class="icon"><i class="fa-solid fa-building"></i></span> {{ faculty.department }} (Shift {{faculty.shift}})</p>
                 <hr>
                 <p><span class="icon"><i class="fa-solid fa-user-graduate"></i></span> M.Sc., Ph.D.</p>
                 <p><span class="icon"><i class="fa-solid fa-envelope"></i></span> <a
@@ -203,67 +204,7 @@
                 <button>View Profile</button>
             </div>
         </div>
-        <div class="faculty-card">
-            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
-                alt="Prof. (Dr.) Harish Singh">
-            <div class="faculty-details">
-                <h3>Prof. (Dr.) Harish Singh</h3>
-                <p><span class="icon">📘</span> Professor & Director</p>
-                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
-                <hr>
-                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
-                <p><span class="icon">📧</span> <a
-                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
-                <button>View Profile</button>
-            </div>
-        </div>
-        <div class="faculty-card">
-            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
-                alt="Prof. (Dr.) Harish Singh">
-            <div class="faculty-details">
-                <h3>Prof. (Dr.) Harish Singh</h3>
-                <p><span class="icon">📘</span> Professor & Director</p>
-                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
-                <hr>
-                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
-                <p><span class="icon">📧</span> <a
-                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
-                <button>View Profile</button>
-            </div>
-        </div>
-        <div class="faculty-card">
-            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
-                alt="Prof. (Dr.) Harish Singh">
-            <div class="faculty-details">
-                <h3>Prof. (Dr.) Harish Singh</h3>
-                <p><span class="icon">📘</span> Professor & Director</p>
-                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
-                <hr>
-                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
-                <p><span class="icon">📧</span> <a
-                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
-                <button>View Profile</button>
-            </div>
-        </div>
-        <div class="faculty-card">
-            <img src="https://pyxis.nymag.com/v1/imgs/654/1f1/08de774c11d89cb3f4ecf600a33e9c8283-24-keanu-reeves.rsquare.w400.jpg"
-                alt="Prof. (Dr.) Harish Singh">
-            <div class="faculty-details">
-                <h3>Prof. (Dr.) Harish Singh</h3>
-                <p><span class="icon">📘</span> Professor & Director</p>
-                <p><span class="icon">📚</span> Business Administration (1st Shift)</p>
-                <hr>
-                <p><span class="icon">🎓</span> M.Sc., Ph.D.</p>
-                <p><span class="icon">📧</span> <a
-                        href="mailto:harishsingh@msijanakpuri.com">harishsingh@msijanakpuri.com</a></p>
-                <button>View Profile</button>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 </div>
-
-
-
-
 {% endblock %}
