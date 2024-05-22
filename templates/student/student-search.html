@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block heading %}
+{% endblock heading %}
+{% block content %}
+
+    <style>
+        /* html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        } */
+        .main-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+            flex: 1;
+            margin: 0 auto;
+        }
+        .heading {
+            
+            font-size: 2.5rem;
+            font-family: 'Arial', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .filter-form {
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+        }
+        .filter-form input,
+        .filter-form select {
+            outline: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 9px -1px;
+            font-size: 16px;
+            color: rgb(117, 117, 117);
+            text-align: center;
+            width: 150px;
+            height: 35px;
+            border-radius: 5px;
+            margin: 0 10px;
+            border: none;
+        }
+        .filter-form input:focus,
+        .filter-form select:focus {
+            border: 2px solid #71a2f5a8;
+        }
+        .filter-form button {
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 9px -1px;
+            background-color: #1967d2;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 20px;
+            margin: 0 10px;
+            width: 150px;
+            border: none;
+            cursor: pointer;
+        }
+        .students-list {
+            margin-top: 10px;
+            width: 100%;
+            overflow-y: auto;
+        }
+        .student {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            margin: 0 30px;
+            border-bottom: 1px solid #ddd;
+        }
+        .student img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .student-name {
+            flex-grow: 1;
+            font-size: 1.1rem;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .view-profile {
+            background-color: #3B444B;
+            color: white;
+            /* border-radius: 50%; */
+            /* width: 24px; */
+            /* height: 24px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            /* font-weight: bold; */
+
+
+            /* width: 50px; */
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+    </style>
+
+    <div class="main-container">
+        <h3 class="heading">Search Student Profile</h3>
+        <div class="filter-form">
+            <input type="number" placeholder="Batch Year" id="batch-year">
+            <select name="course" id="course">
+                <option value="">Course</option>
+                <option value="BCA">BCA</option>
+                <option value="BBA">BBA</option>
+            </select>
+            <select name="shift" id="shift">
+                <option value="">Shift</option>
+                <option value="Morning">Morning</option>
+                <option value="Evening">Evening</option>
+            </select>
+            <select name="section" id="section">
+                <option value="">Section</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+            </select>
+            <button>Filter</button>
+        </div>
+        <div class="students-list">
+            <div class="student">
+                <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg" alt="Khattar">
+                <span class="student-name">Khattar</span>
+                <span class="view-profile">View Profile</span>
+            </div>
+            <div class="student">
+                <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg" alt="Shivodit">
+                <span class="student-name">Shivodit</span>
+                <span class="view-profile">View Profile</span>
+            </div>
+            <div class="student">
+                <img src="https://michaelfairmantv.com/wp-content/uploads/2023/06/Jensen-Ackles-2022-SXSW-1-e1685921130958.jpg" alt="Pandey">
+                <span class="student-name">Pandey</span>
+                <span class="view-profile">View Profile</span>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

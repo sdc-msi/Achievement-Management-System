@@ -222,15 +222,6 @@ def add_patent(request):
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
 from time import timezone
-# Method to handle uploaded file for add_publication
-# def handle_uploaded_publication(file):
-#     print("===============")
-#     print(settings.MEDIA_ROOT+file.name)
-#     print("===============")
-#     filepath = "publications/" + file.name()
-#     with open(settings.MEDIA_ROOT + filepath, "wb+") as destination:
-#         for chunk in f.chunks():
-#             destination.write(chunk)
 
 def add_publication(request):
     if (request.method == 'POST'):
@@ -248,9 +239,8 @@ def add_publication(request):
         volume = request.POST.get('volume')
         page_number = request.POST.get('page-no')
         publisher_name = request.POST.get('publisher')
-        file = request.FILES.get('pub_file')
+        file = request.FILES['pub_file']
         print(issuing_organization,title)
-
 
         values = {'title': title,
                 'work_type': work_type,
@@ -550,7 +540,16 @@ def delete_patent(request,pk):
 
 
 def dashboard(request):
-    return render(request, 'faculty/dashboard.html')
+
+    faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
+
+
+    context = {
+        "faculty": faculty,
+        
+    }
+
+    return render(request, 'faculty/dashboard.html', context=context)
 
 
 def batch_list(request):

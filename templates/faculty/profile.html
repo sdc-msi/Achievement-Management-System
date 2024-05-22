@@ -1894,7 +1894,7 @@
                 {% endfor %}
             </div>
 
-            <form id="publications-section-form" style="display: none;" enctype="multipart/form-data" method="POST" action="{% url 'fams:add_publication' %}">
+            <form method="post" action={% url "fams:add_publication" %} enctype="multipart/form-data" id="publications-section-form" style="display: none;">
                 {% csrf_token %}
                 <div>
                     <label for="work-type">* Work Type</label>

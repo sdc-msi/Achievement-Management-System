@@ -25,6 +25,9 @@ def home(request):
 def home_new(request):
     return render(request, 'home/home_new.html')
 
+def search_student(request):
+    return render(request, 'student/student-search.html')
+
 
 @group_required('student')
 def create_achievement(request):
