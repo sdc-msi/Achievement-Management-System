@@ -428,35 +428,6 @@
     background-color: #f9f9f9;
 }
 
-.button-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.button-container button {
-    background-color: darkblue;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    margin-left: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.button-container button:hover {
-    background-color: #2d4373;
-}
-
-.delete-button {
-    background-color: red;
-}
-
-.delete-button:hover {
-    background-color: #cc0000;
-}
-
 
 
 
@@ -470,31 +441,7 @@
     padding-right: 100px; 
 }
 
-.section .button-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 5px;
-}
 
-.section .button-container button {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 2px 1px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.section .button-container .delete-button {
-    background-color: #dc3545;
-}
 
 .section .dates {
     margin-right: 110px; 
@@ -509,31 +456,7 @@
     padding-right: 100px; 
 }
 
-.section .button-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 5px;
-}
 
-.section .button-container button {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 2px 1px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.section .button-container .delete-button {
-    background-color: #dc3545;
-}
 
 .section .year-box, .section .honours-and-awards-details {
     margin-right: 110px;
@@ -550,30 +473,6 @@
     border-radius: 5px;
 }
 
-.section .button-container {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    display: flex;
-    gap: 10px;
-}
-
-.section .button-container button {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.section .button-container .delete-button {
-    background-color: #dc3545;
-}
 
 .section .year-box, .section .doctoral-theses-guided-details {
     margin-right: 120px; /* Adjust to ensure text doesn't overlap with buttons */
@@ -588,30 +487,7 @@
     border-radius: 5px;
 }
 
-.section .button-container {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    display: flex;
-    gap: 10px;
-}
 
-.section .button-container button {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.section .button-container .delete-button {
-    background-color: #dc3545;
-}
 
 .section .dates, .section p {
     margin-right: 120px; /* Adjust to ensure text doesn't overlap with buttons */
@@ -619,29 +495,9 @@
 
 
 
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 10px;
-}
 
-.update-button, .delete-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
 
-.update-button {
-    background-color: #4CAF50; /* Green */
-    color: white;
-}
 
-.delete-button {
-    background-color: #f44336; /* Red */
-    color: white;
-}
 
 .hidden {
     display: none;
@@ -658,30 +514,7 @@
     margin-bottom: 20px;
 }
 
-.button-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-}
 
-.update-button, .delete-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.update-button {
-    background-color: #4CAF50; /* Green */
-    color: white;
-}
-
-.delete-button {
-    background-color: #f44336; /* Red */
-    color: white;
-}
 
 .hidden {
     display: none;
@@ -726,7 +559,18 @@
     position: relative;
 }
 
-.publication-buttons, .patent-buttons, .button-container {
+
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+
+
+
+
+.publication-buttons, .patent-buttons, .update-delete-button-container {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -734,7 +578,7 @@
     gap: 10px;
 }
 
-.publication-buttons button, .patent-buttons button, .button-container button {
+.publication-buttons button, .patent-buttons button, .update-delete-button-container button {
     background-color: #007bff;
     border: none;
     color: white;
@@ -747,9 +591,12 @@
     border-radius: 4px;
 }
 
-.publication-buttons .btn-delete, .patent-buttons .btn-delete, .button-container .delete-button {
+.publication-buttons .btn-delete, .patent-buttons .btn-delete, .update-delete-button-container .delete-button {
     background-color: #dc3545;
 }
+
+
+/* //////////////////////////////////////////////////////////////////////// */
 </style>
 
 <main>
@@ -979,9 +826,9 @@
                 <div class="timeline">
                     {% for exp in experiences %}
                     <div class="event">
-                        <div class="button-container">
-                            <button data-modal-target="experience-modal-{{exp.id}}" data-modal-toggle="experience-modal-{{exp.id}}" type="button">Update</button>
-                            <button data-modal-target="del-exp-modal-{{exp.id}}" data-modal-toggle="del-exp-modal-{{exp.id}}" class="delete-button" type="button">Delete</button>
+                        <div class="update-delete-button-container">
+                            <button class="update-button" data-modal-target="experience-modal-{{exp.id}}" data-modal-toggle="experience-modal-{{exp.id}}" type="button">Update</button>
+                            <button class="delete-button" data-modal-target="del-exp-modal-{{exp.id}}" data-modal-toggle="del-exp-modal-{{exp.id}}" type="button">Delete</button>
                         </div>
                         <div class="dates">
                             <div class="start-date">{{ exp.start_date |date:"M, Y" }}</div>
@@ -1183,9 +1030,9 @@
                 <div class="timeline">
                     {% for edu in educations %}
                     <div class="event">
-                        <div class="button-container">
-                            <button data-modal-target="education-modal-{{edu.id}}" data-modal-toggle="education-modal-{{edu.id}}" type="button">Update</button>
-                            <button data-modal-target="del-edu-modal-{{edu.id}}" data-modal-toggle="del-edu-modal-{{edu.id}}" class="delete-button" type="button">Delete</button>
+                        <div class="update-delete-button-container">
+                            <button class="update-button" data-modal-target="education-modal-{{edu.id}}" data-modal-toggle="education-modal-{{edu.id}}" type="button">Update</button>
+                            <button class="delete-button" data-modal-target="del-edu-modal-{{edu.id}}" data-modal-toggle="del-edu-modal-{{edu.id}}" type="button">Delete</button>
                         </div>
                         <div class="dates">
                             <div>{{ edu.start_date|date:"Y" }}</div>
@@ -1320,9 +1167,9 @@
             <div id="honours-and-awards-section-body" class="section-body">
                 {% for hons in honors %}
                 <div class="award-item">
-                    <div class="button-container">
-                        <button data-modal-target="honor-modal-{{hons.id}}" data-modal-toggle="honor-modal-{{hons.id}}" type="button">Update</button>
-                        <button data-modal-target="del-hons-modal-{{hons.id}}" data-modal-toggle="del-hons-modal-{{hons.id}}" class="delete-button" type="button">Delete</button>
+                    <div class="update-delete-button-container">
+                        <button class="update-button" data-modal-target="honor-modal-{{hons.id}}" data-modal-toggle="honor-modal-{{hons.id}}" type="button">Update</button>
+                        <button class="delete-button" data-modal-target="del-hons-modal-{{hons.id}}" data-modal-toggle="del-hons-modal-{{hons.id}}" type="button">Delete</button>
                     </div>
                     <div class="year-box">{{ hons.issue_year }}</div>
                     <div class="honours-and-awards-details">
@@ -1436,9 +1283,9 @@
             <div id="doctoral-theses-guided-section-body" class="section-body">
                 {% for thesis in doctoral_theses %}
                 <div class="doctoral-theses-guided-item">
-                    <div class="button-container">
-                        <button data-modal-target="thesis-modal-{{thesis.id}}" data-modal-toggle="thesis-modal-{{thesis.id}}" type="button">Update</button>
-                        <button data-modal-target="del-thesis-modal-{{thesis.id}}" data-modal-toggle="del-thesis-modal-{{thesis.id}}" class="delete-button" type="button">Delete</button>
+                    <div class="update-delete-button-container">
+                        <button class="update-button" data-modal-target="thesis-modal-{{thesis.id}}" data-modal-toggle="thesis-modal-{{thesis.id}}" type="button">Update</button>
+                        <button class="delete-button" data-modal-target="del-thesis-modal-{{thesis.id}}" data-modal-toggle="del-thesis-modal-{{thesis.id}}" type="button">Delete</button>
                     </div>
                     <div class="year-box">{{ thesis.awarded_year }}</div>
                     <div class="doctoral-theses-guided-details">
@@ -1572,9 +1419,9 @@
                         <p style="font-size: 14px;">
                             <strong style="font-size: 16px;">{{ item.organization }}</strong>{{ item.name }}
                         </p>
-                        <div class="button-container">
-                            <button data-modal-target="committee-modal-{{item.id}}" data-modal-toggle="committee-modal-{{item.id}}" type="button">Update</button>
-                            <button data-modal-target="del-cm-modal-{{item.id}}" data-modal-toggle="del-cm-modal-{{item.id}}" class="delete-button" type="button">Delete</button>
+                        <div class="update-delete-button-container">
+                            <button class="update-button" data-modal-target="committee-modal-{{item.id}}" data-modal-toggle="committee-modal-{{item.id}}" type="button">Update</button>
+                            <button class="delete-button" data-modal-target="del-cm-modal-{{item.id}}" data-modal-toggle="del-cm-modal-{{item.id}}" type="button">Delete</button>
                         </div>
                     </div>
         
@@ -1702,9 +1549,9 @@
                         </div>
                     </div>
                 
-                    <div class="button-container">
-                        <button data-modal-target="rp-modal-{{item.id}}" data-modal-toggle="rp-modal-{{item.id}}" class="update-button" type="button">Update</button>
-                        <button data-modal-target="del-rp-modal-{{item.id}}" data-modal-toggle="del-rp-modal-{{item.id}}" class="delete-button" type="button">Delete</button>
+                    <div class="update-delete-button-container">
+                        <button class="update-button" data-modal-target="rp-modal-{{item.id}}" data-modal-toggle="rp-modal-{{item.id}}" class="update-button" type="button">Update</button>
+                        <button class="delete-button" data-modal-target="del-rp-modal-{{item.id}}" data-modal-toggle="del-rp-modal-{{item.id}}" type="button">Delete</button>
                     </div>
         
                     <!-- Update Modal -->
