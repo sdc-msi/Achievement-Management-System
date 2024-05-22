@@ -24,18 +24,19 @@
         flex-direction: column;
     }
 
-    .hero .heading-1 {
-        font-size: 4em;
-    }
-    .hero .heading-2 {
-       font-size: 4em;
+    .hero-heading {
+        font-size: 4.4em;
+        /* letter-spacing:-0.15rem; */
+        text-align: center;
     }
 
-    @media (max-width: 768px) {
+
+
+    @media (max-width: 900px) {
         .hero-heading {
-            font-size: 3rem;
-            width: 80%;
-            padding: 32px 0 24px 0;
+            font-size: 3em;
+            /* width: 80%; */
+            /* padding: 32px 0 24px 0; */
         }
 
         .about-the-faculty {
@@ -66,7 +67,7 @@
     .right p {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 1.2rem;
         padding: 20px 0 0;
     }
 
@@ -117,7 +118,7 @@
     .faculty-spotlight-container {
         width: 80%;
         margin: 0 auto;
-        padding: 20px 0 30px ;
+        padding: 20px 0 30px;
     }
 
     .mydiv {
@@ -260,10 +261,9 @@
         justify-content: space-between;
     }
 
-
-   
-
-    
+    .faq{
+        margin-top: 30px;;
+    }
 </style>
 
 
@@ -278,16 +278,17 @@
     <div class="about-the-faculty">
         <div class="left">
             <h3>About the Achievement Management System </h3>
-            <img src="https://www.fundcalibre.com/wp-content/uploads/2018/12/AdobeStock_210211160.jpeg" alt="Faculty Image">
+            <img src="https://www.fundcalibre.com/wp-content/uploads/2018/12/AdobeStock_210211160.jpeg"
+                alt="Faculty Image">
         </div>
         <div class="right">
             <p> The Achievement Management System (AMS) is a web portal for the
                 recording and management of achievements of students and faculty of Maharaja Surajmal Institute at
                 a single centralized location.</p>
 
-                <p> Students and faculty alike submit their achievements and other feats through HTML forms on this portal,
-                    and these achievements are then put on display once they have been verified by the faculty and admin 
-                    of the institute. </p>
+            <p> Students and faculty alike submit their achievements and other feats through HTML forms on this portal,
+                and these achievements are then put on display once they have been verified by the faculty and admin
+                of the institute. </p>
             <div class="faq">
                 <div class="faq-item">
                     <div class="faq-item-header">
@@ -295,8 +296,10 @@
                         <span>+</span>
                     </div>
                     <div class="faq-content">
-                        <p>This Achievement Management System web portal was created as a way to alleviate the burden of manually recording achievements on the
-                            faculty and administration of Maharja Surajmal Institute, and instead automate the process. This is a sorely needed facility, as the students and
+                        <p>This Achievement Management System web portal was created as a way to alleviate the burden of
+                            manually recording achievements on the
+                            faculty and administration of Maharja Surajmal Institute, and instead automate the process.
+                            This is a sorely needed facility, as the students and
                             faculty at MSI get a plethora of prestigious achievements in a single semester.</p>
                     </div>
                 </div>
@@ -306,7 +309,10 @@
                         <span>+</span>
                     </div>
                     <div class="faq-content">
-                        <p>Through the AMS, students and faculties can submit their achievements. Faculties can verify student's achievements in order to ensure that the correct details are recorded on the web page. Once the achievement and its details have been verified, they will be visible to everyone through the student or faculty's profile page. </p>
+                        <p>Through the AMS, students and faculties can submit their achievements. Faculties can verify
+                            student's achievements in order to ensure that the correct details are recorded on the web
+                            page. Once the achievement and its details have been verified, they will be visible to
+                            everyone through the student or faculty's profile page. </p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -316,10 +322,11 @@
                     </div>
                     <div class="faq-content">
                         <p>The main advantages of the AMS are:</p>
-                            <p>Centralized storage and access of user records</p>
-                            <p>Ease of use due to a user interface designed with ease-of-use in mind </p>
-                            <p>Built in verification checks for data to ensure that only authentic data is recorded. </p>
-                            <p>The web page is built using Django and lightweight CSS, making it fast on any device, from smartphones to powerful computers.</p>
+                        <p>Centralized storage and access of user records</p>
+                        <p>Ease of use due to a user interface designed with ease-of-use in mind </p>
+                        <p>Built in verification checks for data to ensure that only authentic data is recorded. </p>
+                        <p>The web page is built using Django and lightweight CSS, making it fast on any device, from
+                            smartphones to powerful computers.</p>
                     </div>
                 </div>
             </div>
@@ -341,16 +348,18 @@
                     <p>Associate Professor</p>
                 </div>
                 <div class="spotlight">
-                    <img src="https://www.msijanakpuri.com/wp-content/uploads/Kirti-Dahiya-500x500.jpg" alt="Nancy Etcoff">
+                    <img src="https://www.msijanakpuri.com/wp-content/uploads/Kirti-Dahiya-500x500.jpg"
+                        alt="Nancy Etcoff">
                     <h2>Dr. Kirti Dahiya</h2>
                     <p>Associate Professor</p>
-                    
+
                 </div>
                 <div class="spotlight">
-                    <img src="https://www.msijanakpuri.com/wp-content/uploads/2019/10/38-500x500.jpg" alt="Prineha Narang">
+                    <img src="https://www.msijanakpuri.com/wp-content/uploads/2019/10/38-500x500.jpg"
+                        alt="Prineha Narang">
                     <h2>Rhythm Choudhoury</h2>
                     <p>Associate Professor</p>
-                    
+
                 </div>
             </div>
         </div>
@@ -383,7 +392,7 @@
         });
     </script>
 
-</home-containe>
+    </home-containe>
 
 
-{% endblock %}
+    {% endblock %}
