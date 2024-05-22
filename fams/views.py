@@ -236,20 +236,38 @@ def add_publication(request):
     if (request.method == 'POST'):
         faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
         title = request.POST.get('title')
-        work_type = request.POST.get('work_type')
+        work_type = request.POST.get('work-type')
         title = request.POST.get('title')
-        journal_name = request.POST.get('journal_name')
+        journal_name = request.POST.get('journal-title')
         year = request.POST.get('year')
-        authors = request.POST.get('authors')
+        authors = request.POST.get('author')
         doi = request.POST.get('doi')
-        issuing_organization = request.POST['io']
+        issuing_organization = request.POST.get('issue_org')
         issue_date = request.POST.get('issue_date')
         url = request.POST.get('url')
         volume = request.POST.get('volume')
-        page_number = request.POST.get('page_number')
-        publisher_name = request.POST.get('publisher_name')
-        file = request.FILES.get('file')
+        page_number = request.POST.get('page-no')
+        publisher_name = request.POST.get('publisher')
+        file = request.FILES.get('pub_file')
         print(issuing_organization,title)
+
+
+        values = {'title': title,
+                'work_type': work_type,
+                'journal_name': journal_name,
+                'year': year, 
+                'authors': authors, 
+                'doi':doi, 
+                'issuing_organization': issuing_organization,
+                'issue_date': issue_date,
+                'url': url,
+                'volumee': volume,
+                'page_number': page_number, 
+                'publisher_name': publisher_name,
+                'file': file }
+
+        for key, value in values.items():
+            print(f"{key}: {value}")
 
         publication = Publication(
             faculty=request.user.faculty,
@@ -399,6 +417,8 @@ def edit_patent(request,pk):
         patent.save()
         print(" Patent Edit Done : ",patent.title)
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
+
+    
 
 
 def dashboard(request):
