@@ -386,7 +386,7 @@
             </div>
 
             <div class="saved-items">
-                <p>View Profile</p>
+                <p><a href="{% url 'fams:faculty_profile' faculty.id %}"> View Profile</a></p>
             </div>
         </div>
     </div>
@@ -490,7 +490,7 @@
                 {% endfor %}
                 
             </ul>
-            <a href="#" class="view-more">View More</a>
+            <a href="{% url 'fams:faculty_list' %}" class="view-more">View More</a>
         </div>
     </div>
 </main>
