@@ -103,6 +103,17 @@
     .intro {
         margin-top: 70px;
         padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+    }
+
+    .download-profile{
+        width: 90px;
+        border-radius: 3px;
+        height: 30px;
+        background-color: rgb(168, 172, 177);
     }
 
     .intro-name {
@@ -113,7 +124,7 @@
     .intro-desc {
         font-size: 16px;
         color: #232323;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
     }
 
     /* Form Elements */
@@ -635,14 +646,20 @@ form input[type="date"]{
             </div>
 
             <div class="intro">
-                <div class="intro-name">
-                {{ faculty.user.first_name }} {{ faculty.user.last_name }}
-                </div>
-                <div class="intro-desc">
-                    <span>{{ faculty.designation|capfirst }}</span>
-                    <p>New Delhi, Delhi, India</p>
-                    <p>{{ education_string | join:", " }}</p>
+                <div>
 
+                    <div class="intro-name">
+                        {{ faculty.user.first_name }} {{ faculty.user.last_name }}
+                    </div>
+                    <div class="intro-desc">
+                        <span>{{ faculty.designation|capfirst }}</span>
+                        <p>New Delhi, Delhi, India</p>
+                        <p>{{ education_string | join:", " }}</p>
+                        
+                    </div>
+                </div>
+                <div >
+                    <button class="download-profile">Download</button>
                 </div>
             </div>
         </div>
