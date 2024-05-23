@@ -92,10 +92,10 @@ def search_student(request):
 #     return render(request, 'home/create_achievement.html', { 'form': achievement_form })
 
 # @group_required('faculty')
-# def view_pending(request):
-#     pending = StudentAchievement.objects.filter(is_pending=1)
+def view_pending(request):
+    pending = StudentAchievement.objects.filter(is_pending=1)
     
-#     return render(request, 'home/all_achievements.html', {'achievements': pending})
+    return render(request, 'home/all_achievements.html', {'achievements': pending})
 
 # @group_required('faculty', 'student')
 # def view_details(request, achievement_id):

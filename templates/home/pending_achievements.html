@@ -3,24 +3,173 @@
 {% block title %}Pending achievements{% endblock %}
 {% block heading %}Pending achievements{% endblock %}
 {% block content %}
-    <table>
-        <thead>
-            <th>Student Name</th>
-            <th>Event Name</th>
-            <th>Achievement Type</th>
-            <th>Date</th>
-            <th>Verify</th>
-        </thead>
-        {% for achievement in pending %}
-            <tr>
-                <td>{{ achievement.student.user.first_name }} {{ achievement.student.user.last_name }}</td>
-                <td>{{ achievement.event_name }}</td>
-                <td>{{ achievement.achievement_type|achievement_type }}</td>
-                <td>{{ achievement.date }}</td>
-                <td>
-                    <a href="{% url 'home:toggle_approval' achievement.id %}">Verify</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    
+<style>
+    .main-container {
+        padding-top: 400px;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* height: 100vh; */
+        /* background-color: #f70000; */
+        gap: 40px;
+    }
+    .heading{
+        text-align: center;
+        font-size: 2em;
+    }
+
+    .section {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .section-heading{
+        font-size: 1.7em;
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .field {
+        margin-bottom: 15px;
+    }
+
+    .field label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .field .value {
+        font-size: 1em;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: right;
+        gap: 20px;
+    }
+
+    .buttons button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+
+    .approve-btn {
+        background-color: darkblue;
+        color: #fff;
+    }
+
+    .disapprove-btn {
+        background-color: red;
+        color: #fff;
+    }
+</style>
+
+
+<div class="main-container">
+    <h3 class="heading">Pending Achievements</h3>
+
+    <div class="section">
+        <h4 class="section-heading">Experience</h4>
+        <div class="field">
+            <label>Institute:</label>
+            <div class="value">Maharaja Surajmal</div>
+        </div>
+        <div class="field">
+            <label>Department:</label>
+            <div class="value">Computer Applications</div>
+        </div>
+        <div class="field">
+            <label>Organisation Type:</label>
+            <div class="value">Research and Development</div>
+        </div>
+        <div class="field">
+            <label>Location:</label>
+            <div class="value">dcfe</div>
+        </div>
+        <div class="field">
+            <label>Designation:</label>
+            <div class="value">Assistant Professor</div>
+        </div>
+        <div class="field">
+            <label>Start Date:</label>
+            <div class="value">16-05-2024</div>
+        </div>
+        <div class="field">
+            <label>End Date:</label>
+            <div class="value">11-05-2024</div>
+        </div>
+        <div class="field">
+            <label>Description:</label>
+            <div class="value">this is the description lorem ipsem</div>
+        </div>
+        <div class="buttons">
+            <button class="approve-btn">Approve</button>
+            <button class="disapprove-btn">Disapprove</button>
+        </div>
+    </div>
+    <div class="section">
+        <h4 class="section-heading">Membership in Committees</h4>
+        <div class="field">
+            <label>Organisation:</label>
+            <div class="value">CSII</div>
+        </div>
+        <div class="field">
+            <label>Designation:</label>
+            <div class="value">[Enter Designation]</div>
+        </div>
+        <div class="field">
+            <label>Start Date:</label>
+            <div class="value">06-04-2023</div>
+        </div>
+        <div class="field">
+            <label>End Date:</label>
+            <div class="value">31-05-2024</div>
+        </div>
+        <div class="buttons">
+            <button class="approve-btn">Approve</button>
+            <button class="disapprove-btn">Disapprove</button>
+        </div>
+    </div>
+    <div class="section">
+        <h4 class="section-heading">Honours and Awards</h4>
+        <div class="field">
+            <label>Title:</label>
+            <div class="value">AWS Cloud Practitioner</div>
+        </div>
+        <div class="field">
+            <label>Issuing Organization:</label>
+            <div class="value">Amazonn</div>
+        </div>
+        <div class="field">
+            <label>Year:</label>
+            <div class="value">2024</div>
+        </div>
+        <div class="field">
+            <label>Description:</label>
+            <div class="value">Practitioner</div>
+        </div>
+        <div class="buttons">
+            <button class="approve-btn">Approve</button>
+            <button class="disapprove-btn">Disapprove</button>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
