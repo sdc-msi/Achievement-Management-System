@@ -139,6 +139,12 @@
 
         }
 
+        .student a{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
         /* .filter-form button{
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 9px -1px;
             background-color: #3B444B;
@@ -185,9 +191,11 @@
             <div class="students-list">
                 {% for student in students %}
                 <div class="student">
-                    <img src="{{student.user.profile_picture.url}}"
+                    <a  href="{% url 'home:student_profile' student_id=student.id %}">
+                        <img src="{{student.user.profile_picture.url}}"
                         alt="profile_pic">
-                    <span class="student-name">{{student.user.get_full_name}}</span>
+                        <span class="student-name">{{student.user.get_full_name}}</span>
+                    </a>
                     <span class="approvals">3</span>
                 </div>
                 {% endfor %}

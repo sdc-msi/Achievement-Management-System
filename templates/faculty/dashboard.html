@@ -408,16 +408,16 @@
                     <div class="header green">
                         <h4>{{ batch.course| upper }} {{ batch.year }}</h4>
                         <p>{{ batch.batch_shift }}</p>
-                        <!-- <div class="avatar"> -->
+            
                             <img class="avatar" src="{{faculty.user.profile_picture.url}}" alt="">
-                        <!-- </div> -->
+        
                     </div>
                     <div class="content">
                         <p>{{batch.assigned_to_name}}</p>
                     </div>
                     <div class="footer">
-                        <span class="icon">👤 {{ batch.count }} </span>
-                        <span class="icon">⚠️14</span>
+                        <span class="icon"><i class="fa-solid fa-users"></i> {{ batch.count }} </span>
+                        <span class="icon"><i class="fa-solid fa-circle-exclamation"></i> 14</span>
                     </div>
                 </div>
             </a>
@@ -465,14 +465,11 @@
                         <p>{{batch.assigned_to_name}}</p>
                     </div>
                     <div class="footer">
-                        <span class="icon">👤68</span>
-                        <!-- <span class="icon">📂</span> -->
+                        <span class="icon"><i class="fa-solid fa-users"></i> 68</span>
                     </div>
                 </div>
                 {% endfor %}
-                <!-- Add more batch cards here as needed -->
-                
-                <!-- Add more batch cards here as needed -->
+
             </div>
         </div>
     </div>

@@ -136,7 +136,7 @@ def faculty_login(request):
             if user is not None and user.groups.filter(name='faculty').exists():
                 login(request, user)
                 messages.success(request, 'Login successful.')
-                return HttpResponseRedirect(reverse("users:dashboard"))  # Redirect to faculty dashboard or home page
+                return HttpResponseRedirect(reverse("fams:dashboard"))  # Redirect to faculty dashboard or home page
             else:
                 
                 messages.error(request, 'Invalid login credentials or you do not have access.')
