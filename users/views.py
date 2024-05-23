@@ -184,8 +184,7 @@ def dashboard_view(request):
 
 
 
-def profile(request):
-    return render(request, 'student/profile.html')
+
 
 def logout_user(request):
     logout(request)
