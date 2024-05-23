@@ -91,41 +91,26 @@ def search_student(request):
 
 #     return render(request, 'home/create_achievement.html', { 'form': achievement_form })
 
-# @group_required('faculty')
-def view_pending(request):
-    pending = StudentAchievement.objects.filter(is_pending=1)
+@group_required('faculty')
+def view_pending(request,pk):
+    student = get_object_or_404(Student, id=pk)
     
-    return render(request, 'home/all_achievements.html', {'achievements': pending})
-
-# @group_required('faculty', 'student')
-# def view_details(request, achievement_id):
-#     achievement = get_object_or_404(StudentAchievement, id=achievement_id)
-#     if achievement.approved_by == None:
-#         approved_by = "NOT APPROVED"
-#     else:
-#         approved_by = achievement.approved_by.user.first_name + achievement.approved_by.user.last_name
-
-#     achievement_type = 'Academic' if achievement.achievement_type == '1' else 'Non-academic'
-#     details = [
-#         ('Student Name', achievement.student.user.first_name+ " " + achievement.student.user.last_name ),
-#         ('Event Name', achievement.event_name),
-#         ('Achievement Type', achievement_type),
-#         ('Category', achievement.category),
-#         ('Venue', achievement.venue),
-#         ('Date', achievement.date),
-#         ('Title', achievement.title),
-#         ('Description', achievement.desc),
-#         ('Role', achievement.role),
-#         ('File', achievement.file),
-#         ('Image URL', achievement.image_url),
-#         ('Approval status', achievement.approved),
-#         ('Approved by', approved_by),
-#     ]
-#     if request.user.groups.filter(name='student').exists():
-#         return render(request, "home/achievement_details.html", {'achievement_details': details,'student':True,'achievement_id':achievement_id})
-        
-#     return render(request, "home/achievement_details.html", {'achievement_details': details,'achievement_id':achievement_id})
+    pending_honors = Honors.objects.filter(student=student, is_pending=True)
+    pending_research_projects = ResearchProject.objects.filter(student=student, is_pending=True)
+    pending_patents = Patent.objects.filter(student=student, is_pending=True)
+    pending_publications = Publication.objects.filter(student=student, is_pending=True)
     
+    print(pending_honors)
+    context = {
+        'student': student,
+        'pending_honors': pending_honors,
+        'pending_research_projects': pending_research_projects,
+        'pending_patents': pending_patents,
+        'pending_publications': pending_publications,
+    }
+    
+    return render(request, 'home/pending_achievements.html',context=context)
+
 
 # @group_required( 'student')
 # def student_view_all(request):
@@ -137,6 +122,37 @@ def view_pending(request):
 # def faculty_view_all(request):
 #     achievements = StudentAchievement.objects.all()
 #     return render(request, 'home/all_achievements.html', {'achievements': achievements})
+
+
+
+
+def approve_achievement(request, pk):
+    achievement_type = request.POST.get('achievement_type')
+    achievement_model = None
+    print(achievement_type)
+    if achievement_type == 'honor':
+        achievement_model = Honors
+    elif achievement_type == 'research_project':
+        achievement_model = ResearchProject
+    elif achievement_type == 'patent':
+        achievement_model = Patent
+    elif achievement_type == 'publication':
+        achievement_model = Publication
+
+    
+
+    if achievement_model:
+        achievement = get_object_or_404(achievement_model, id=pk)
+        print(achievement.student.id)
+        achievement.is_pending = False
+        achievement.is_approved = True
+        achievement.approved_by = request.user.faculty
+        # print(request.user.faculty)
+        achievement.save()
+        messages.success(request, f'{achievement_type} achievement has been approved successfully.')
+    # pass
+    return HttpResponseRedirect(reverse('home:pending_achievements', kwargs={"pk": achievement.student.id}))
+
 
 
 

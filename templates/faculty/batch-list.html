@@ -196,7 +196,7 @@
                         alt="profile_pic">
                         <span class="student-name">{{student_info.student.user.get_full_name}}</span>
                     </a>
-                    <span class="approvals"><a href="#">{{ student_info.pending_count }} </a></span>
+                    <span class="approvals"><a href="{% url 'home:pending_achievements' student_info.student.id %}">{{ student_info.pending_count }} </a></span>
                     
                 </div>
                 
