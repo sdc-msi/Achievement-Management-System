@@ -47,5 +47,7 @@ urlpatterns = [
     path('delete_research_project/<int:pk>', delete_research_project, name='delete_research_project'),
     path('delete_patent/<int:pk>', delete_patent, name='delete_patent'),
     path('delete_publication/<int:pk>', delete_publication, name='delete_publication'),
+    path('dashboard/', dashboard, name='dashboard'),
+    path('batch_list/<int:batch_id>', batch_list, name='batch_list'),
     # Add other app URLs here
 ]

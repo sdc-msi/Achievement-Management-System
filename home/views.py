@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.shortcuts import render, redirect
 from .forms import StudentAchievementForm
-from users.models import Student
+from users.models import Student, Faculty, Batch
 from home.models import Experience, Education, Patent, Publication, ResearchProject, Committee_membership, Honors
 from .models import StudentAchievement
 from users.decorators import group_required
@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.db.models import Q
+from django.db.models import Count
 
 # Create your views here.
 def home(request):
@@ -688,3 +689,48 @@ def delete_publication(request,pk):
         publication.delete()
         print("Publication object deleted succesfully")
         return HttpResponseRedirect(reverse('home:student_profile', kwargs={'student_id': student.id}))
+
+
+def dashboard(request):
+    print("hoolalalala")
+
+    student = get_object_or_404(Student, id=request.user.student.id)
+    print(student)
+    student_batch = Batch.objects.get(id=student.batch.id)
+    assigned_faculty = Faculty.objects.get(id=student_batch.assigned_to.id)
+    assigned_batches = Batch.objects.filter(id=student.batch.id).annotate(count = Count("student"))
+    other_batches = Batch.objects.exclude(id=student.batch.id).annotate(count = Count("student"))
+    other_faculties = Faculty.objects.all().exclude(id=assigned_faculty.id)[:5]
+    print(other_faculties)
+    
+    print("Id: ", assigned_batches[0].id)
+    print("Count: ", assigned_batches[0].count)
+
+    context = {
+        "student": student,
+        "assigned_faculty": assigned_faculty,
+        "assigned_batches" : assigned_batches,
+        "other_batches" : other_batches,
+        "other_faculties": other_faculties,
+    }
+
+    return render(request, 'student/dashboard.html', context=context)
+
+def batch_list(request, batch_id):
+    student = get_object_or_404(Student, id=request.user.student.id)
+    batch = get_object_or_404(Batch, id=batch_id)
+    print(batch)
+
+    search_query = request.GET.get('search', '')
+    if search_query:
+        students = Student.objects.filter(batch=batch, user__first_name__icontains=search_query)
+    else:
+        students = Student.objects.filter(batch=batch)
+    
+    context ={
+        "students":students,
+        "batch":batch,
+        "search_query" : search_query
+    }   
+
+    return render(request, 'student/batch-list.html',context=context)

@@ -116,7 +116,7 @@ def student_login(request):
             if user is not None and user.groups.filter(name='student').exists():
                 login(request, user)
                 messages.success(request, 'Login successful.')
-                return HttpResponseRedirect(reverse("users:dashboard"))  # Redirect to student dashboard or home page
+                return HttpResponseRedirect(reverse("home:dashboard"))  # Redirect to student dashboard or home page
             else:
                 messages.error(request, 'Invalid login credentials or you do not have access.')
     else:
