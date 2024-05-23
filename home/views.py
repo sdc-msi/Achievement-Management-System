@@ -23,6 +23,7 @@ def home(request):
     return render(request, 'home/home.html', {'title': 'Home'})
 
 def home_new(request):
+    print(request.user.student.id)
     return render(request, 'home/home_new.html')
 
 def search_student(request):
@@ -164,6 +165,41 @@ def toggle_approval(request, achievement_id):
         return HttpResponseRedirect(reverse('home:achievement details',args=(achievement_id,)))
 
 
+def student_profile(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    experiences = student.experiences.all().order_by("start_date")
+    educations = student.educations.all()
+    honors = student.honors.all()
+    committee_memberships = student.committee_memberships.all()
+    research_projects = student.research_projects.all()
+    patents = student.patents.all()
+    publications = student.publications.all()
+
+    education_string = list(educations.values_list('degree', flat=True))
+
+    is_own_profile = False
+
+    print(hasattr(request.user, 'student'))
+
+    if request.user.is_authenticated:
+        if hasattr(request.user, 'student'):
+            is_own_profile = request.user.student == student
+
+    print(f"is_own_profile = {is_own_profile}")
+
+    context = {
+        'student': student,
+        'experiences': experiences,
+        'educations': educations,
+        'education_string': education_string,
+        'honors': honors,
+        'committee_memberships': committee_memberships,
+        'research_projects': research_projects,
+        'patents': patents,
+        'publications': publications,
+        'is_own_profile': is_own_profile,
+    }
+    return render(request, 'student/profile.html',context)
 
 
     

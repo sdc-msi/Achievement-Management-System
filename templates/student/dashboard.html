@@ -365,8 +365,8 @@
             <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
                 alt="Profile Photo" class="profile-photo">
             <h2>Priyadarshani Rajan</h2>
-            <p>Associate Professor</p>
-            <p>Ph.D., UGC-NET</p>
+            <p>{{ student.course|upper }} {{ student.batch_year }}Batch</p>
+            <p>Semester {{ student.semester }}, Section {{ student.section }}, Shift {{ student.shift }}</p>
             <div class="stats">
                 <div>
                     <p>Batches Assigned</p>
@@ -378,6 +378,7 @@
                 </div>
             </div>
 
+            <a href=
             <div class="saved-items">
                 <p>View Profile</p>
             </div>

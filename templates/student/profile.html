@@ -52,16 +52,18 @@
     }
 
     .add-edit-btn {
-        background-color: #3B444B;
+        background-color: #3b444bd5;
         color: white;
         border: none;
-        padding: 3px 5px;
+        /* padding: 3px 3px; */
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 3px;
     }
 
-    .add-edit-btn:hover {
-        background-color: #2d4373;
-    }
 
     /* Hero & Intro */
     .hero {
@@ -77,6 +79,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 8px 8px 0 0 ;
         object-position: center;
     }
 
@@ -133,7 +136,7 @@
     textarea,
     select {
         width: 100%;
-        max-width: 400px;
+        /* max-width: 400px; */
         padding: 6px;
         /* Reduced padding to decrease height */
         margin: 0;
@@ -148,7 +151,7 @@
 
     input[type="submit"],
     button[type="button"] {
-        background-color: #3B444B;
+        background-color: darkblue;
         color: white;
         padding: 8px 16px;
         /* Reduced padding */
@@ -401,6 +404,8 @@
         border: 1px solid rgb(194, 194, 194);
         border-top: 3px solid #3B444B;
         padding: 20px;
+
+        
     }
 
     .each-patent .title {
@@ -410,6 +415,193 @@
     .each-patent span {
         font-size: 14px;
     }
+
+
+
+    
+
+/* *************************************************** */
+
+
+
+    .event {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+}
+
+
+
+
+
+
+
+/* ********************************************************************* */
+
+.section .event {
+    position: relative;
+    padding-right: 100px; 
+}
+
+
+
+.section .dates {
+    margin-right: 110px; 
+}
+
+
+/* *********************************************** */
+
+
+.section .award-item {
+    position: relative;
+    padding: 20px;
+    border: 1px solid rgb(194, 194, 194);
+        border-top: 3px solid #3B444B;
+        padding: 20px;
+    /* padding-right: 100px;  */
+}
+
+
+
+.section .year-box, .section .honours-and-awards-details {
+    margin-right: 110px;
+}
+
+
+
+/* ************************************************************ */
+.section .doctoral-theses-guided-item {
+    position: relative;
+    /* padding: 15px; */
+    margin-bottom: 10px;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 5px; */
+
+    border: 1px solid rgb(194, 194, 194);
+    border-top: 3px solid #3B444B;
+    padding: 20px;
+}
+
+
+.section .year-box, .section .doctoral-theses-guided-details {
+    margin-right: 120px; /* Adjust to ensure text doesn't overlap with buttons */
+}
+
+/* ********************************************************************* */
+.section .timeline .event {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+
+
+.section .dates, .section p {
+    margin-right: 120px; /* Adjust to ensure text doesn't overlap with buttons */
+}
+
+
+
+
+
+
+
+
+/* ************************************************************* */
+
+.each-research-project {
+    position: relative;
+    /* padding: 20px; */
+    /* border: 1px solid #ddd; */
+    /* border-radius: 4px; */
+    margin-bottom: 20px;
+
+    border: 1px solid rgb(194, 194, 194);
+        border-top: 3px solid #3B444B;
+        padding: 20px;
+}
+
+
+
+
+/* ******************************************************************* */
+            .each-patent {
+                position: relative;
+                padding: 1rem;
+                border: 1px solid #ccc;
+                margin-bottom: 1rem;
+                border: 1px solid rgb(194, 194, 194);
+                border-top: 3px solid #3B444B;
+                padding: 20px;
+            }
+        
+            .patent-buttons {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                display: flex;
+                gap: 10px;
+            }
+        
+            .btn-update:hover, .btn-delete:hover {
+                opacity: 0.8;
+            }
+
+            /* ******************************************* */
+            .each-publication, .each-patent, .each-research-project {
+    position: relative;
+}
+
+
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+
+
+
+
+.publication-buttons, .patent-buttons, .update-delete-button-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.publication-buttons button, .patent-buttons button, .update-delete-button-container button {
+    background-color: darkblue;
+    border: none;
+    color: #ffffff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.publication-buttons .btn-delete, .patent-buttons .btn-delete, .update-delete-button-container .delete-button {
+    background-color: #dc3545;
+}
+
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+
+form input[type="date"]{
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+}
 </style>
 
 <main>
@@ -424,17 +616,17 @@
                     <img src="https://thumbs.dreamstime.com/b/wall-backgrounds-16268126.jpg" alt="">
                 </div>
                 <div class="hero-avatar">
-                    <img src="{{faculty.user.profile_picture.url}}"
+                    <img src="{{student.user.profile_picture.url}}"
                         alt="">
                 </div>
             </div>
 
             <div class="intro">
                 <div class="intro-name">
-                {{faculty.user.first_name }} {{faculty.user.last_name}}
+                {{ student.user.first_name }} {{ student.user.last_name }}
                 </div>
                 <div class="intro-desc">
-                    <span>{{ faculty.designation|capfirst }}</span>
+                    <span>{{ student.designation|capfirst }}</span>
                     <p>New Delhi, Delhi, India</p>
                     <p>{{ education_string | join:", " }}</p>
 
@@ -442,70 +634,59 @@
             </div>
         </div>
 
-
+        {% if student.about %}
         <div class="section" id="about">
 
             <div class="section-head">
                 <span class="section-name">About</span>
-                <button class="add-edit-btn" onclick="toggleAbout()">Add / Edit</button>
+                {% if  is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleAbout()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <p id="about-para" class="about-desc section-body-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eius repellendus consequatur libero itaque
-                eos
-                adipisci, quas dicta quasi nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-                cupiditate labore culpa ut perspiciatis eum recusandae blanditiis error autem consectetur impedit velit,
-                inventore maiores laborum at repudiandae architecto facere magni. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Pariatur sit officiis non similique exercitationem omnis itaque natus soluta expedita
-                nemo?
+                {{student.about}}
             </p>
-
-            <form id="about-form" style="display: none;">
-
-                    <textarea id="brief-info" rows="4"></textarea>
-                <button type="submit">Save</button>
-                <button type="button" onclick="toggleAbout()">Cancel</button>
+        
+            <form id="about-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_about' %}">
+                {% csrf_token %}
+                <textarea id="brief-info" name="about" rows="4" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter brief info..."></textarea>
+                <div class="flex justify-end space-x-2">
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+                    <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" onclick="toggleAbout()">Cancel</button>
+                </div>
             </form>
+            
+            
+            
         </div>
+        {% endif %}
 
 
 
 
-
+        {% if student.expertise %}
         <!-- Expertise -->
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Expertise</span>
-                <button class="add-edit-btn" onclick="toggleExpertise()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleExpertise()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="expertise-body" class="section-body">
-                <p class="expertise-heading section-body-heading">Chemical Engineering</p>
-                <p class="expertise-para section-body-para">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maxime modi sint
-                    distinctio suscipit voluptas reiciendis libero, et esse error. Molestias veritatis deleniti
-                    reiciendis provident, exercitationem fuga fugit! Molestias fugiat suscipit rerum et quibusdam natus,
-                    sequi, voluptate, recusandae veniam ex error.</p>
+                
+                <p class="expertise-heading section-body-heading">
+                 {{student.expertise}}   
+                </p>
             </div>
 
-            <form id="expertise-form" style="display: none;">
-                <div class="form-group">
-                    <label for="wos-subject">* WOS Subject</label>
-                    <select id="wos-subject">
-                        <option value="">Select Expertise</option>
-                        <option value="Agricultural Sciences">Agricultural Sciences</option>
-                        <option value="Arts and Humanities">Arts and Humanities</option>
-                        <option value="Biological Sciences">Biological Sciences</option>
-                        <option value="Chemical Sciences">Chemical Sciences</option>
-                        <option value="Engineering and Technology">Engineering and Technology</option>
-                        <option value="Medical and Health Sciences">Medical and Health Sciences</option>
-                        <option value="Physical Sciences">Physical Sciences</option>
-                        <option value="Social Sciences">Social Sciences</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="expertise">* Expertise</label>
-                    <select id="expertise">
+            <form id="expertise-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_expertise' %}">
+                {% csrf_token %}
+                <div class="form-group mb-4">
+                    <label for="expertise" class="block text-sm font-medium text-gray-700 mb-2">* Expertise</label>
+                    <select id="expertise" name="expertise" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">Select Sub Expertise</option>
                         <option value="Aerospace Engineering">Aerospace Engineering</option>
                         <option value="Architecture">Architecture</option>
@@ -513,61 +694,61 @@
                         <option value="Biomedical Engineering">Biomedical Engineering</option>
                         <option value="Chemical Engineering">Chemical Engineering</option>
                         <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="Computer Science Artificial Intelligence">Computer Science Artificial
-                            Intelligence</option>
+                        <option value="Computer Science Artificial Intelligence">Computer Science Artificial Intelligence</option>
                         <option value="Computer Science Cybernetics">Computer Science Cybernetics</option>
-                        <option value="Computer Science Hardware and Architecture">Computer Science Hardware and
-                            Architecture</option>
-                        <option value="Computer Science Information Systems">Computer Science Information Systems
-                        </option>
-                        <option value="Computer Science Interdisciplinary SCI">Computer Science Interdisciplinary SCI
-                        </option>
-                        <option value="Computer Science Software Engineering">Computer Science Software Engineering
-                        </option>
+                        <option value="Computer Science Hardware and Architecture">Computer Science Hardware and Architecture</option>
+                        <option value="Computer Science Information Systems">Computer Science Information Systems</option>
+                        <option value="Computer Science Interdisciplinary SCI">Computer Science Interdisciplinary SCI</option>
+                        <option value="Computer Science Software Engineering">Computer Science Software Engineering</option>
                         <option value="Computer Science Theory and Methods">Computer Science Theory and Methods</option>
-                        <option value="Construction and Building Technology">Construction and Building Technology
-                        </option>
-                        <option value="Electrical and Electronic Engineering">Electrical and Electronic Engineering
-                        </option>
+                        <option value="Construction and Building Technology">Construction and Building Technology</option>
+                        <option value="Electrical and Electronic Engineering">Electrical and Electronic Engineering</option>
                         <option value="Energy and Fuels">Energy and Fuels</option>
                         <option value="Environmental Engineering">Environmental Engineering</option>
                         <option value="Ergonomics">Ergonomics</option>
                         <option value="Geological Engineering">Geological Engineering</option>
-                        <!-- Add more options as needed -->
+
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="brief-info">* Brief Info</label>
-                    <textarea id="brief-info" rows="4"></textarea>
+                <div class="flex justify-end space-x-2">
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+                    <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" onclick="toggleExpertise()">Cancel</button>
                 </div>
-                <button type="submit">Save</button>
-                <button type="button" onclick="toggleExpertise()">Cancel</button>
             </form>
+            
+        
         </div>
+        {% endif %}
 
 
-
-
+        {% if student.user.email %}
         <!-- Email Information -->
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Email Information</span>
-                <button class="add-edit-btn" onclick="toggleEmail()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleEmail()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="email-section-body" class="section-body">
-                <p> {{ faculty.user.email }} </p>
+                <p> {{ student.user.email }} </p>
             </div>
 
-            <form id="email-section-form" style="display: none;">
+            <form id="email-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_email' %}">
+                {% csrf_token %}
                 <div>
-
-                    <input id="email-input" type="text">
+                    <label for="email-input" class="block text-sm font-medium text-gray-700 mb-2">Email:</label>
+                    <input id="email-input" type="email" name="email" placeholder="Add your Email" value="{{student.user.email}}" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <button type="submit">Save</button>
-                <button type="button" onclick="toggleEmail()">Cancel</button>
+                <div class="flex justify-end space-x-2">
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+                    <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" onclick="toggleEmail()">Cancel</button>
+                </div>
             </form>
+            
         </div>
+        {% endif %}
 
 
 
@@ -576,379 +757,473 @@
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Personal Information</span>
-                <button class="add-edit-btn" onclick="togglePersonalInfo()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="togglePersonalInfo()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="personal-info-section-body" class="section-body">
-                <p class="personal-info-name"> {{ faculty.user.first_name }} {{ faculty.user.last_name }}</p>
+                <p class="personal-info-name"> {{ student.user.first_name }} {{ student.user.last_name }} </p>
                 <div class="personal-info-dob-gender">
-                    <span>25-06-2003</span>
-                    <span>Male</span>
+                    <span>{{student.dob | date:'Y-m-d'}}</span>
+                    <span>{{student.gender}} </span>
                 </div>
             </div>
 
-            <form id="personal-info-section-form" style="display: none;">
-                <div>
-                    <select id="title">
-                        <option value="">Title*</option>
-                        <option value="Mr">Mr</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Miss">Miss</option>
-                    </select>
-                    <input id="fname" type="text">
-                    <input id="lname" type="text">
+            <form id="personal-info-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_personal_info' %}">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                        <label for="dob" class="block text-sm font-medium text-gray-700 mb-2">DOB:</label>
+                        <input type="date" id="dob" name="dob" value="{{student.dob | date:'Y-m-d'}}" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="gender" class="block text-sm font-medium text-gray-700 mb-2">Gender:</label>
+                        <select id="gender" name="gender" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
                 </div>
-
-                <div>
-                    <input type="date">
-
-                    <select id="gender">
-                        <option value="">Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="others">Others</option>
-                    </select>
-
+                <div class="flex justify-end space-x-2">
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+                    <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" onclick="togglePersonalInfo()">Cancel</button>
                 </div>
-                <button type="submit">Save</button>
-                <button type="button" onclick="togglePersonalInfo()">Cancel</button>
             </form>
+            
         </div>
 
 
-
+        {% if student.address or  student.contact_number %}
         <!-- Contact Information -->
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Contact Information</span>
-                <button class="add-edit-btn" onclick="toggleContactInfo()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleContactInfo()"><i class="fa-solid fa-pen-to-square"></i></button>
+                {% endif %}
             </div>
 
             <div id="contact-info-section-body" class="section-body">
                 <div>
-                    <span>Street Name,</span>
-                    <span>Delhi,</span>
-                    <span>India</span>
+                    {{ student.address }}
                 </div>
                 <div>
-                    <span>East Delhi,</span>
-                    <span>Delhi,</span>
-                    <span>India - 110058</span>
+                   {{ student.contact_number }}
                 </div>
-                <div>
-                    <span>+91 9999999999</span>
-                    <span>+91 9999999999</span>
-                    <span>https://www.youtube.com/</span>
-                </div>
-
-
             </div>
 
-            <form id="contact-info-section-form" style="display: none;">
-                <div>
-                    <label for="">Mobile Number</label>
-                    <input id="" type="text">
+            <form id="contact-info-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_contact_info' %}">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Address:</label>
+                    <input id="address" type="text" name="address" value="{{student.address}}" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="">Mobile Number</label>
-                    <input id="" type="text">
+                <div class="mb-4">
+                    <label for="contact" class="block text-sm font-medium text-gray-700 mb-2">Mobile Number:</label>
+                    <input id="contact" type="number" name="contact" value="{{student.contact_number}}" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <input id="" type="text">
+                <div class="flex justify-end space-x-2">
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+                    <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" onclick="toggleContactInfo()">Cancel</button>
                 </div>
-                <div>
-                    <input id="" type="text">
-                </div>
-
-                <div>
-                    <input id="" type="text">
-                    <input id="" type="text">
-                </div>
-                <div>
-                    <input id="" type="text">
-                    <input id="" type="text">
-                </div>
-
-                <div>
-                    <label for="">Web URL</label>
-                    <input id="" type="text">
-                </div>
-
-                <button type="submit">Save</button>
-                <button type="button" onclick="toggleContactInfo()">Cancel</button>
             </form>
+            
         </div>
+        {% endif %}
 
-
+        {% if experiences %}
         <!--  Experience -->
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Experience</span>
-                <button class="add-edit-btn" onclick="toggleExperience()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleExperience()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
-
+        
             <div id="experience-section-body" class="section-body">
                 <div class="timeline">
                     {% for exp in experiences %}
                     <div class="event">
+                        {% if is_own_profile %}
+                        <div class="update-delete-button-container">
+                            <button class="update-button" data-modal-target="experience-modal-{{exp.id}}" data-modal-toggle="experience-modal-{{exp.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
+                            <button class="delete-button" data-modal-target="del-exp-modal-{{exp.id}}" data-modal-toggle="del-exp-modal-{{exp.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                        {% endif %}
                         <div class="dates">
                             <div class="start-date">{{ exp.start_date |date:"M, Y" }}</div>
                             <div class="end-date">{{ exp.end_date_display }}</div>
                         </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ exp.title }}</strong>{{ exp.employment_type }}<br>{{ exp.company_name }}
-                        </p>
+                        <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ exp.title }}</strong>{{ exp.employment_type }}<br>{{ exp.company_name }}</p>
+                    </div>
+        
+                    <!-- Edit Experience Modal -->
+                    <div id="experience-modal-{{exp.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-3xl max-h-full">
+                            <div class="relative bg-white rounded-lg shadow">
+                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-black">Edit Experience</h3>
+                                    <button type="button" class="bg-black" data-modal-toggle="experience-modal-{{exp.id}}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <form method="POST" action="{% url 'fams:edit_experience' exp.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                    {% csrf_token %}
+                                    
+                                    <div class="mb-4">
+                                        <label for="institute" class="block text-gray-700 font-bold mb-2">* Institute</label>
+                                        <input type="text" id="institute" name="institute" placeholder="Select Organisation" value="{{ exp.company_name }}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="department" class="block text-gray-700 font-bold mb-2">Department</label>
+                                        <input type="text" id="department" name="department" placeholder="Select Department" value="{{ exp.department }}"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="organisationType" class="block text-gray-700 font-bold mb-2">* Organisation Type</label>
+                                        <select id="organisationType" name="organisation" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option value="research-and-development" {% if exp.organisation == 'research-and-development' %}selected{% endif %}>Research and Development</option>
+                                            <option value="institute-of-national-importance" {% if exp.organisation == 'institute-of-national-importance' %}selected{% endif %}>Institute of National Importance</option>
+                                            <option value="central-university" {% if exp.organisation == 'central-university' %}selected{% endif %}>Central University</option>
+                                            <option value="deemed-university" {% if exp.organisation == 'deemed-university' %}selected{% endif %}>Deemed University</option>
+                                            <option value="deemed-university-government" {% if exp.organisation == 'deemed-university-government' %}selected{% endif %}>Deemed University-Government</option>
+                                            <option value="state-university" {% if exp.organisation == 'state-university' %}selected{% endif %}>State University</option>
+                                            <option value="private-university" {% if exp.organisation == 'private-university' %}selected{% endif %}>Private University</option>
+                                            <option value="institute-under-state-legislature-act" {% if exp.organisation == 'institute-under-state-legislature-act' %}selected{% endif %}>Institute Under State Legislature Act</option>
+                                            <option value="technical-institute" {% if exp.organisation == 'technical-institute' %}selected{% endif %}>Technical Institute</option>
+                                            <option value="college" {% if exp.organisation == 'college' %}selected{% endif %}>College</option>
+                                            <option value="other-institute" {% if exp.organisation == 'other-institute' %}selected{% endif %}>Other Institute</option>
+                                            <option value="iucs-of-ugc" {% if exp.organisation == 'iucs-of-ugc' %}selected{% endif %}>IUCs of UGC</option>
+                                            <option value="private-ltd" {% if exp.organisation == 'private-ltd' %}selected{% endif %}>Private Ltd.</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="district" class="block text-gray-700 font-bold mb-2">* Location</label>
+                                        <input type="text" id="district" name="location" placeholder="Enter District" value="{{ exp.location }}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="designation" class="block text-gray-700 font-bold mb-2">* Designation</label>
+                                        <input type="text" id="designation" name="designation" placeholder="Select Designation" value="{{ exp.title }}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <span class="text-sm text-gray-600">[Select the Designation name from the auto suggestion.]</span>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="startdate" class="block text-gray-700 font-bold mb-2">* Start Date</label>
+                                        <input type="date" name="startdate" id="startdate" value="{{ exp.start_date | date:'Y-m-d' }}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="enddate" class="block text-gray-700 font-bold mb-2">* End Date</label>
+                                        <input type="date" name="enddate" id="enddate" value="{{ exp.end_date | date:'Y-m-d' }}" 
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div class="mt-2">
+                                            <input type="checkbox" id="currentlyWorkHere" name="currently_work_here" {% if not exp.end_date %}checked{% endif %} class="mr-2">
+                                            <label for="currentlyWorkHere" class="text-gray-700">currently work here</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="description" class="block text-gray-700 font-bold mb-2">Description</label>
+                                        <textarea id="description" name="description" rows="4" placeholder="Enter Description"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{ exp.description }}</textarea>
+                                    </div>
+                                    
+                                    <div class="flex justify-end space-x-4">
+                                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Save</button>
+                                        <button type="button" onclick="toggleExperience()" class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+                                    </div>
+                                </form>
+                                
+                              
+
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Delete Experience Modal -->
+                    <div id="del-exp-modal-{{exp.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-exp-modal-{{exp.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 md:p-5 text-center">
+                                    <form action="{% url 'fams:delete_experience' exp.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
+                                        <button data-modal-hide="del-exp-modal-{{exp.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Yes, I'm sure</button>
+                                        <button data-modal-hide="del-exp-modal-{{exp.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
-            
             </div>
-
-            <form method="POST" id="experience-section-form" style="display: none;" action="{% url 'fams:add_experience' %}">
+        
+            <form method="POST" id="experience-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded" action="{% url 'fams:add_experience' %}">
                 {% csrf_token %}
-
-
-                <label for="institute">* Institute</label>
-                <input type="text" id="institute" name="institute" placeholder="Select Organisation">
-                <br><br>
-
-                <label for="department">Department</label>
-                <input type="text" id="department" name="department" placeholder="Select Department">
-                <br><br>
-
-                <label for="organisationType">* Organisation Type</label>
-                <select id="organisationType" name="organisation">
-                    <option value="research-and-development" selected>Research and Development</option>
-                    <option value="institute-of-national-importance">Institute of National Importance</option>
-                    <option value="central-university">Central University</option>
-                    <option value="research-and-development">Research and Development</option>
-                    <option value="deemed-university">Deemed University</option>
-                    <option value="deemed-university-government">Deemed University-Government</option>
-                    <option value="state-university">State University</option>
-                    <option value="private-university">Private University</option>
-                    <option value="institute-under-state-legislature-act">Institute Under State Legislature Act</option>
-                    <option value="technical-institute">Technical Institute</option>
-                    <option value="college">College</option>
-                    <option value="other-institute">Other Institute</option>
-                    <option value="iucs-of-ugc">IUCs of UGC</option>
-                    <option value="private-ltd">Private Ltd.</option>
-                </select>
-                <br><br>
-
-            
-
-                <label for="district">* Location</label>
-                <input type="text" id="district" placeholder="Enter District" name="location">
-                <br><br>
-
-                
-
-                <label for="designation">* Designation</label>
-                <input type="text" id="designation" name="designation" placeholder="Select Designation">
-                <span>[Select the Designation name from the auto suggestion.]</span>
-                <br><br>
-
-                <label for="startDate">* Start Date</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="date" name="startdate" id="startdate">
-                <br><br>
-
-                <label for="endDate">* End Date</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="date" name="enddate" id="enddate">
-                
-                <input type="checkbox" id="currentlyWorkHere"> currently work here
-                <br><br>
-
-                <label for="description"> Description</label>
-                <textarea id="description" name="description" rows="4" placeholder="Enter Description"></textarea>
-
-
-                <div>
-
-
-                    <button type="submit">Save</button>
-                    <button type="button" onclick="toggleExperience()">Cancel</button>
+                <div class="mb-4">
+                    <label for="institute" class="block text-gray-700 font-bold mb-2">* Institute</label>
+                    <input type="text" id="institute" name="institute" placeholder="Select Organisation" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="department" class="block text-gray-700 font-bold mb-2">Department</label>
+                    <input type="text" id="department" name="department" placeholder="Select Department"
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="organisationType" class="block text-gray-700 font-bold mb-2">* Organisation Type</label>
+                    <select id="organisationType" name="organisation" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="research-and-development" selected>Research and Development</option>
+                        <option value="institute-of-national-importance">Institute of National Importance</option>
+                        <option value="central-university">Central University</option>
+                        <option value="deemed-university">Deemed University</option>
+                        <option value="deemed-university-government">Deemed University-Government</option>
+                        <option value="state-university">State University</option>
+                        <option value="private-university">Private University</option>
+                        <option value="institute-under-state-legislature-act">Institute Under State Legislature Act</option>
+                        <option value="technical-institute">Technical Institute</option>
+                        <option value="college">College</option>
+                        <option value="other-institute">Other Institute</option>
+                        <option value="iucs-of-ugc">IUCs of UGC</option>
+                        <option value="private-ltd">Private Ltd.</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="district" class="block text-gray-700 font-bold mb-2">* Location</label>
+                    <input type="text" id="district" placeholder="Enter District" name="location" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="designation" class="block text-gray-700 font-bold mb-2">* Designation</label>
+                    <input type="text" id="designation" name="designation" placeholder="Select Designation" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <span class="text-sm text-gray-600">[Select the Designation name from the auto suggestion.]</span>
+                </div>
+                <div class="mb-4">
+                    <label for="startdate" class="block text-gray-700 font-bold mb-2">* Start Date</label>
+                    <input type="date" name="startdate" id="startdate" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="enddate" class="block text-gray-700 font-bold mb-2">* End Date</label>
+                    <input type="date" name="enddate" id="enddate" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div class="mt-2">
+                        <input type="checkbox" id="currentlyWorkHere" class="mr-2">
+                        <label for="currentlyWorkHere" class="text-gray-700">currently work here</label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-700 font-bold mb-2">Description</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Enter Description"
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Save</button>
+                    <button type="button" onclick="toggleExperience()" class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
                 </div>
             </form>
+
+            
         </div>
+        {% endif %}
+        
 
 
 
-
+        {% if educations %}
         <!--  Education Qualification -->
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Education Qualification</span>
-                <button class="add-edit-btn" onclick="toggleEducationQualification()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleEducationQualification()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
-
+        
             <div id="education-qualification-section-body" class="section-body">
                 <div class="timeline">
                     {% for edu in educations %}
                     <div class="event">
+                        {% if is_own_profile %}
+                        <div class="update-delete-button-container">
+                            <button class="update-button" data-modal-target="education-modal-{{edu.id}}" data-modal-toggle="education-modal-{{edu.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
+                            <button class="delete-button" data-modal-target="del-edu-modal-{{edu.id}}" data-modal-toggle="del-edu-modal-{{edu.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                        {% endif %}
                         <div class="dates">
                             <div>{{ edu.start_date|date:"Y" }}</div>
                             <div class="end-date">{{ edu.end_date|date:"Y" }}</div>
                         </div>
                         <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ edu.degree }}</strong>{{ edu.school }}</p>
                     </div>
+        
+                    <!-- Edit Education Modal -->
+                    <div id="education-modal-{{edu.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-3xl max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow">
+                                <!-- Modal header -->
+                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-black">Edit Education</h3>
+                                    <button type="button" class="bg-black" data-modal-toggle="education-modal-{{edu.id}}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body --> 
+                                <form method="POST" action="{% url 'fams:edit_education' edu.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                    {% csrf_token %}
+                                    <div class="mb-4">
+                                        <label for="qualification" class="block text-gray-700 font-bold mb-2">Qualification *</label>
+                                        <input name="qualification" type="text" id="qualification" placeholder="Ex: Ph.D" value="{{edu.degree}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="field-of-study" class="block text-gray-700 font-bold mb-2">Field of Study *</label>
+                                        <input name="field_of_study" type="text" id="field-of-study" placeholder="Ex: Computer Science" value="{{edu.field_of_study}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="institute" class="block text-gray-700 font-bold mb-2">Institute *</label>
+                                        <input name="institute" type="text" id="institute" placeholder="Enter institute" value="{{edu.school}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="start-date" class="block text-gray-700 font-bold mb-2">Start Date *</label>
+                                        <input name="start_date" type="date" id="start-date" value="{{edu.start_date | date:'Y-m-d'}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="end-date" class="block text-gray-700 font-bold mb-2">End Date *</label>
+                                        <input name="end_date" type="date" id="end-date" value="{{edu.end_date | date:'Y-m-d'}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="grade" class="block text-gray-700 font-bold mb-2">Grade *</label>
+                                        <input name="grade" type="text" id="grade" placeholder="Ex: A+" value="{{edu.grade}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="text-right">
+                                        <input type="submit" value="Submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Delete Education Modal -->
+                    <div id="del-edu-modal-{{edu.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-edu-modal-{{edu.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 md:p-5 text-center">
+                                    <form action="{% url 'fams:delete_education' edu.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this Education?</h3>
+                                        <button data-modal-hide="del-edu-modal-{{edu.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Yes, I'm sure</button>
+                                        <button data-modal-hide="del-edu-modal-{{edu.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
                     {% endfor %}
                 </div>
             </div>
-
-            <form method="post" action={% url 'fams:add_education'%} id="education-qualification-section-form" style="display: none;">
+        
+            <form method="post" action="{% url 'fams:add_education' %}" id="education-qualification-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="qualification"> Qualification *</label>
-                    <input name="qualification" type="text" id="qualification" placeholder="Ex:Ph.D" required>
+                <div class="mb-4">
+                    <label for="qualification" class="block text-gray-700 font-bold mb-2">Qualification *</label>
+                    <input name="qualification" type="text" id="qualification" placeholder="Ex: Ph.D" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="field-of-study"> Field of Study * </label>
-                    <input name="field_of_study" type="text" id="field-of-study" placeholder="Ex: Computer Science" required>
+                <div class="mb-4">
+                    <label for="field-of-study" class="block text-gray-700 font-bold mb-2">Field of Study *</label>
+                    <input name="field_of_study" type="text" id="field-of-study" placeholder="Ex: Computer Science" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="institute"> Institute *</label>
-                    <input name="institute" type="text" id="institute" placeholder="Enter institute" required>
-                    {% comment %} <input name="institute_checkbox" type="checkbox" id="add-institute">
-                    <label for="add-institute">Add Institute</label> {% endcomment %}
+                <div class="mb-4">
+                    <label for="institute" class="block text-gray-700 font-bold mb-2">Institute *</label>
+                    <input name="institute" type="text" id="institute" placeholder="Enter institute" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="start-date"> Start Date *</label>
-                    <input name="start_date" type="date" id="start-date" required>
+                <div class="mb-4">
+                    <label for="start-date" class="block text-gray-700 font-bold mb-2">Start Date *</label>
+                    <input name="start_date" type="date" id="start-date" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="end-date"> End Date *</label>
-                    <input name="end_date" type="date" id="end-date" required>
+                <div class="mb-4">
+                    <label for="end-date" class="block text-gray-700 font-bold mb-2">End Date *</label>
+                    <input name="end_date" type="date" id="end-date" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <div class="form-group">
-                        <label for="grade"> Grade *</label>
-                        <input name="grade" type="text" id="grade" placeholder="Ex: A+" required>
-                    </div>
+                <div class="mb-4">
+                    <label for="grade" class="block text-gray-700 font-bold mb-2">Grade *</label>
+                    <input name="grade" type="text" id="grade" placeholder="Ex: A+" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                {% comment %} <small>[ Select the institute name from the auto suggestion or click on "Add Institute Name" to include
-                    in the
-                    list. ]</small> {% endcomment %}
-                {% comment %} <div class="form-group">
-                    <label for="subject">* Subject</label>
-                    <input name="subject" type="text" id="subject" placeholder="Enter Subject">
+                <div class="flex justify-end space-x-4">
+                    <input type="submit" value="Submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="button" onclick="toggleEducationQualification()" class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
                 </div>
-                <div class="form-group">
-                    <label for="year">* Passing Year</label>
-                    <input name="year" type="number">
-                </div> {% endcomment %}
-                <input type="submit" value="Submit">
-                <button type="button" onclick="toggleEducationQualification()">Cancel</button>
             </form>
         </div>
-
-
-
-
-
-        <!-- Honours and Awards  -->
-        <div class="section">
-            <div class="section-head">
-                <span class="section-name">Honours and Awards</span>
-                <button class="add-edit-btn" onclick="toggleHonoursAndAwarda()">Add / Edit</button>
-            </div>
-            <!-- ******************************** -->
-            <div id="honours-and-awards-section-body" class="section-body">
-                {% for hons in honors %}
-                <div class="award-item">
-                    <div class="year-box">{{ hons.issue_year }}</div>
-                    <div class="honours-and-awards-details">
-                        <span class="award-title">{{ hons.title }}</span>
-                        <span class="award-institution">{{ hons.issuing_organization }}</span>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <!-- ******************************** -->
-            <form method="post" action= {% url "fams:add_honor" %} id="honours-and-awards-section-form" style="display: none;">
-                {% csrf_token %}
-                <div>
-                    <div>
-                        <label for="title-input"> Title * </label>
-                        <input name="title" id="title-input" type="text" required>
-                    </div>
-                    <div>
-                        <label for="issuing-organization">Issuing Organization * </label>
-                        <input name="issuing_organization" id="issuing-organization" type="text" required>
-                    </div>
-                    <div>
-                        <label for="year">Year *</label>
-                        <input name="year" id="year" type="number" min="1910" max="2099" step="1" value="2024" required/>
-                    </div>
-                    <div>
-                        <label for="description">Description * </label>
-                        <textarea name="description" id="description" type="textarea" required></textarea>
-                    </div>
-                </div>
-                <input type="submit" value="Save"/>
-                <button type="button" onclick="toggleHonoursAndAwarda()">Cancel</button>
-            </form>
-        </div>
-
-
-        <!-- Doctoral Theses Guided      -->
-        <div class="section">
-            <div class="section-head">
-                <span class="section-name">Doctoral Theses Guided</span>
-                <button class="add-edit-btn" onclick="toggleDoctoralThesesGuided()">Add / Edit</button>
-            </div>
-
-            <div id="doctoral-theses-guided-section-body" class="section-body">
-                {% for thesis in doctoral_theses %}
-                <div class="doctoral-theses-guided-item">
-                    <div class="year-box">{{ thesis.awarded_year }}</div>
-                    <div class="doctoral-theses-guided-details">
-                        <span class="doctoral-theses-guided-title">{{ thesis.title }}</span>
-                        <div class="doctoral-theses-guided-institute-and-researcher">
-                            <span>{{ thesis.institute }}, </span><span>{{ thesis.researchers_name }}</span>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-
-            <form method='post' action={% url 'fams:add_doctoral_thesis' %} id="doctoral-theses-guided-section-form" style="display: none;">
-                {% csrf_token %}
-                <div>
-                    <div>
-                        <label for="researcher-names">Names of Researchers Involved * </label>
-                        <input name="researcher_names" id="researcher-names" type="text" required>
-                    </div>
-                    <div>
-                        <label for="title">Title *</label>
-                        <input name="title" id="title" type="text" required>
-                    </div>
-                    <div>
-                        <label for="institute">Institute * </label>
-                        <input name="institute" id="institute" type="text" required>
-                    </div>
-                    <div>
-                        <label for="awarded-year">Awarded year * </label>
-                        <input name="awarded_year" id="awarded-year" type="number" min="1910" max="2099" step="1" value="2024" required>
-                    </div>
-                    <div>
-                        <label for="description">Description * </label>
-                        <textarea name="description" id="description" type="textarea" required></textarea>
-                    </div>
-                </div>
-                <input type="submit" value="Save"/>
-                <button type="button" onclick="toggleDoctoralThesesGuided()">Cancel</button>
-            </form>
-        </div>
-
-
+        {% endif %}
 
 
         <!-- Membership in Committees   -->
+        {% if committee_memberships %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Membership in Committees</span>
-                <button class="add-edit-btn" onclick="toggleMembershipInCommittees()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleMembershipInCommittees()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
-
             <div id="membership-in-committees-section-body" class="section-body">
                 <div class="timeline">
                     {% for item in committee_memberships %}
@@ -957,53 +1232,419 @@
                             <div>{{ item.start_date|date:"Y" }}</div>
                             <div class="end-date">{{ item.end_date|date:"Y" }}</div>
                         </div>
-                        <p style="font-size: 14px;"><strong style="font-size: 16px;">{{ item.organization }}</strong>{{ item.name }}</p>
+                        <p style="font-size: 14px;">
+                            <strong style="font-size: 16px;">{{ item.organization }}</strong>{{ item.name }}
+                        </p>
+                        {% if is_own_profile %}
+                        <div class="update-delete-button-container">
+                            <button class="update-button" data-modal-target="committee-modal-{{item.id}}" data-modal-toggle="committee-modal-{{item.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
+                            <button class="delete-button" data-modal-target="del-cm-modal-{{item.id}}" data-modal-toggle="del-cm-modal-{{item.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                        {% endif %}
+                    </div>
+        
+                    <!-- Edit Committee Membership Modal -->
+                    <div id="committee-modal-{{item.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-3xl max-h-full">
+                            <div class="relative bg-white rounded-lg shadow">
+                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-black">Edit Committee Membership</h3>
+                                    <button type="button" class="bg-black" data-modal-toggle="committee-modal-{{item.id}}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <form method="POST" action="{% url 'fams:edit_committee_membership' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                    {% csrf_token %}
+                                    <div class="mb-4">
+                                        <label for="organisation-{{item.id}}" class="block text-gray-700 font-bold mb-2">* Organisation</label>
+                                        <input id="organisation-{{item.id}}" type="text" name="organisation" value="{{item.organization}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="designation-{{item.id}}" class="block text-gray-700 font-bold mb-2">* Designation</label>
+                                        <input id="designation-{{item.id}}" type="text" name="designation" value="{{item.designation}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="startdate-{{item.id}}" class="block text-gray-700 font-bold mb-2">* Start Date</label>
+                                        <input id="startdate-{{item.id}}" type="date" name="startdate" value="{{item.start_date|date:'Y-m-d'}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="enddate-{{item.id}}" class="block text-gray-700 font-bold mb-2">* End Date</label>
+                                        <input id="enddate-{{item.id}}" type="date" name="enddate" value="{{item.end_date|date:'Y-m-d'}}" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="flex justify-end space-x-4">
+                                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Save</button>
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Delete Committee Membership Modal -->
+                    <div id="del-cm-modal-{{item.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-cm-modal-{{item.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 md:p-5 text-center">
+                                    <form action="{% url 'fams:delete_committee_membership' item.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this membership?</h3>
+                                        <button data-modal-hide="del-cm-modal-{{item.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Yes, I'm sure</button>
+                                        <button data-modal-hide="del-cm-modal-{{item.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
             </div>
-
-            <form  method="POST" id="membership-in-committees-section-form" style="display: none;" action="{% url 'fams:add_committee_membership' %}">
-
+        
+            <form method="POST" id="membership-in-committees-section-form" style="display: none;" action="{% url 'fams:add_committee_membership' %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
-                <div>
-
-                    <div>
-                        <label for="">* Organisation</label>
-                        <input id="fname" type="text" name="organisation">
-                    </div>
-                    <div>
-                        <label for="">* Designation</label>
-                        <input id="fname" type="text" name="designation">
-                    </div>
-                    <div>
-                        <label for="">* Start Date </label>
-                        <input id="fname" type="date" name="startdate">
-                    </div>
-                    <div>
-                        <label for="">* End Date </label>
-                        <input id="fname" type="date" name="enddate">
-                    </div>
-
+                <div class="mb-4">
+                    <label for="new-organisation" class="block text-gray-700 font-bold mb-2">* Organisation</label>
+                    <input id="new-organisation" type="text" name="organisation" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <button type="submit">Save</button>
-                <button type="button" onclick="toggleMembershipInCommittees()">Cancel</button>
+                <div class="mb-4">
+                    <label for="new-designation" class="block text-gray-700 font-bold mb-2">* Designation</label>
+                    <input id="new-designation" type="text" name="designation" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="new-startdate" class="block text-gray-700 font-bold mb-2">* Start Date</label>
+                    <input id="new-startdate" type="date" name="startdate" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="new-enddate" class="block text-gray-700 font-bold mb-2">* End Date</label>
+                    <input id="new-enddate" type="date" name="enddate" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Save</button>
+                    <button type="button" onclick="toggleMembershipInCommittees()" class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+                </div>
             </form>
+
+            
         </div>
+        {% endif %}
 
 
+        <!-- Honours and Awards  -->
+        {% if honors %}
+        <div class="section">
+            <div class="section-head">
+                <span class="section-name">Honours and Awards</span>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleHonoursAndAwarda()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
+            </div>
+            <div id="honours-and-awards-section-body" class="section-body">
+                {% for hons in honors %}
+                <div class="award-item">
+                    {% if is_own_profile %}
+                    <div class="update-delete-button-container">
+                        <button class="update-button" data-modal-target="honor-modal-{{hons.id}}" data-modal-toggle="honor-modal-{{hons.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete-button" data-modal-target="del-hons-modal-{{hons.id}}" data-modal-toggle="del-hons-modal-{{hons.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    {% endif %}
+                    <div class="year-box">{{ hons.issue_year }}</div>
+                    <div class="honours-and-awards-details">
+                        <span class="award-title">{{ hons.title }}</span>
+                        <span class="award-institution">{{ hons.issuing_organization }}</span>
+                    </div>
+                </div>
+        
+                <!-- Edit Honor Modal -->
+                <div id="honor-modal-{{hons.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-3xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-lg font-semibold text-black">Edit Honors</h3>
+                                <button type="button" class="bg-black" data-modal-toggle="honor-modal-{{hons.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <form method="POST" action="{% url 'fams:edit_honor' hons.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                {% csrf_token %}
+                                <div class="mb-4">
+                                    <label for="title-input" class="block text-gray-700 font-bold mb-2">Title *</label>
+                                    <input name="title" id="title-input" type="text" value="{{hons.title}}" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="issuing-organization" class="block text-gray-700 font-bold mb-2">Issuing Organization *</label>
+                                    <input name="issuing_organization" id="issuing-organization" type="text" value="{{hons.issuing_organization}}" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="year" class="block text-gray-700 font-bold mb-2">Year *</label>
+                                    <input name="year" id="year" type="number" min="1910" max="2099" step="1" value="{{hons.issue_year}}" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="description" class="block text-gray-700 font-bold mb-2">Description *</label>
+                                    <textarea name="description" id="description" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{hons.description}}</textarea>
+                                </div>
+                                <div class="flex justify-end">
+                                    <input type="submit" value="Save"
+                                        class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Delete Honor Modal -->
+                <div id="del-hons-modal-{{hons.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-hons-modal-{{hons.id}}">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-center">
+                                <form action="{% url 'fams:delete_honors' hons.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this Honor/Award?</h3>
+                                    <button data-modal-hide="del-hons-modal-{{hons.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Yes, I'm sure</button>
+                                    <button data-modal-hide="del-hons-modal-{{hons.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        
+            <form method="post" action="{% url 'fams:add_honor' %}" id="honours-and-awards-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="title-input" class="block text-gray-700 font-bold mb-2">Title *</label>
+                    <input name="title" id="title-input" type="text" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="issuing-organization" class="block text-gray-700 font-bold mb-2">Issuing Organization *</label>
+                    <input name="issuing_organization" id="issuing-organization" type="text" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="year" class="block text-gray-700 font-bold mb-2">Year *</label>
+                    <input name="year" id="year" type="number" min="1910" max="2099" step="1" value="2024" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-700 font-bold mb-2">Description *</label>
+                    <textarea name="description" id="description" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <input type="submit" value="Save"
+                        class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="button" onclick="toggleHonoursAndAwarda()"
+                        class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+                </div>
+            </form>
+            
+            
+            
+        </div>
+        {% endif %}
+
+
+        <!-- Doctoral Theses Guided      -->
+        {% if doctoral_theses %}
+        <div class="section">
+            <div class="section-head">
+                <span class="section-name">Doctoral Theses Guided</span>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleDoctoralThesesGuided()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
+            </div>
+            <div id="doctoral-theses-guided-section-body" class="section-body">
+                {% for thesis in doctoral_theses %}
+                <div class="doctoral-theses-guided-item">
+                    {% if is_own_profile %}
+                    <div class="update-delete-button-container">
+                        <button class="update-button" data-modal-target="thesis-modal-{{thesis.id}}" data-modal-toggle="thesis-modal-{{thesis.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete-button" data-modal-target="del-thesis-modal-{{thesis.id}}" data-modal-toggle="del-thesis-modal-{{thesis.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    {% endif %}
+                    <div class="year-box">{{ thesis.awarded_year }}</div>
+                    <div class="doctoral-theses-guided-details">
+                        <span class="doctoral-theses-guided-title">{{ thesis.title }}</span>
+                        <div class="doctoral-theses-guided-institute-and-researcher">
+                            <span>{{ thesis.institute }}, </span><span>{{ thesis.researchers_name }}</span>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Edit Thesis Modal -->
+                <div id="thesis-modal-{{thesis.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-3xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-lg font-semibold text-black">Edit Doctoral Thesis</h3>
+                                <button type="button" class="bg-black" data-modal-toggle="thesis-modal-{{thesis.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <form method="POST" action="{% url 'fams:edit_doctoral_thesis' thesis.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                {% csrf_token %}
+                                <div class="mb-4">
+                                    <label for="researcher-names" class="block text-gray-700 font-bold mb-2">Names of Researchers Involved *</label>
+                                    <input name="researcher_names" id="researcher-names" type="text" value="{{ thesis.researchers_name }}" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="title" class="block text-gray-700 font-bold mb-2">Title *</label>
+                                    <input name="title" id="title" type="text" value="{{ thesis.title }}" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="institute" class="block text-gray-700 font-bold mb-2">Institute *</label>
+                                    <input name="institute" id="institute" type="text" value="{{ thesis.institute }}" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="awarded-year" class="block text-gray-700 font-bold mb-2">Awarded year *</label>
+                                    <input name="awarded_year" id="awarded-year" type="number" min="1910" max="2099" step="1" value="{{ thesis.awarded_year }}" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="description" class="block text-gray-700 font-bold mb-2">Description *</label>
+                                    <textarea name="description" id="description" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{ thesis.description }}</textarea>
+                                </div>
+                                <div class="flex justify-end">
+                                    <input type="submit" value="Save"
+                                        class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Delete Thesis Modal -->
+                <div id="del-thesis-modal-{{thesis.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-thesis-modal-{{thesis.id}}">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-center">
+                                <form action="{% url 'fams:delete_doctoral_thesis' thesis.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this thesis?</h3>
+                                    <button data-modal-hide="del-thesis-modal-{{thesis.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Yes, I'm sure</button>
+                                    <button data-modal-hide="del-thesis-modal-{{thesis.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        
+            <form method="post" action="{% url 'fams:add_doctoral_thesis' %}" id="doctoral-theses-guided-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                {% csrf_token %}
+                <div class="space-y-4">
+                    <div>
+                        <label for="researcher-names" class="block text-gray-700 font-bold mb-2">Names of Researchers Involved *</label>
+                        <input name="researcher_names" id="researcher-names" type="text" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="title" class="block text-gray-700 font-bold mb-2">Title *</label>
+                        <input name="title" id="title" type="text" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="institute" class="block text-gray-700 font-bold mb-2">Institute *</label>
+                        <input name="institute" id="institute" type="text" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="awarded-year" class="block text-gray-700 font-bold mb-2">Awarded year *</label>
+                        <input name="awarded_year" id="awarded-year" type="number" min="1910" max="2099" step="1" value="2024" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="description" class="block text-gray-700 font-bold mb-2">Description *</label>
+                        <textarea name="description" id="description" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-4 mt-4">
+                    <input type="submit" value="Save"
+                        class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="button" onclick="toggleDoctoralThesesGuided()"
+                        class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+                </div>
+            </form>
+       
+            
+        </div>
+        {% endif %}
 
         <!-- Research Projects       -->
+        {% if research_projects %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Research Projects</span>
-                <button class="add-edit-btn" onclick="toggleResearchProjects()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="toggleResearchProjects()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
-
+        
             <div id="research-projects-section-body" class="section-body">
                 {% for item in research_projects %}
                 <div class="each-research-project">
-
                     <div class="project-title">{{ item.title }}</div>
                     <div class="funding-agency">
                         <i class="fas fa-briefcase"></i> Funding Agency: {{ item.funding_agency }}
@@ -1022,151 +1663,333 @@
                             <i class="fas fa-calendar-alt"></i> {{ item.start_date|date:"Y" }} - {{ item.end_date|date:"Y" }}
                         </div>
                     </div>
-
+                
+                    {% if is_own_profile %}
+                    <div class="update-delete-button-container">
+                        <button class="update-button" data-modal-target="rp-modal-{{item.id}}" data-modal-toggle="rp-modal-{{item.id}}" class="update-button" type="button"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete-button" data-modal-target="del-rp-modal-{{item.id}}" data-modal-toggle="del-rp-modal-{{item.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    {% endif %}
+        
+                    <!-- Update Modal -->
+                    <div id="rp-modal-{{item.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-3xl max-h-full">
+                            <div class="relative bg-white rounded-lg shadow">
+                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-black">Edit Research Project</h3>
+                                    <button type="button" class="bg-black" data-modal-toggle="rp-modal-{{item.id}}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{% url 'fams:edit_research_projects' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                        {% csrf_token %}
+                                        <div class="mb-4">
+                                            <label for="project-title" class="block text-gray-700 font-bold mb-2">Title of the project *</label>
+                                            <input type="text" id="project-title" name="project-title" placeholder="Title of the Project" value="{{item.title}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="description" class="block text-gray-700 font-bold mb-2">Description of the project *</label>
+                                            <textarea id="description" name="description" placeholder="Description of the Project" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{item.description}}</textarea>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="start-date" class="block text-gray-700 font-bold mb-2">Start date *</label>
+                                            <input name="start_date" id="start-date" type="date" value="{{item.start_date | date:'Y-m-d'}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="end-date" class="block text-gray-700 font-bold mb-2">End date</label>
+                                            <input name="end_date" id="end-date" type="date" value="{{item.end_date | date:'Y-m-d'}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <div class="flex items-center mt-2">
+                                                <input type="checkbox" id="ongoing" name="ongoing" class="mr-2" {% if item.ongoing %} checked {% endif %}>
+                                                <label for="ongoing" class="text-gray-700 font-bold">Ongoing</label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="role" class="block text-gray-700 font-bold mb-2">Role *</label>
+                                            <input type="text" id="role" name="role" placeholder="Enter Role" value="{{item.role}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="funding-agency" class="block text-gray-700 font-bold mb-2">Funding agency *</label>
+                                            <input type="text" id="funding-agency" name="funding-agency" placeholder="Enter Funding Agency" value="{{item.funding_agency}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="grant-no" class="block text-gray-700 font-bold mb-2">Grant No.</label>
+                                            <input type="text" id="grant-no" name="grant-no" placeholder="Enter Grant No." value="{{item.grant_number}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="status" class="block text-gray-700 font-bold mb-2">Status</label>
+                                            <select id="status" name="status" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                <option value="ongoing" {% if item.status == "ongoing" %} selected {% endif %}>Ongoing</option>
+                                                <option value="completed" {% if item.status == "completed" %} selected {% endif %}>Completed</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="amount" class="block text-gray-700 font-bold mb-2">Amount *</label>
+                                            <input type="text" id="amount" name="amount" placeholder="Enter Amount" required value="{{item.amount}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <input type="submit" value="Save" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                                        </div>
+                                    </form>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Delete Modal -->
+                    <div id="del-rp-modal-{{item.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-rp-modal-{{item.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 md:p-5 text-center">
+                                    <form action="{% url 'fams:delete_research_project' item.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this research project?</h3>
+                                        <button data-modal-hide="del-rp-modal-{{item.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Yes, I'm sure</button>
+                                        <button data-modal-hide="del-rp-modal-{{item.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
-
-            <form method='post' action={% url "fams:add_research_project" %} id="research-projects-section-form" style="display: none;">
+        
+            <!-- Add New Research Project Form -->
+            <form method="post" action="{% url 'fams:add_research_project' %}" id="research-projects-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
-                <div>
-                    <label for="project-title"> Title of the project *</label>
-                    <input type="text" id="project-title" name="project-title" placeholder="Title of the Project" required>
+                <div class="mb-4">
+                    <label for="project-title" class="block text-gray-700 font-bold mb-2">Title of the project *</label>
+                    <input type="text" id="project-title" name="project-title" placeholder="Title of the Project" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="description"> Description of the project *</label>
-                    <textarea id="description" name="description" placeholder="Description of the Project" required></textarea>
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-700 font-bold mb-2">Description of the project *</label>
+                    <textarea id="description" name="description" placeholder="Description of the Project" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                 </div>
-                <div>
-                    <label for="start-date"> Start date *</label>
-                    {% comment %} <select id="start-date-month" name="start-date-month">
-                        <option value="">Month</option>
-                        <!-- Add month options -->
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select> {% endcomment %}
-                    <input name="start_date" id="start-date" type="date" required/>
+                <div class="mb-4">
+                    <label for="start-date" class="block text-gray-700 font-bold mb-2">Start date *</label>
+                    <input name="start_date" id="start-date" type="date" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"/>
                 </div>
-                <div>
-                    <label for="end-date">End date </label>
-                    {% comment %} <select id="end-date-month" name="end-date-month">
-                        <option value="">Month</option>
-                        <!-- Add month options -->
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select> {% endcomment %}
-                    <input name="end_date" id="end-date"type="date">
-                    <label for="ongoing">Ongoing</label>
-                    <input type="checkbox" id="ongoing" name="ongoing">
+                <div class="mb-4">
+                    <label for="end-date" class="block text-gray-700 font-bold mb-2">End date</label>
+                    <input name="end_date" id="end-date" type="date" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div class="flex items-center mt-2">
+                        <input type="checkbox" id="ongoing" name="ongoing" class="mr-2">
+                        <label for="ongoing" class="text-gray-700 font-bold">Ongoing</label>
+                    </div>
                 </div>
-                <div>
-                    <label for="role"> Role *</label>
-                    <input type="text" id="role" name="role" placeholder="Enter Role" required>
+                <div class="mb-4">
+                    <label for="role" class="block text-gray-700 font-bold mb-2">Role *</label>
+                    <input type="text" id="role" name="role" placeholder="Enter Role" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="funding-agency"> Funding agency *</label>
-                    <input type="text" id="funding-agency" name="funding-agency" placeholder="Enter Funding Agency" required>
+                <div class="mb-4">
+                    <label for="funding-agency" class="block text-gray-700 font-bold mb-2">Funding agency *</label>
+                    <input type="text" id="funding-agency" name="funding-agency" placeholder="Enter Funding Agency" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="grant-no">Grant No.</label>
-                    <input type="text" id="grant-no" name="grant-no" placeholder="Enter Grant No.">
+                <div class="mb-4">
+                    <label for="grant-no" class="block text-gray-700 font-bold mb-2">Grant No.</label>
+                    <input type="text" id="grant-no" name="grant-no" placeholder="Enter Grant No." class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="status">Status</label>
-                    <select id="status" name="status">
-                        <!-- Add status options -->
-                        <option value=None>Select Status</option>
+                <div class="mb-4">
+                    <label for="status" class="block text-gray-700 font-bold mb-2">Status</label>
+                    <select id="status" name="status" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="ongoing">Ongoing</option>
                         <option value="completed">Completed</option>
                     </select>
                 </div>
-                <div>
-                    <label for="amount"> Amount *</label>
-                    <input type="text" id="amount" name="amount" placeholder="Enter Amount" required>
+                <div class="mb-4">
+                    <label for="amount" class="block text-gray-700 font-bold mb-2">Amount *</label>
+                    <input type="text" id="amount" name="amount" placeholder="Enter Amount" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <input type="submit" value="Save"/>
-                <button type="button" onclick="toggleResearchProjects()">Cancel</button>
+                <div class="flex justify-end">
+                    <input type="submit" value="Save" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                    <button type="button" onclick="toggleResearchProjects()" class="ml-4 px-4 py-2 bg-gray-300 text-gray-700 font-bold rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+                </div>
             </form>
+            
         </div>
-
-
+        {% endif %}
 
         <!-- Patent       -->
+        {% if patents %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Patent</span>
-                <button class="add-edit-btn" onclick="togglePatent()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="togglePatent()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
-
+        
             <div id="patent-section-body" class="section-body">
                 {% for item in patents %}
-                <div class="each-patent">
+                <div class="each-patent relative">
+                    {% if is_own_profile %}
+                    <div class="patent-buttons absolute top-0 right-0 space-x-2">
+                        <button data-modal-target="patent-modal-{{item.id}}" data-modal-toggle="patent-modal-{{item.id}}" class="btn-update" type="button"><i class="fa-solid fa-pen"></i></button>
+                        <button data-modal-target="del-patent-modal-{{item.id}}" data-modal-toggle="del-patent-modal-{{item.id}}" class="btn-delete" type="button"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    {% endif %}
                     <span class="title">{{ item.title }}</span>
                     <span><i class="fas fa-user icon"></i> {{ item.inventors }}</span>
                     <span><i class="fas fa-university icon"></i> MSIT JanakPURI</span>
                     <span><i class="fas fa-file-alt icon"></i> Patent No. {{ item.patent_number }}</span>
-                    <span><i class="fas fa-seedling icon"></i> {{ item.subject_category }} <i
-                            class="fas fa-check approved icon"></i> {{ item.status|capfirst }}</span>
-                    <span><i class="fas fa-calendar-alt icon"></i> Filed {{ item.filing_date }} <i class="fas fa-calendar icon"></i>
-                        Published {{ item.publication_date }}</span>
+                    <span><i class="fas fa-seedling icon"></i> {{ item.subject_category }} <i class="fas fa-check approved icon"></i> {{ item.status|capfirst }}</span>
+                    <span><i class="fas fa-calendar-alt icon"></i> Filed {{ item.filing_date }} <i class="fas fa-calendar icon"></i> Published {{ item.publication_date }}</span>
+                </div>
+        
+                <!-- Edit Patent Modal -->
+                <div id="patent-modal-{{item.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-3xl max-h-full">
+                        <div class="relative bg-white rounded-lg shadow">
+                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-lg font-semibold text-black">Edit Patent</h3>
+                                <button type="button" class="bg-black" data-modal-toggle="patent-modal-{{item.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                            <form method="POST" action="{% url 'fams:edit_patent' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                {% csrf_token %}
+                                <div class="mb-4">
+                                    <label for="title" class="block text-gray-700 font-bold mb-2">* Title of the Patent</label>
+                                    <input type="text" id="title" name="title" placeholder="Title of the Patent" required value="{{ item.title }}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="inventors" class="block text-gray-700 font-bold mb-2">* Inventor(s)</label>
+                                    <input type="text" id="inventors" name="inventors" placeholder="Patent Creator(s)" value="{{ item.inventors }}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="app-number" class="block text-gray-700 font-bold mb-2">* Application Number</label>
+                                    <input type="text" id="app-number" name="app-number" placeholder="Application Number" value="{{ item.application_number }}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="patent-number" class="block text-gray-700 font-bold mb-2">Patent Number</label>
+                                    <input type="text" id="patent-number" name="patent-number" placeholder="Patent Number" value="{{ item.patent_number }}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="filing-country" class="block text-gray-700 font-bold mb-2">* Filing Country</label>
+                                    <input type="text" id="filing-country" name="filing-country" required value="{{ item.filing_country }}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="subject-category" class="block text-gray-700 font-bold mb-2">Subject Category</label>
+                                    <select id="subject-category" name="subject-category" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Select Category</option>
+                                        <option value="agricultural-sciences">Agricultural Sciences</option>
+                                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                                        <option value="arts-humanities">Arts and Humanities</option>
+                                        <option value="biological-sciences">Biological Sciences</option>
+                                        <option value="chemical-sciences">Chemical Sciences</option>
+                                        <option value="engineering-technology">Engineering and Technology</option>
+                                        <option value="medical-health-sciences">Medical and Health Sciences</option>
+                                        <option value="physical-sciences">Physical Sciences</option>
+                                        <option value="social-sciences">Social Sciences</option>
+                                        <!-- Add more category options here -->
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="filing-date" class="block text-gray-700 font-bold mb-2">* Filing Date</label>
+                                    <input type="date" id="filing-date" name="filing-date" required value="{{ item.filing_date | date:'Y-m-d' }}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="publication-date" class="block text-gray-700 font-bold mb-2">Publication Date</label>
+                                    <input type="date" id="publication-date" name="publication-date" value="{{ item.publication_date | date:'Y-m-d' }}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="status" class="block text-gray-700 font-bold mb-2">* Status</label>
+                                    <select id="status" name="status" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Select Status</option>
+                                        <option value="pending" {% if item.status == "pending" %} selected {% endif %}>Pending</option>
+                                        <option value="published" {% if item.status == "published" %} selected {% endif %}>Published</option>
+                                        <option value="granted" {% if item.status == "granted" %} selected {% endif %}>Granted</option>
+                                        <!-- Add more status options here -->
+                                    </select>
+                                </div>
+                                <div class="flex justify-end">
+                                    <input type="submit" value="Save" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Delete Patent Modal -->
+                <div id="del-patent-modal-{{item.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-patent-modal-{{item.id}}">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-center">
+                                <form action="{% url 'fams:delete_patent' item.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this Patent?</h3>
+                                    <button data-modal-hide="del-exp-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                        Yes, I'm sure
+                                    </button>
+                                    <button data-modal-hide="del-patent-modal-{{item.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
-
             </div>
-
-            <form method="post" action={% url "fams:add_patent" %} id="patent-section-form" style="display: none;">
+        
+            <form method="post" action="{% url 'fams:add_patent' %}" id="patent-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="title">* Title of the Patent</label>
-                    <input type="text" id="title" name="title" placeholder="Title of the Patent" required>
+                <div class="form-group mb-4">
+                    <label for="title" class="block text-gray-700 font-bold mb-2">* Title of the Patent</label>
+                    <input type="text" id="title" name="title" placeholder="Title of the Patent" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="inventors">* Inventor(s)</label>
-                    <input type="text" id="inventors" name="inventors" placeholder="Patent Creator(s)" required>
+                <div class="form-group mb-4">
+                    <label for="inventors" class="block text-gray-700 font-bold mb-2">* Inventor(s)</label>
+                    <input type="text" id="inventors" name="inventors" placeholder="Patent Creator(s)" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="applicant">Applicant Name</label>
-                    <input type="text" id="applicant" name="applicant" placeholder="Person Name / Organisation Name">
+                <div class="form-group mb-4">
+                    <label for="applicant" class="block text-gray-700 font-bold mb-2">Applicant Name</label>
+                    <input type="text" id="applicant" name="applicant" placeholder="Person Name / Organisation Name" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="app-number">* Application Number</label>
-                    <input type="text" id="app-number" name="app-number" placeholder="Application Number" required>
+                <div class="form-group mb-4">
+                    <label for="app-number" class="block text-gray-700 font-bold mb-2">* Application Number</label>
+                    <input type="text" id="app-number" name="app-number" placeholder="Application Number" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="patent-number">Patent Number</label>
-                    <input type="text" id="patent-number" name="patent-number" placeholder="Patent Number">
+                <div class="form-group mb-4">
+                    <label for="patent-number" class="block text-gray-700 font-bold mb-2">Patent Number</label>
+                    <input type="text" id="patent-number" name="patent-number" placeholder="Patent Number" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="filing-country">* Filing Country</label>
-                    <input type="text" id="filing-country" name="filing-country" required>
+                <div class="form-group mb-4">
+                    <label for="filing-country" class="block text-gray-700 font-bold mb-2">* Filing Country</label>
+                    <input type="text" id="filing-country" name="filing-country" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="subject-category">Subject Category</label>
-                    <select id="subject-category" name="subject-category">
+                <div class="form-group mb-4">
+                    <label for="subject-category" class="block text-gray-700 font-bold mb-2">Subject Category</label>
+                    <select id="subject-category" name="subject-category" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">Select Category</option>
                         <option value="agricultural-sciences">Agricultural Sciences</option>
-                        <option value="biological-sciences">Artificial Intelligence</option>
+                        <option value="artificial-intelligence">Artificial Intelligence</option>
                         <option value="arts-humanities">Arts and Humanities</option>
                         <option value="biological-sciences">Biological Sciences</option>
                         <option value="chemical-sciences">Chemical Sciences</option>
@@ -1177,17 +2000,17 @@
                         <!-- Add more category options here -->
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="filing-date">* Filing Date</label>
-                    <input type="date" id="filing-date" name="filing-date" required>
+                <div class="form-group mb-4">
+                    <label for="filing-date" class="block text-gray-700 font-bold mb-2">* Filing Date</label>
+                    <input type="date" id="filing-date" name="filing-date" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="publication-date">Publication Date</label>
-                    <input type="date" id="publication-date" name="publication-date">
+                <div class="form-group mb-4">
+                    <label for="publication-date" class="block text-gray-700 font-bold mb-2">Publication Date</label>
+                    <input type="date" id="publication-date" name="publication-date" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="form-group">
-                    <label for="status">* Status</label>
-                    <select id="status" name="status" required>
+                <div class="form-group mb-4">
+                    <label for="status" class="block text-gray-700 font-bold mb-2">* Status</label>
+                    <select id="status" name="status" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">Select Status</option>
                         <option value="pending">Pending</option>
                         <option value="published">Published</option>
@@ -1195,19 +2018,25 @@
                         <!-- Add more status options here -->
                     </select>
                 </div>
-                <input type="submit" value="Save"/>
-                <button type="button" onclick="togglePatent()">Cancel</button>
+                <div class="flex justify-end">
+                    <input type="submit" value="Save" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="button" onclick="togglePatent()" class="ml-2 px-4 py-2 bg-gray-300 text-gray-700 font-bold rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+                </div>
             </form>
+            
         </div>
-
+        {% endif %}
 
         <!-- Publications -->
+        {% if publications %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Publications</span>
-                <button class="add-edit-btn" onclick="togglePublications()">Add / Edit</button>
+                {% if is_own_profile %}
+                <button class="add-edit-btn" onclick="togglePublications()"><i class="fa-solid fa-plus"></i></button>
+                {% endif %}
             </div>
-
+        
             <div id="publications-section-body" class="section-body">
                 {% for item in publications %}
                 <div class="each-publication">
@@ -1219,28 +2048,155 @@
                     </div>
                     <div class="publications-footer">
                         <span class="publications-tag">Conference Paper</span>
-                        <span class="publications-journal-details">{{ item.journal_name }} <span
-                                class="publications-volume"> {{ item.volume }}</span>, <span class="publications-year">Year
-                                {{ item.year }}</span>, <span class="publications-pages">{{ item.page_number }}</span></span>
+                        <span class="publications-journal-details">{{ item.journal_name }} 
+                            <span class="publications-volume">{{ item.volume }}</span>, 
+                            <span class="publications-year">Year {{ item.year }}</span>, 
+                            <span class="publications-pages">{{ item.page_number }}</span>
+                        </span>
+                    </div>
+        
+                    {% if is_own_profile %}
+                    <div class="publication-buttons">
+                        <button data-modal-target="pub-modal-{{item.id}}" data-modal-toggle="pub-modal-{{item.id}}" class="btn-update"><i class="fa-solid fa-pen"></i></button>
+                        <button data-modal-target="del-pub-modal-{{item.id}}" data-modal-toggle="del-pub-modal-{{item.id}}" class="btn-delete"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    {% endif %}
+        
+                    <!-- Edit Publication Modal -->
+                    <div id="pub-modal-{{item.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-3xl max-h-full">
+                            <div class="relative bg-white rounded-lg shadow ">
+                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-black">Edit Publication</h3>
+                                    <button type="button" class="bg-black" data-modal-toggle="pub-modal-{{item.id}}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <form method="POST" action="{% url 'fams:edit_publication' item.id %}" enctype="multipart/form-data" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                    {% csrf_token %}
+                                    <div class="form-group mb-4">
+                                        <label for="work-type" class="block text-gray-700 font-bold mb-2">* Work Type</label>
+                                        <select id="work-type" name="work-type" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option value="">Type</option>
+                                            <option value="article">Article</option>
+                                            <option value="article_in_press">Article-in-Press (AIP)</option>
+                                            <option value="book">Book</option>
+                                            <option value="book_chapter">Book Chapter</option>
+                                            <option value="conference_paper">Conference Paper</option>
+                                            <option value="conference_proceedings">Conference Proceedings</option>
+                                            <option value="editorial">Editorial</option>
+                                            <option value="erratum">Erratum</option>
+                                            <option value="letter">Letter</option>
+                                            <option value="note">Note</option>
+                                            <option value="review">Review</option>
+                                            <option value="retracted_article">Retracted Article</option>
+                                            <option value="short_survey">Short Survey</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="title" class="block text-gray-700 font-bold mb-2">* Title/Chapter</label>
+                                        <input type="text" id="title" name="title" placeholder="Title of the Publication" value="{{item.title}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="journal-title" class="block text-gray-700 font-bold mb-2">* Journal/Book Title</label>
+                                        <input type="text" id="journal-title" name="journal-title" placeholder="Enter Journal/Book Title" value="{{item.journal_name}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="year" class="block text-gray-700 font-bold mb-2">Year</label>
+                                        <input type="number" id="year" name="year" min="1910" max="2099" value="{{item.year}}" placeholder="Year" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="author" class="block text-gray-700 font-bold mb-2">* Author(s)</label>
+                                        <input type="text" id="author" name="author" placeholder="Enter Author" value="{{item.author}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <p class="text-gray-600 text-sm mt-1">(Maintain the uniformity in the author name and also separate the author by (,, or , or and) to generate co-author network)</p>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="issue_date" class="block text-gray-700 font-bold mb-2">* Issuing date</label>
+                                        <input type="date" id="issue_date" name="issue_date" value="{{item.issue_date | date:'Y-m-d'}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="issue_org" class="block text-gray-700 font-bold mb-2">* Issuing organization</label>
+                                        <input type="text" id="issue_org" name="io" value="{{item.issuing_organization}}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="url" class="block text-gray-700 font-bold mb-2">Url</label>
+                                        <input type="url" id="url" name="url" placeholder="Enter Url" value="{{item.url}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="doi" class="block text-gray-700 font-bold mb-2">Doi</label>
+                                        <input type="text" id="doi" name="doi" placeholder="Enter Doi" value="{{item.doi}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="volume" class="block text-gray-700 font-bold mb-2">Volume</label>
+                                        <input type="text" id="volume" name="volume" placeholder="Enter Volume" value="{{item.volume}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="page-no" class="block text-gray-700 font-bold mb-2">Page No.</label>
+                                        <input type="number" id="page-no" name="page-no" placeholder="Enter Page No" value="{{item.page_number}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="publisher" class="block text-gray-700 font-bold mb-2">Publisher</label>
+                                        <input type="text" id="publisher" name="publisher" placeholder="Enter Publisher Name" value="{{item.publisher_name}}" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="file" class="block text-gray-700 font-bold mb-2">File</label>
+                                        <input type="file" id="file" name="file" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <input type="submit" value="Save" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Delete Publication Modal -->
+                    <div id="del-pub-modal-{{item.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-pub-modal-{{item.id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 md:p-5 text-center">
+                                    <form action="{% url 'fams:delete_publication' item.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this Publication?</h3>
+                                        <button data-modal-hide="del-pub-modal-{{item.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                            Yes, I'm sure
+                                        </button>
+                                        <button data-modal-hide="del-pub-modal-{{item.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-
-            <form method="post" action={% url "fams:add_publication" %} id="publications-section-form" style="display: none;">
+        
+            <form method="POST" action="{% url 'fams:add_publication' %}" enctype="multipart/form-data" id="publications-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
-                <div>
-                    <label for="work-type">* Work Type</label>
-                    <select id="work-type" name="work-type" required>
+                <div class="form-group mb-4">
+                    <label for="work-type" class="block text-gray-700 font-bold mb-2">* Work Type</label>
+                    <select id="work-type" name="work-type" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">Type</option>
-                        {% comment %} <option value="art">Art</option> {% endcomment %}
                         <option value="article">Article</option>
                         <option value="article_in_press">Article-in-Press (AIP)</option>
                         <option value="book">Book</option>
                         <option value="book_chapter">Book Chapter</option>
                         <option value="conference_paper">Conference Paper</option>
                         <option value="conference_proceedings">Conference Proceedings</option>
-                        {% comment %} <option value="data-paper">Data Paper</option> {% endcomment %}
                         <option value="editorial">Editorial</option>
                         <option value="erratum">Erratum</option>
                         <option value="letter">Letter</option>
@@ -1251,85 +2207,63 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-
-                <div>
-                    <label for="title">* Title/Chapter</label>
-                    <input type="text" id="title" name="title" placeholder="Title of the Publication" required>
+                <div class="form-group mb-4">
+                    <label for="title" class="block text-gray-700 font-bold mb-2">* Title/Chapter</label>
+                    <input type="text" id="title" name="title" placeholder="Title of the Publication" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="journal-title">* Journal/Book Title</label>
-                    <input type="text" id="journal-title" name="journal-title" placeholder="Enter Journal/Book Title"
-                        required>
+                <div class="form-group mb-4">
+                    <label for="journal-title" class="block text-gray-700 font-bold mb-2">* Journal/Book Title</label>
+                    <input type="text" id="journal-title" name="journal-title" placeholder="Enter Journal/Book Title" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="year">Year</label>
-                    <input type="number" id="year" name="year" min="1910" max="2099" value="2024" placeholder="Year">
+                <div class="form-group mb-4">
+                    <label for="year" class="block text-gray-700 font-bold mb-2">Year</label>
+                    <input type="number" id="year" name="year" min="1910" max="2099" value="2024" placeholder="Year" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="author">* Author(s)</label>
-                    <input type="text" id="author" name="author" placeholder="Enter Author" required>
-                    <p>(Maintain the uniformity in the author name and also separate the author by (,, or , or and) to
-                        generate
-                        co-author network)</p>
+                <div class="form-group mb-4">
+                    <label for="author" class="block text-gray-700 font-bold mb-2">* Author(s)</label>
+                    <input type="text" id="author" name="author" placeholder="Enter Author" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <p class="text-gray-600 text-sm mt-1">(Maintain the uniformity in the author name and also separate the author by (,, or , or and) to generate co-author network)</p>
                 </div>
-
-                <div>
-                    <label for="issue_date">* Issuing date</label>
-                    <input type="date" id="issue_date" name="issue_date" required>
+                <div class="form-group mb-4">
+                    <label for="issue_date" class="block text-gray-700 font-bold mb-2">* Issuing date</label>
+                    <input type="date" id="issue_date" name="issue_date" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="issue_org">* Issuing organization</label>
-                    <input type="text" id="issue_org" name="issue_org" required>
+                <div class="form-group mb-4">
+                    <label for="issue_org" class="block text-gray-700 font-bold mb-2">* Issuing organization</label>
+                    <input type="text" id="issue_org" name="io" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                {% comment %} <div>
-                    <label for="doi">Doi</label>
-                    <input type="text" id="doi" name="doi" placeholder="Enter Doi">
-                </div> {% endcomment %}
-
-                <div>
-                    <label for="url">Url</label>
-                    <input type="url" id="url" name="url" placeholder="Enter Url">
+                <div class="form-group mb-4">
+                    <label for="url" class="block text-gray-700 font-bold mb-2">Url</label>
+                    <input type="url" id="url" name="url" placeholder="Enter Url" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="doi">Doi</label>
-                    <input type="text" id="doi" name="doi" placeholder="Enter Doi">
+                <div class="form-group mb-4">
+                    <label for="doi" class="block text-gray-700 font-bold mb-2">Doi</label>
+                    <input type="text" id="doi" name="doi" placeholder="Enter Doi" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="volume">Volume</label>
-                    <input type="text" id="volume" name="volume" placeholder="Enter Volume">
+                <div class="form-group mb-4">
+                    <label for="volume" class="block text-gray-700 font-bold mb-2">Volume</label>
+                    <input type="text" id="volume" name="volume" placeholder="Enter Volume" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="page-no">Page No.</label>
-                    <input type="number" id="page-no" name="page-no" placeholder="Enter Page No">
+                <div class="form-group mb-4">
+                    <label for="page-no" class="block text-gray-700 font-bold mb-2">Page No.</label>
+                    <input type="number" id="page-no" name="page-no" placeholder="Enter Page No" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                {% comment %} <div>
-                    <label for="editor">Editor</label>
-                    <input type="text" id="editor" name="editor" placeholder="Enter Editor Name">
-                </div> {% endcomment %}
-                <div>
-                    <label for="publisher">Publisher</label>
-                    <input type="text" id="publisher" name="publisher" placeholder="Enter Publisher Name">
+                <div class="form-group mb-4">
+                    <label for="publisher" class="block text-gray-700 font-bold mb-2">Publisher</label>
+                    <input type="text" id="publisher" name="publisher" placeholder="Enter Publisher Name" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <div>
-                    <label for="pub_file">* Upload publication: </label>
-                    <input type="file" id="pub_file" name="pub_file" placeholder="Enter Publisher Name" required>
+                <div class="form-group mb-4">
+                    <label for="file" class="block text-gray-700 font-bold mb-2">File</label>
+                    <input type="file" id="file" name="file" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-
-                <input type="submit" value="Save"/>
-                <button type="button" onclick="togglePublications()">Cancel</button>
-                
+                <div class="flex justify-end mt-6">
+                    <input type="submit" value="Save" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="button" onclick="togglePublications()" class="ml-2 px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+                </div>
             </form>
+            
         </div>
+        {% endif %}
 
     </div>
 
