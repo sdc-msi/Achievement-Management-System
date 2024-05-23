@@ -1,7 +1,14 @@
+import io
+from reportlab.platypus import SimpleDocTemplate
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import Paragraph, Spacer, PageBreak
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, A4
 from django.shortcuts import render
 from users.models import Faculty, Batch, Student
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .models import Experience, Education, Honors, Doctoral_thesis, Professional_membership, Committee_membership, ResearchProject, Patent, Publication
 from django.conf import settings
@@ -684,3 +691,171 @@ def faculty_list(request):
     }
 
     return render(request, 'faculty/faculty_list.html', context=context)
+
+
+
+stylesheet = getSampleStyleSheet()
+
+h1 = stylesheet['Heading1']
+h2 = stylesheet['Heading2']
+h3 = stylesheet['Heading3']
+italic = stylesheet['Italic']
+bodytext = stylesheet['BodyText']
+
+def createParagraph(flowable, text, style):
+    flowable.append(Paragraph(text, style))
+
+def addSpacer(flowable, height):
+    flowable.append(Spacer(10, height))
+
+def pageBreak(flowable):
+    flowable.append(PageBreak())
+
+def faculty_download_pdf(request, faculty_id):
+
+    faculty = get_object_or_404(Faculty, id=faculty_id)
+
+    buffer = io.BytesIO()
+    my_doc = SimpleDocTemplate(buffer, pagesize=A4)
+    sample_style_sheet = getSampleStyleSheet()
+
+    flowables = []
+        
+
+    experiences = faculty.experiences.all().order_by("start_date")
+    educations = faculty.educations.all()
+    honors = faculty.honors.all()
+    doctoral_theses = faculty.doctoral_theses.all()
+    professional_memberships = faculty.professional_memberships.all()
+    committee_memberships = faculty.committee_memberships.all()
+    research_projects = faculty.research_projects.all()
+    patents = faculty.patents.all()
+    publications = faculty.publications.all()
+
+    createParagraph(flowables, faculty.user.get_full_name(), h1)
+    createParagraph(flowables, faculty.about, bodytext)
+
+    createParagraph(
+        flowables,
+        str(faculty.designation) + ", " + str(faculty.department),
+        italic
+    )
+    
+    # if (experiences):
+    #     createParagraph(flowables, "Experience", h2)
+    #     for exp in experiences:
+    #         flowables.append(Paragraph(
+    #             str(exp.title) + " at " + str(exp.company_name),
+    #             h3 
+    #         ))
+    #         flowables.append(Paragraph('Department: ' + str(exp.department), sample_style_sheet['Italic']))
+    #         flowables.append(Paragraph(
+    #             str(exp.start_date) + " - " + str(exp.end_date),
+    #             sample_style_sheet['Italic']
+    #         ))
+    
+    #     addSpacer(flowables, 15)
+
+    # if (educations):
+    #     createParagraph(flowables, "Education", h2)
+    #     for edu in educations:
+    #         createParagraph(flowables, str(edu.school), h3)
+    #         createParagraph(flowables, f"{edu.degree}, {edu.field_of_study}", italic)
+    #         createParagraph(flowables,
+    #             str(edu.start_date) + " - " + str(edu.end_date),
+    #             italic
+    #         )
+        
+    #     addSpacer(flowables, 15)
+
+    if honors:
+        createParagraph(flowables, "Honors", h2)
+        for hons in honors:
+            createParagraph(flowables, str(hons.title), h3)
+            createParagraph(flowables, hons.issuing_organization, italic)
+            createParagraph(flowables,
+                str(hons.issue_year),
+                italic
+            )
+        
+        addSpacer(flowables, 15)
+
+
+    if doctoral_theses:
+        createParagraph(flowables, "Doctoral Theses", h2)
+        for thesis in doctoral_theses:
+            createParagraph(flowables, thesis.title, h3)
+            createParagraph(flowables, thesis.researchers_name, italic)
+            createParagraph(flowables, thesis.institute, italic)
+            createParagraph(flowables, str(thesis.awarded_year), italic)
+        
+        addSpacer(flowables, 15)
+    
+    if professional_memberships:
+        createParagraph(flowables, "Professional Membership", h2)
+        for membership in professional_memberships:
+            createParagraph(flowables, membership.title, h3)
+            createParagraph(flowables, membership.organization, italic)
+            createParagraph(flowables, membership.member_type, italic)
+            createParagraph(flowables,
+                str(membership.start_date) + " - " + str(membership.end_date),
+                italic
+            )
+
+        addSpacer(flowables, 15)
+    
+    if committee_memberships:
+        createParagraph(flowables, "Committee Membership", h2)
+        for membership in committee_memberships:
+            createParagraph(flowables, membership.name, h3)
+            createParagraph(flowables, membership.organization, italic)
+            createParagraph(flowables,
+                str(membership.start_date) + " - " + str(membership.end_date),
+                italic
+            )
+
+        addSpacer(flowables, 15)
+    
+    if research_projects:
+        createParagraph(flowables, "Research Projects", h2)
+        for project in research_projects:
+            createParagraph(flowables, project.title, h3)
+            createParagraph(flowables, project.role, italic)
+            createParagraph(flowables,
+                str(project.start_date) + " - " + str(project.end_date),
+                italic
+            )
+            createParagraph(flowables, f"Rs. {project.amount} granted by {str(project.funding_agency)}", italic)
+
+        addSpacer(flowables, 15) 
+
+    if patents:
+        createParagraph(flowables, "Patents", h2)
+        for patent in patents:
+            createParagraph(flowables, patent.title, h3)
+            createParagraph(flowables, patent.inventors, italic)
+            createParagraph(flowables, f"Status: {patent.status}", italic)
+            if patent.status == 'completed':
+                createParagraph(flowables, str(patent.filing_date), italic)
+
+        addSpacer(flowables, 15)
+
+    if publications:
+        createParagraph(flowables, "Publications", h2)
+        for pub in publications:
+            createParagraph(flowables, pub.title, h3)
+            createParagraph(flowables, pub.work_type.replace('_', " ").title(), italic)
+            createParagraph(flowables, f"{pub.journal_name}, {str(pub.issue_date)}", italic)
+            createParagraph(flowables, pub.authors, italic)
+
+    # pageBreak(flowables)
+
+    my_doc.build(flowables)
+    pdf_value = buffer.getvalue()
+    
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="some_file.pdf"'
+
+    response.write(buffer.getvalue())
+    buffer.close()
+    return response
