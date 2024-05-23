@@ -49,5 +49,6 @@ urlpatterns = [
     path('delete_publication/<int:pk>', delete_publication, name='delete_publication'),
     path('dashboard/', dashboard, name='dashboard'),
     path('batch_list/<int:batch_id>', batch_list, name='batch_list'),
+    path('get_pdf_report/<int:student_id>', student_download_pdf, name='get_pdf_report')
     # Add other app URLs here
 ]
