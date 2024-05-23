@@ -23,7 +23,6 @@ def home(request):
     return render(request, 'home/home.html', {'title': 'Home'})
 
 def home_new(request):
-    print(request.user.student.id)
     return render(request, 'home/home_new.html')
 
 def search_student(request):
