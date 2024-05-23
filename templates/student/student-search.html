@@ -138,7 +138,7 @@
             <div class="student">
                 <img src="{{student.user.profile_picture.url}}" alt="dp">
                 <span class="student-name">{{student.user.get_full_name}}</span>
-                <span class="view-profile">View Profile</span>
+                <a href="{% url 'home:student_profile' student_id=student.id %}" class="view-profile">View Profile</a>
             </div>
             {% endfor %}
             
