@@ -166,27 +166,60 @@ def search_student(request):
 #         return HttpResponseRedirect(reverse('home:achievement details',args=(achievement_id,)))
 
 
+# def student_profile(request, student_id):
+#     student = get_object_or_404(Student, id=student_id)
+#     experiences = student.experiences.all().order_by("start_date")
+#     educations = student.educations.all()
+#     honors = student.honors.all()
+#     committee_memberships = student.committee_memberships.all()
+#     research_projects = student.research_projects.all()
+#     patents = student.patents.all()
+#     publications = student.publications.all()
+
+#     education_string = list(educations.values_list('degree', flat=True))
+
+#     is_own_profile = False
+
+#     print(hasattr(request.user, 'student'))
+
+#     if request.user.is_authenticated:
+#         if hasattr(request.user, 'student'):
+#             is_own_profile = request.user.student == student
+
+#     print(f"is_own_profile = {is_own_profile}")
+
+#     context = {
+#         'student': student,
+#         'experiences': experiences,
+#         'educations': educations,
+#         'education_string': education_string,
+#         'honors': honors,
+#         'committee_memberships': committee_memberships,
+#         'research_projects': research_projects,
+#         'patents': patents,
+#         'publications': publications,
+#         'is_own_profile': is_own_profile,
+#     }
+#     return render(request, 'student/profile.html',context)
+
+
 def student_profile(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     experiences = student.experiences.all().order_by("start_date")
     educations = student.educations.all()
-    honors = student.honors.all()
+    honors = Honors.objects.filter(student=student)
     committee_memberships = student.committee_memberships.all()
-    research_projects = student.research_projects.all()
-    patents = student.patents.all()
-    publications = student.publications.all()
+    research_projects = ResearchProject.objects.filter(student=student)
+    patents = Patent.objects.filter(student=student)
+    publications = Publication.objects.filter(student=student)
 
     education_string = list(educations.values_list('degree', flat=True))
 
     is_own_profile = False
 
-    print(hasattr(request.user, 'student'))
-
     if request.user.is_authenticated:
         if hasattr(request.user, 'student'):
             is_own_profile = request.user.student == student
-
-    print(f"is_own_profile = {is_own_profile}")
 
     context = {
         'student': student,
@@ -200,8 +233,7 @@ def student_profile(request, student_id):
         'publications': publications,
         'is_own_profile': is_own_profile,
     }
-    return render(request, 'student/profile.html',context)
-
+    return render(request, 'student/profile.html', context)
 
 def add_experience(request):
     if request.method == 'POST':
@@ -260,24 +292,45 @@ def add_education(request):
         return HttpResponseRedirect(reverse('home:student_profile', kwargs={"student_id": student.id}))
 
 
+# def add_honor(request):
+#     if (request.method == 'POST'):
+#         student = get_object_or_404(Student, id=request.user.student.id)
+#         title = request.POST.get('title')
+#         issuing_org = request.POST.get('issuing_organization')
+#         year = request.POST.get('year')
+#         desc = request.POST.get('description')
+
+#         honor = Honors.objects.create(
+#             student=student,
+#             title=title,
+#             issuing_organization=issuing_org,
+#             issue_year=year,
+#             description=desc
+#         )
+
+#         return HttpResponseRedirect(reverse('home:student_profile', kwargs={'student_id': student.id}))
+
+
 def add_honor(request):
-    if (request.method == 'POST'):
+    if request.method == 'POST':
         student = get_object_or_404(Student, id=request.user.student.id)
         title = request.POST.get('title')
         issuing_org = request.POST.get('issuing_organization')
         year = request.POST.get('year')
         desc = request.POST.get('description')
+        
 
         honor = Honors.objects.create(
             student=student,
             title=title,
             issuing_organization=issuing_org,
             issue_year=year,
-            description=desc
+            description=desc,
+            achievement_type='2'  
         )
 
-        return HttpResponseRedirect(reverse('home:student_profile', kwargs={'student_id': student.id}))
-
+        return redirect(reverse('home:student_profile', kwargs={'student_id': student.id}))
+    
 
 def add_committee_membership(request):
     if request.method == 'POST':

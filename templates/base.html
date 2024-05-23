@@ -135,7 +135,7 @@
 
           {% if user.is_authenticated %}
           {% if request.user|has_group:"student" %}
-            <a href="{% url 'users:dashboard' %}">Dashboard</a>
+            <a href="{% url 'home:dashboard' %}">Dashboard</a>
           {% else %}
           <a href="{% url 'fams:dashboard' %}">Dashboard</a >
           {% endif %}
@@ -324,7 +324,7 @@
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Maharaja Surajmal Institute.</a>
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">Maharaja Surajmal Institute.</a>
       </span>
       <div class="flex mt-4 sm:justify-center sm:mt-0">
         <a href="#"

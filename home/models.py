@@ -21,7 +21,7 @@ class StudentAchievement(models.Model):
     achievement_type = models.CharField(max_length=255, choices=TYPE_CHOICES)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
     approved_by = models.ForeignKey(Faculty, on_delete=models.PROTECT, null=True, blank=True, related_name='%(class)s_approved')
     is_pending = models.BooleanField(default=True)
@@ -72,6 +72,8 @@ class ResearchProject(StudentAchievement):
     grant_number = models.CharField(max_length=225)
     status = models.CharField(max_length=50, choices=[('completed', 'Completed'), ('ongoing', 'Ongoing')])
     amount = models.DecimalField(max_digits=10, decimal_places=2)
+    start_date = models.DateField(default='2024-02-05')
+    end_date = models.DateField(default='2024-05-03')
     ongoing = models.BooleanField(default=False)
 
 class Patent(StudentAchievement):
@@ -109,6 +111,7 @@ class Publication(StudentAchievement):
     issuing_organization = models.CharField(max_length=225, default="Unknown Organization")
     issue_date = models.DateField()
     url = models.URLField(null=True, blank=True)
+    year = models.IntegerField(choices=year_choices(), default=current_year())
     volume = models.CharField(max_length=225, null=True, blank=True)
     page_number = models.CharField(max_length=225, null=True, blank=True)
     publisher_name = models.CharField(max_length=225, null=True, blank=True)
