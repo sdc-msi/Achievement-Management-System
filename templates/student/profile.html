@@ -634,7 +634,7 @@ form input[type="date"]{
             </div>
         </div>
 
-        {% if student.about %}
+        {% if student.about or is_own_profile %}
         <div class="section" id="about">
 
             <div class="section-head">
@@ -648,7 +648,7 @@ form input[type="date"]{
                 {{student.about}}
             </p>
         
-            <form id="about-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_about' %}">
+            <form id="about-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'home:add_about' %}">
                 {% csrf_token %}
                 <textarea id="brief-info" name="about" rows="4" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter brief info..."></textarea>
                 <div class="flex justify-end space-x-2">
@@ -665,7 +665,7 @@ form input[type="date"]{
 
 
 
-        {% if student.expertise %}
+        {% if student.expertise or is_own_profile %}
         <!-- Expertise -->
         <div class="section">
             <div class="section-head">
@@ -682,7 +682,7 @@ form input[type="date"]{
                 </p>
             </div>
 
-            <form id="expertise-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_expertise' %}">
+            <form id="expertise-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'home:add_expertise' %}">
                 {% csrf_token %}
                 <div class="form-group mb-4">
                     <label for="expertise" class="block text-sm font-medium text-gray-700 mb-2">* Expertise</label>
@@ -721,7 +721,7 @@ form input[type="date"]{
         {% endif %}
 
 
-        {% if student.user.email %}
+        {% if student.user.email or is_own_profile %}
         <!-- Email Information -->
         <div class="section">
             <div class="section-head">
@@ -735,7 +735,7 @@ form input[type="date"]{
                 <p> {{ student.user.email }} </p>
             </div>
 
-            <form id="email-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_email' %}">
+            <form id="email-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'home:add_email' %}">
                 {% csrf_token %}
                 <div>
                     <label for="email-input" class="block text-sm font-medium text-gray-700 mb-2">Email:</label>
@@ -770,7 +770,7 @@ form input[type="date"]{
                 </div>
             </div>
 
-            <form id="personal-info-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_personal_info' %}">
+            <form id="personal-info-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'home:add_personal_info' %}">
                 {% csrf_token %}
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
@@ -796,7 +796,7 @@ form input[type="date"]{
         </div>
 
 
-        {% if student.address or  student.contact_number %}
+        {% if student.address or  student.contact_number or is_own_profile %}
         <!-- Contact Information -->
         <div class="section">
             <div class="section-head">
@@ -815,7 +815,7 @@ form input[type="date"]{
                 </div>
             </div>
 
-            <form id="contact-info-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'fams:add_contact_info' %}">
+            <form id="contact-info-section-form" class="hidden space-y-4 p-4 bg-white rounded shadow-md w-full" method="POST" action="{% url 'home:add_contact_info' %}">
                 {% csrf_token %}
                 <div class="mb-4">
                     <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Address:</label>
@@ -834,7 +834,7 @@ form input[type="date"]{
         </div>
         {% endif %}
 
-        {% if experiences %}
+        {% if experiences or is_own_profile %}
         <!--  Experience -->
         <div class="section">
             <div class="section-head">
@@ -874,7 +874,7 @@ form input[type="date"]{
                                         <span class="sr-only">Close modal</span>
                                     </button>
                                 </div>
-                                <form method="POST" action="{% url 'fams:edit_experience' exp.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                <form method="POST" action="{% url 'home:edit_experience' exp.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                                     {% csrf_token %}
                                     
                                     <div class="mb-4">
@@ -970,7 +970,7 @@ form input[type="date"]{
                                     <span class="sr-only">Close modal</span>
                                 </button>
                                 <div class="p-4 md:p-5 text-center">
-                                    <form action="{% url 'fams:delete_experience' exp.id %}" method="POST">
+                                    <form action="{% url 'home:delete_experience' exp.id %}" method="POST">
                                         {% csrf_token %}
                                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -987,7 +987,7 @@ form input[type="date"]{
                 </div>
             </div>
         
-            <form method="POST" id="experience-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded" action="{% url 'fams:add_experience' %}">
+            <form method="POST" id="experience-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded" action="{% url 'home:add_experience' %}">
                 {% csrf_token %}
                 <div class="mb-4">
                     <label for="institute" class="block text-gray-700 font-bold mb-2">* Institute</label>
@@ -1061,7 +1061,7 @@ form input[type="date"]{
 
 
 
-        {% if educations %}
+        {% if educations or is_own_profile %}
         <!--  Education Qualification -->
         <div class="section">
             <div class="section-head">
@@ -1104,7 +1104,7 @@ form input[type="date"]{
                                     </button>
                                 </div>
                                 <!-- Modal body --> 
-                                <form method="POST" action="{% url 'fams:edit_education' edu.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                <form method="POST" action="{% url 'home:edit_education' edu.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                                     {% csrf_token %}
                                     <div class="mb-4">
                                         <label for="qualification" class="block text-gray-700 font-bold mb-2">Qualification *</label>
@@ -1156,7 +1156,7 @@ form input[type="date"]{
                                     <span class="sr-only">Close modal</span>
                                 </button>
                                 <div class="p-4 md:p-5 text-center">
-                                    <form action="{% url 'fams:delete_education' edu.id %}" method="POST">
+                                    <form action="{% url 'home:delete_education' edu.id %}" method="POST">
                                         {% csrf_token %}
                                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -1174,7 +1174,7 @@ form input[type="date"]{
                 </div>
             </div>
         
-            <form method="post" action="{% url 'fams:add_education' %}" id="education-qualification-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+            <form method="post" action="{% url 'home:add_education' %}" id="education-qualification-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
                 <div class="mb-4">
                     <label for="qualification" class="block text-gray-700 font-bold mb-2">Qualification *</label>
@@ -1216,7 +1216,7 @@ form input[type="date"]{
 
 
         <!-- Membership in Committees   -->
-        {% if committee_memberships %}
+        {% if committee_memberships or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Membership in Committees</span>
@@ -1256,7 +1256,7 @@ form input[type="date"]{
                                         <span class="sr-only">Close modal</span>
                                     </button>
                                 </div>
-                                <form method="POST" action="{% url 'fams:edit_committee_membership' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                <form method="POST" action="{% url 'home:edit_committee_membership' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                                     {% csrf_token %}
                                     <div class="mb-4">
                                         <label for="organisation-{{item.id}}" class="block text-gray-700 font-bold mb-2">* Organisation</label>
@@ -1298,7 +1298,7 @@ form input[type="date"]{
                                     <span class="sr-only">Close modal</span>
                                 </button>
                                 <div class="p-4 md:p-5 text-center">
-                                    <form action="{% url 'fams:delete_committee_membership' item.id %}" method="POST">
+                                    <form action="{% url 'home:delete_committee_membership' item.id %}" method="POST">
                                         {% csrf_token %}
                                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -1315,7 +1315,7 @@ form input[type="date"]{
                 </div>
             </div>
         
-            <form method="POST" id="membership-in-committees-section-form" style="display: none;" action="{% url 'fams:add_committee_membership' %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+            <form method="POST" id="membership-in-committees-section-form" style="display: none;" action="{% url 'home:add_committee_membership' %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
                 <div class="mb-4">
                     <label for="new-organisation" class="block text-gray-700 font-bold mb-2">* Organisation</label>
@@ -1349,7 +1349,7 @@ form input[type="date"]{
 
 
         <!-- Honours and Awards  -->
-        {% if honors %}
+        {% if honors or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Honours and Awards</span>
@@ -1389,7 +1389,7 @@ form input[type="date"]{
                                 </button>
                             </div>
                             <!-- Modal body -->
-                            <form method="POST" action="{% url 'fams:edit_honor' hons.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                            <form method="POST" action="{% url 'home:edit_honor' hons.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                                 {% csrf_token %}
                                 <div class="mb-4">
                                     <label for="title-input" class="block text-gray-700 font-bold mb-2">Title *</label>
@@ -1432,7 +1432,7 @@ form input[type="date"]{
                                 <span class="sr-only">Close modal</span>
                             </button>
                             <div class="p-4 md:p-5 text-center">
-                                <form action="{% url 'fams:delete_honors' hons.id %}" method="POST">
+                                <form action="{% url 'home:delete_honors' hons.id %}" method="POST">
                                     {% csrf_token %}
                                     <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -1448,7 +1448,7 @@ form input[type="date"]{
                 {% endfor %}
             </div>
         
-            <form method="post" action="{% url 'fams:add_honor' %}" id="honours-and-awards-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+            <form method="post" action="{% url 'home:add_honor' %}" id="honours-and-awards-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
                 <div class="mb-4">
                     <label for="title-input" class="block text-gray-700 font-bold mb-2">Title *</label>
@@ -1477,163 +1477,12 @@ form input[type="date"]{
                         class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
                 </div>
             </form>
-            
-            
-            
         </div>
         {% endif %}
 
-
-        <!-- Doctoral Theses Guided      -->
-        {% if doctoral_theses %}
-        <div class="section">
-            <div class="section-head">
-                <span class="section-name">Doctoral Theses Guided</span>
-                {% if is_own_profile %}
-                <button class="add-edit-btn" onclick="toggleDoctoralThesesGuided()"><i class="fa-solid fa-plus"></i></button>
-                {% endif %}
-            </div>
-            <div id="doctoral-theses-guided-section-body" class="section-body">
-                {% for thesis in doctoral_theses %}
-                <div class="doctoral-theses-guided-item">
-                    {% if is_own_profile %}
-                    <div class="update-delete-button-container">
-                        <button class="update-button" data-modal-target="thesis-modal-{{thesis.id}}" data-modal-toggle="thesis-modal-{{thesis.id}}" type="button"><i class="fa-solid fa-pen"></i></button>
-                        <button class="delete-button" data-modal-target="del-thesis-modal-{{thesis.id}}" data-modal-toggle="del-thesis-modal-{{thesis.id}}" type="button"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                    {% endif %}
-                    <div class="year-box">{{ thesis.awarded_year }}</div>
-                    <div class="doctoral-theses-guided-details">
-                        <span class="doctoral-theses-guided-title">{{ thesis.title }}</span>
-                        <div class="doctoral-theses-guided-institute-and-researcher">
-                            <span>{{ thesis.institute }}, </span><span>{{ thesis.researchers_name }}</span>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Edit Thesis Modal -->
-                <div id="thesis-modal-{{thesis.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative p-4 w-full max-w-3xl max-h-full">
-                        <!-- Modal content -->
-                        <div class="relative bg-white rounded-lg shadow">
-                            <!-- Modal header -->
-                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                <h3 class="text-lg font-semibold text-black">Edit Doctoral Thesis</h3>
-                                <button type="button" class="bg-black" data-modal-toggle="thesis-modal-{{thesis.id}}">
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                    </svg>
-                                    <span class="sr-only">Close modal</span>
-                                </button>
-                            </div>
-                            <!-- Modal body -->
-                            <form method="POST" action="{% url 'fams:edit_doctoral_thesis' thesis.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
-                                {% csrf_token %}
-                                <div class="mb-4">
-                                    <label for="researcher-names" class="block text-gray-700 font-bold mb-2">Names of Researchers Involved *</label>
-                                    <input name="researcher_names" id="researcher-names" type="text" value="{{ thesis.researchers_name }}" required
-                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="title" class="block text-gray-700 font-bold mb-2">Title *</label>
-                                    <input name="title" id="title" type="text" value="{{ thesis.title }}" required
-                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="institute" class="block text-gray-700 font-bold mb-2">Institute *</label>
-                                    <input name="institute" id="institute" type="text" value="{{ thesis.institute }}" required
-                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="awarded-year" class="block text-gray-700 font-bold mb-2">Awarded year *</label>
-                                    <input name="awarded_year" id="awarded-year" type="number" min="1910" max="2099" step="1" value="{{ thesis.awarded_year }}" required
-                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="description" class="block text-gray-700 font-bold mb-2">Description *</label>
-                                    <textarea name="description" id="description" required
-                                        class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{ thesis.description }}</textarea>
-                                </div>
-                                <div class="flex justify-end">
-                                    <input type="submit" value="Save"
-                                        class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                            </form>
-                            
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Delete Thesis Modal -->
-                <div id="del-thesis-modal-{{thesis.id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative p-4 w-full max-w-md max-h-full">
-                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="del-thesis-modal-{{thesis.id}}">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                </svg>
-                                <span class="sr-only">Close modal</span>
-                            </button>
-                            <div class="p-4 md:p-5 text-center">
-                                <form action="{% url 'fams:delete_doctoral_thesis' thesis.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                                    </svg>
-                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this thesis?</h3>
-                                    <button data-modal-hide="del-thesis-modal-{{thesis.id}}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">Yes, I'm sure</button>
-                                    <button data-modal-hide="del-thesis-modal-{{thesis.id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        
-            <form method="post" action="{% url 'fams:add_doctoral_thesis' %}" id="doctoral-theses-guided-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
-                {% csrf_token %}
-                <div class="space-y-4">
-                    <div>
-                        <label for="researcher-names" class="block text-gray-700 font-bold mb-2">Names of Researchers Involved *</label>
-                        <input name="researcher_names" id="researcher-names" type="text" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label for="title" class="block text-gray-700 font-bold mb-2">Title *</label>
-                        <input name="title" id="title" type="text" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label for="institute" class="block text-gray-700 font-bold mb-2">Institute *</label>
-                        <input name="institute" id="institute" type="text" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label for="awarded-year" class="block text-gray-700 font-bold mb-2">Awarded year *</label>
-                        <input name="awarded_year" id="awarded-year" type="number" min="1910" max="2099" step="1" value="2024" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label for="description" class="block text-gray-700 font-bold mb-2">Description *</label>
-                        <textarea name="description" id="description" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                    </div>
-                </div>
-                <div class="flex justify-end space-x-4 mt-4">
-                    <input type="submit" value="Save"
-                        class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button type="button" onclick="toggleDoctoralThesesGuided()"
-                        class="px-4 py-2 bg-gray-500 text-white font-bold rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
-                </div>
-            </form>
-       
-            
-        </div>
-        {% endif %}
 
         <!-- Research Projects       -->
-        {% if research_projects %}
+        {% if research_projects or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Research Projects</span>
@@ -1685,7 +1534,7 @@ form input[type="date"]{
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="{% url 'fams:edit_research_projects' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                    <form method="POST" action="{% url 'home:edit_research_projects' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                                         {% csrf_token %}
                                         <div class="mb-4">
                                             <label for="project-title" class="block text-gray-700 font-bold mb-2">Title of the project *</label>
@@ -1752,7 +1601,7 @@ form input[type="date"]{
                                     <span class="sr-only">Close modal</span>
                                 </button>
                                 <div class="p-4 md:p-5 text-center">
-                                    <form action="{% url 'fams:delete_research_project' item.id %}" method="POST">
+                                    <form action="{% url 'home:delete_research_project' item.id %}" method="POST">
                                         {% csrf_token %}
                                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -1770,7 +1619,7 @@ form input[type="date"]{
             </div>
         
             <!-- Add New Research Project Form -->
-            <form method="post" action="{% url 'fams:add_research_project' %}" id="research-projects-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+            <form method="post" action="{% url 'home:add_research_project' %}" id="research-projects-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
                 <div class="mb-4">
                     <label for="project-title" class="block text-gray-700 font-bold mb-2">Title of the project *</label>
@@ -1825,7 +1674,7 @@ form input[type="date"]{
         {% endif %}
 
         <!-- Patent       -->
-        {% if patents %}
+        {% if patents or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Patent</span>
@@ -1864,7 +1713,7 @@ form input[type="date"]{
                                     <span class="sr-only">Close modal</span>
                                 </button>
                             </div>
-                            <form method="POST" action="{% url 'fams:edit_patent' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                            <form method="POST" action="{% url 'home:edit_patent' item.id %}" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                                 {% csrf_token %}
                                 <div class="mb-4">
                                     <label for="title" class="block text-gray-700 font-bold mb-2">* Title of the Patent</label>
@@ -1940,7 +1789,7 @@ form input[type="date"]{
                                 <span class="sr-only">Close modal</span>
                             </button>
                             <div class="p-4 md:p-5 text-center">
-                                <form action="{% url 'fams:delete_patent' item.id %}" method="POST">
+                                <form action="{% url 'home:delete_patent' item.id %}" method="POST">
                                     {% csrf_token %}
                                     <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -1958,7 +1807,7 @@ form input[type="date"]{
                 {% endfor %}
             </div>
         
-            <form method="post" action="{% url 'fams:add_patent' %}" id="patent-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+            <form method="post" action="{% url 'home:add_patent' %}" id="patent-section-form" class="hidden max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
                 <div class="form-group mb-4">
                     <label for="title" class="block text-gray-700 font-bold mb-2">* Title of the Patent</label>
@@ -2028,7 +1877,7 @@ form input[type="date"]{
         {% endif %}
 
         <!-- Publications -->
-        {% if publications %}
+        {% if publications or is_own_profile%}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Publications</span>
@@ -2075,7 +1924,7 @@ form input[type="date"]{
                                         <span class="sr-only">Close modal</span>
                                     </button>
                                 </div>
-                                <form method="POST" action="{% url 'fams:edit_publication' item.id %}" enctype="multipart/form-data" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+                                <form method="POST" action="{% url 'home:edit_publication' item.id %}" enctype="multipart/form-data" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                                     {% csrf_token %}
                                     <div class="form-group mb-4">
                                         <label for="work-type" class="block text-gray-700 font-bold mb-2">* Work Type</label>
@@ -2166,7 +2015,7 @@ form input[type="date"]{
                                     <span class="sr-only">Close modal</span>
                                 </button>
                                 <div class="p-4 md:p-5 text-center">
-                                    <form action="{% url 'fams:delete_publication' item.id %}" method="POST">
+                                    <form action="{% url 'home:delete_publication' item.id %}" method="POST">
                                         {% csrf_token %}
                                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -2185,7 +2034,7 @@ form input[type="date"]{
                 {% endfor %}
             </div>
         
-            <form method="POST" action="{% url 'fams:add_publication' %}" enctype="multipart/form-data" id="publications-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
+            <form method="POST" action="{% url 'home:add_publication' %}" enctype="multipart/form-data" id="publications-section-form" style="display: none;" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded">
                 {% csrf_token %}
                 <div class="form-group mb-4">
                     <label for="work-type" class="block text-gray-700 font-bold mb-2">* Work Type</label>
