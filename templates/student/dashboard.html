@@ -364,7 +364,7 @@
                 class="cover-photo">
             <img src="{{ student.user.profile_picture.url }}"
                 alt="Profile Photo" class="profile-photo">
-            <h2>Priyadarshani Rajan</h2>
+            <h2> {{ student.user.get_full_name }} </h2>
             <p>{{ student.course|upper }} {{ student.batch_year }} Batch</p>
             <div class="stats">
                 <div>
@@ -483,7 +483,7 @@
                 </li>
                 {% endfor %}
             </ul>
-            <a href="#" class="view-more">View More</a>
+            <a href="{% url 'fams:faculty_list' %}" class="view-more">View More</a>
         </div>
     </div>
 </main>
