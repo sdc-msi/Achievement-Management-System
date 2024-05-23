@@ -6,6 +6,7 @@ from django.urls import reverse
 from .models import Experience, Education, Honors, Doctoral_thesis, Professional_membership, Committee_membership, ResearchProject, Patent, Publication
 from django.conf import settings
 from django.db.models import Count
+from home.models import Honors, ResearchProject, Patent, Publication
 
 # Create your views here.
 def faculty_list(request):
@@ -605,7 +606,20 @@ def dashboard(request):
     other_batches = Batch.objects.exclude(assigned_to=faculty).annotate(count = Count("student"))
     other_faculties = Faculty.objects.all().exclude(id=faculty.id)
     print(other_faculties)
+
+    students = Student.objects.filter(batch=assigned_batches[1])
+    # print(students)
     
+    
+    pending_honors_count = Honors.objects.filter( is_pending=True).count()
+    pending_research_projects_count = ResearchProject.objects.filter( is_pending=True).count()
+    pending_patents_count = Patent.objects.filter( is_pending=True).count()
+    pending_publications_count = Publication.objects.filter( is_pending=True).count()
+
+    total_pending_count = (pending_honors_count + pending_research_projects_count +
+                            pending_patents_count + pending_publications_count)
+    print("Total Pending Count: ", total_pending_count)
+
     print("Id: ", assigned_batches[0].id)
     print("Count: ", assigned_batches[0].count)
 
@@ -614,6 +628,7 @@ def dashboard(request):
         "assigned_batches" : assigned_batches,
         "other_batches" : other_batches,
         "other_faculties": other_faculties,
+        "total_pending_count": total_pending_count,
     }
 
     return render(request, 'faculty/dashboard.html', context=context)
@@ -624,18 +639,36 @@ def batch_list(request,pk):
     batch = get_object_or_404(Batch,assigned_to=faculty,id=pk)
     print(batch)
 
+
+
     search_query = request.GET.get('search', '')
     if search_query:
         students = Student.objects.filter(batch=batch, user__first_name__icontains=search_query)
     else:
         students = Student.objects.filter(batch=batch)
 
+    students_with_pending_counts = []
+
+    for student in students:
+        pending_honors_count = Honors.objects.filter(student=student, is_pending=True).count()
+        pending_research_projects_count = ResearchProject.objects.filter(student=student, is_pending=True).count()
+        pending_patents_count = Patent.objects.filter(student=student, is_pending=True).count()
+        pending_publications_count = Publication.objects.filter(student=student, is_pending=True).count()
+
+        total_pending_count = (pending_honors_count + pending_research_projects_count +
+                               pending_patents_count + pending_publications_count)
+
+        students_with_pending_counts.append({
+            'student': student,
+            'pending_count': total_pending_count
+        })
     
     
     context ={
         "students":students,
         "batch":batch,
-        "search_query" : search_query
+        "search_query" : search_query,
+        "students_with_pending_counts": students_with_pending_counts,
     }   
 
     return render(request, 'faculty/batch-list.html',context=context)

@@ -189,15 +189,17 @@
 
 
             <div class="students-list">
-                {% for student in students %}
+                {% for student_info in students_with_pending_counts %}
                 <div class="student">
-                    <a  href="{% url 'home:student_profile' student_id=student.id %}">
-                        <img src="{{student.user.profile_picture.url}}"
+                    <a  href="{% url 'home:student_profile' student_id=student_info.student.id %}">
+                        <img src="{{student_info.student.user.profile_picture.url}}"
                         alt="profile_pic">
-                        <span class="student-name">{{student.user.get_full_name}}</span>
+                        <span class="student-name">{{student_info.student.user.get_full_name}}</span>
                     </a>
-                    <span class="approvals">3</span>
+                    <span class="approvals"><a href="#">{{ student_info.pending_count }} </a></span>
+                    
                 </div>
+                
                 {% endfor %}
                 
             </div>
