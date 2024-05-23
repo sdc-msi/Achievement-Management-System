@@ -41,6 +41,6 @@ urlpatterns = [
     path('delete_research_project/<int:pk>', delete_research_project, name='delete_research_project'),
     path('delete_patent/<int:pk>', delete_patent, name='delete_patent'),
     path('delete_publication/<int:pk>', delete_publication, name='delete_publication'),
-
+    path('get_pdf_report/<int:faculty_id>', faculty_download_pdf, name='get_pdf_report'),
     path('faculty_list/', faculty_list, name='faculty_list'),
 ]
