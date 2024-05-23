@@ -634,7 +634,7 @@ form input[type="date"]{
             </div>
         </div>
 
-        {% if faculty.about %}
+        {% if faculty.about or is_own_profile %}
         <div class="section" id="about">
 
             <div class="section-head">
@@ -665,7 +665,7 @@ form input[type="date"]{
 
 
 
-        {% if faculty.expertise %}
+        {% if faculty.expertise or is_own_profile %}
         <!-- Expertise -->
         <div class="section">
             <div class="section-head">
@@ -721,7 +721,7 @@ form input[type="date"]{
         {% endif %}
 
 
-        {% if faculty.user.email %}
+        {% if faculty.user.email or is_own_profile %}
         <!-- Email Information -->
         <div class="section">
             <div class="section-head">
@@ -796,7 +796,7 @@ form input[type="date"]{
         </div>
 
 
-        {% if faculty.address or  faculty.contact_number %}
+        {% if faculty.address or  faculty.contact_number or is_own_profile %}
         <!-- Contact Information -->
         <div class="section">
             <div class="section-head">
@@ -834,7 +834,7 @@ form input[type="date"]{
         </div>
         {% endif %}
 
-        {% if experiences %}
+        {% if experiences or is_own_profile %}
         <!--  Experience -->
         <div class="section">
             <div class="section-head">
@@ -1061,7 +1061,7 @@ form input[type="date"]{
 
 
 
-        {% if educations %}
+        {% if educations or is_own_profile %}
         <!--  Education Qualification -->
         <div class="section">
             <div class="section-head">
@@ -1216,7 +1216,7 @@ form input[type="date"]{
 
 
         <!-- Membership in Committees   -->
-        {% if committee_memberships %}
+        {% if committee_memberships or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Membership in Committees</span>
@@ -1349,7 +1349,7 @@ form input[type="date"]{
 
 
         <!-- Honours and Awards  -->
-        {% if honors %}
+        {% if honors or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Honours and Awards</span>
@@ -1485,7 +1485,7 @@ form input[type="date"]{
 
 
         <!-- Doctoral Theses Guided      -->
-        {% if doctoral_theses %}
+        {% if doctoral_theses or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Doctoral Theses Guided</span>
@@ -1633,7 +1633,7 @@ form input[type="date"]{
         {% endif %}
 
         <!-- Research Projects       -->
-        {% if research_projects %}
+        {% if research_projects or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Research Projects</span>
@@ -1825,7 +1825,7 @@ form input[type="date"]{
         {% endif %}
 
         <!-- Patent       -->
-        {% if patents %}
+        {% if patents or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Patent</span>
@@ -2028,7 +2028,7 @@ form input[type="date"]{
         {% endif %}
 
         <!-- Publications -->
-        {% if publications %}
+        {% if publications or is_own_profile %}
         <div class="section">
             <div class="section-head">
                 <span class="section-name">Publications</span>
