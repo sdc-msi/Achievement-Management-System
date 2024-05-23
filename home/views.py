@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.shortcuts import render, redirect
-from .forms import StudentAchievementForm
+# from .forms import StudentAchievementForm
 from users.models import Student, Faculty, Batch
 from home.models import Experience, Education, Patent, Publication, ResearchProject, Committee_membership, Honors
 from .models import StudentAchievement
@@ -71,99 +71,99 @@ def search_student(request):
     return render(request, 'student/student-search.html',context=context)
 
 
-@group_required('student')
-def create_achievement(request):
+# @group_required('student')
+# def create_achievement(request):
     
-    if request.method == 'POST':
-        achievement_form = StudentAchievementForm(request.POST, request.FILES)
-        stu = Student.objects.get(user=request.user)
-        print(stu)
-        print(type(stu))
-        if achievement_form.is_valid():
-            achievement = achievement_form.save(commit=False)
-            achievement.student = stu
-            achievement.save()
-            messages.success(request, f'Your achievement has been submitted for approval!')
-            return HttpResponseRedirect(reverse('home:home'))
+#     if request.method == 'POST':
+#         achievement_form = StudentAchievementForm(request.POST, request.FILES)
+#         stu = Student.objects.get(user=request.user)
+#         print(stu)
+#         print(type(stu))
+#         if achievement_form.is_valid():
+#             achievement = achievement_form.save(commit=False)
+#             achievement.student = stu
+#             achievement.save()
+#             messages.success(request, f'Your achievement has been submitted for approval!')
+#             return HttpResponseRedirect(reverse('home:home'))
 
-    else:
-        achievement_form = StudentAchievementForm()
+#     else:
+#         achievement_form = StudentAchievementForm()
 
-    return render(request, 'home/create_achievement.html', { 'form': achievement_form })
+#     return render(request, 'home/create_achievement.html', { 'form': achievement_form })
 
-@group_required('faculty')
-def view_pending(request):
-    pending = StudentAchievement.objects.filter(is_pending=1)
+# @group_required('faculty')
+# def view_pending(request):
+#     pending = StudentAchievement.objects.filter(is_pending=1)
     
-    return render(request, 'home/all_achievements.html', {'achievements': pending})
+#     return render(request, 'home/all_achievements.html', {'achievements': pending})
 
-@group_required('faculty', 'student')
-def view_details(request, achievement_id):
-    achievement = get_object_or_404(StudentAchievement, id=achievement_id)
-    if achievement.approved_by == None:
-        approved_by = "NOT APPROVED"
-    else:
-        approved_by = achievement.approved_by.user.first_name + achievement.approved_by.user.last_name
+# @group_required('faculty', 'student')
+# def view_details(request, achievement_id):
+#     achievement = get_object_or_404(StudentAchievement, id=achievement_id)
+#     if achievement.approved_by == None:
+#         approved_by = "NOT APPROVED"
+#     else:
+#         approved_by = achievement.approved_by.user.first_name + achievement.approved_by.user.last_name
 
-    achievement_type = 'Academic' if achievement.achievement_type == '1' else 'Non-academic'
-    details = [
-        ('Student Name', achievement.student.user.first_name+ " " + achievement.student.user.last_name ),
-        ('Event Name', achievement.event_name),
-        ('Achievement Type', achievement_type),
-        ('Category', achievement.category),
-        ('Venue', achievement.venue),
-        ('Date', achievement.date),
-        ('Title', achievement.title),
-        ('Description', achievement.desc),
-        ('Role', achievement.role),
-        ('File', achievement.file),
-        ('Image URL', achievement.image_url),
-        ('Approval status', achievement.approved),
-        ('Approved by', approved_by),
-    ]
-    if request.user.groups.filter(name='student').exists():
-        return render(request, "home/achievement_details.html", {'achievement_details': details,'student':True,'achievement_id':achievement_id})
+#     achievement_type = 'Academic' if achievement.achievement_type == '1' else 'Non-academic'
+#     details = [
+#         ('Student Name', achievement.student.user.first_name+ " " + achievement.student.user.last_name ),
+#         ('Event Name', achievement.event_name),
+#         ('Achievement Type', achievement_type),
+#         ('Category', achievement.category),
+#         ('Venue', achievement.venue),
+#         ('Date', achievement.date),
+#         ('Title', achievement.title),
+#         ('Description', achievement.desc),
+#         ('Role', achievement.role),
+#         ('File', achievement.file),
+#         ('Image URL', achievement.image_url),
+#         ('Approval status', achievement.approved),
+#         ('Approved by', approved_by),
+#     ]
+#     if request.user.groups.filter(name='student').exists():
+#         return render(request, "home/achievement_details.html", {'achievement_details': details,'student':True,'achievement_id':achievement_id})
         
-    return render(request, "home/achievement_details.html", {'achievement_details': details,'achievement_id':achievement_id})
+#     return render(request, "home/achievement_details.html", {'achievement_details': details,'achievement_id':achievement_id})
     
 
-@group_required( 'student')
-def student_view_all(request):
-    achievements = StudentAchievement.objects.filter(approved=1)
+# @group_required( 'student')
+# def student_view_all(request):
+#     achievements = StudentAchievement.objects.filter(approved=1)
 
-    return render(request, 'home/all_achievements.html', {'achievements': achievements,'student':True})
+#     return render(request, 'home/all_achievements.html', {'achievements': achievements,'student':True})
 
-@group_required('faculty')
-def faculty_view_all(request):
-    achievements = StudentAchievement.objects.all()
-    return render(request, 'home/all_achievements.html', {'achievements': achievements})
+# @group_required('faculty')
+# def faculty_view_all(request):
+#     achievements = StudentAchievement.objects.all()
+#     return render(request, 'home/all_achievements.html', {'achievements': achievements})
 
 
 
-@group_required('faculty')
-def toggle_approval(request, achievement_id):
-    print('toggle_approval')
-    achievement = get_object_or_404(StudentAchievement, id=achievement_id)
-    print(achievement)
-    print(achievement.approved) 
-    if request.method == 'POST':
-        print("HIHBUHVJBNKJBH")
-        # Get the approval status from the form submission
-        approval_status = request.POST.get('approval_status')
+# @group_required('faculty')
+# def toggle_approval(request, achievement_id):
+#     print('toggle_approval')
+#     achievement = get_object_or_404(StudentAchievement, id=achievement_id)
+#     print(achievement)
+#     print(achievement.approved) 
+#     if request.method == 'POST':
+#         print("HIHBUHVJBNKJBH")
+#         # Get the approval status from the form submission
+#         approval_status = request.POST.get('approval_status')
         
 
-        # Toggle the 'approved' field
-        achievement.approved = (approval_status == 'approved')
+#         # Toggle the 'approved' field
+#         achievement.approved = (approval_status == 'approved')
 
 
-        # Set the 'approved_by' field if approving
-        if achievement.approved:
-            achievement.approved_by = request.user.faculty 
+#         # Set the 'approved_by' field if approving
+#         if achievement.approved:
+#             achievement.approved_by = request.user.faculty 
             
-             # Replace with your actual user fetching logic
-        achievement.is_pending = 0
-        achievement.save()
-        return HttpResponseRedirect(reverse('home:achievement details',args=(achievement_id,)))
+#              # Replace with your actual user fetching logic
+#         achievement.is_pending = 0
+#         achievement.save()
+#         return HttpResponseRedirect(reverse('home:achievement details',args=(achievement_id,)))
 
 
 def student_profile(request, student_id):
