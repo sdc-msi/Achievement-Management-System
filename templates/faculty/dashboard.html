@@ -431,7 +431,7 @@
         <div class="other-batches">
             <h3>Other Batches</h3>
 
-            <div class="filter-form">
+            <!-- <div class="filter-form">
                 <input type="number" placeholder="Batch Year">
                 <select name="" id="">
                     <option value="">Course</option>
@@ -450,24 +450,26 @@
                 </select>
 
                 <button>Filter</button>
-            </div>
+            </div> -->
 
             <div class="batches">
                 {% for batch in other_batches %}
+                <a href="{% url 'fams:batch_list' batch.id %}">
 
-                <div class="batch">
-                    <div class="header gray">
-                        <h4>{{ batch.course| upper }} {{ batch.year }}</h4>
-                        <p>{{batch.batch_shift}}</p>
-                        <img class="avatar" src="{{batch.assigned_to.user.profile_picture.url}}" alt="">
+                    <div class="batch">
+                        <div class="header gray">
+                            <h4>{{ batch.course| upper }} {{ batch.year }}</h4>
+                            <p>{{batch.batch_shift}}</p>
+                            <img class="avatar" src="{{batch.assigned_to.user.profile_picture.url}}" alt="">
+                        </div>
+                        <div class="content">
+                            <p>{{batch.assigned_to_name}}</p>
+                        </div>
+                        <div class="footer">
+                            <span class="icon"><i class="fa-solid fa-users"></i> 68</span>
+                        </div>
                     </div>
-                    <div class="content">
-                        <p>{{batch.assigned_to_name}}</p>
-                    </div>
-                    <div class="footer">
-                        <span class="icon"><i class="fa-solid fa-users"></i> 68</span>
-                    </div>
-                </div>
+                </a>
                 {% endfor %}
 
             </div>
@@ -488,10 +490,10 @@
             <h2>Other Faculties</h2>
             <ul class="faculty-list">
                 {% for fac in other_faculties %}
-                <li class="faculty">
+                <a href="{% url 'fams:faculty_profile' faculty_id=fac.id%}" class="faculty">
                     <img src="{{fac.user.profile_picture.url}}" alt="Avatar" class="avatar">
                     <div class="name">{{fac.user.first_name}} {{fac.user.last_name}}</div>
-                </li>
+                </a>
                 {% endfor %}
                 
             </ul>
