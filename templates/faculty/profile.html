@@ -110,10 +110,12 @@
     }
 
     .download-profile{
-        width: 90px;
+        {% comment %} width: 90px; {% endcomment %}
         border-radius: 3px;
-        height: 30px;
-        background-color: rgb(168, 172, 177);
+        {% comment %} height: 30px; {% endcomment %}
+        padding:10px;
+        background-color: darkblue;
+        color: white
     }
 
     .intro-name {
@@ -659,7 +661,7 @@ form input[type="date"]{
                     </div>
                 </div>
                 <div >
-                    <button class="download-profile">Download</button>
+                    <a href="{% url "fams:get_pdf_report" faculty.id %}" class="download-profile">Download Report</a>
                 </div>
             </div>
         </div>

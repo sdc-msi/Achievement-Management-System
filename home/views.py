@@ -952,7 +952,7 @@ def student_download_pdf(request, student_id):
     pdf_value = buffer.getvalue()
     
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="some_file.pdf"'
+    response['Content-Disposition'] = f'attachment; filename="{student.user.get_full_name()} AMS Report.pdf"'
 
     response.write(buffer.getvalue())
     buffer.close()
