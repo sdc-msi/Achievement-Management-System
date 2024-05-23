@@ -377,7 +377,7 @@
                 </div>
             </div>
 
-            <a href="{% url 'home:student_profile' student_id=student.id %}">
+            <a href="{% url 'home:student_profile' student_id=request.user.student.id %}">
             <div class="saved-items">
                 <p>View Profile</p>
             </div>
