@@ -9,6 +9,7 @@ from django.shortcuts import render
 from users.models import Faculty, Batch, Student
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .models import Experience, Education, Honors, Doctoral_thesis, Professional_membership, Committee_membership, ResearchProject, Patent, Publication
 from django.conf import settings
@@ -603,7 +604,7 @@ def delete_publication(request,pk):
         print("Publication object deleted succesfully")
         return HttpResponseRedirect(reverse('fams:faculty_profile', kwargs={'faculty_id': faculty.id}))
 
-
+@login_required(login_url="/users/facultyLogin/")
 def dashboard(request):
     print("hoolalalala")
 
@@ -640,7 +641,7 @@ def dashboard(request):
 
     return render(request, 'faculty/dashboard.html', context=context)
 
-
+@login_required(login_url="/users/facultyLogin/")
 def batch_list(request,pk):
     faculty = get_object_or_404(Faculty, id=request.user.faculty.id)
     batch = get_object_or_404(Batch,assigned_to=faculty,id=pk)

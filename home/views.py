@@ -765,7 +765,7 @@ def delete_publication(request,pk):
         print("Publication object deleted succesfully")
         return HttpResponseRedirect(reverse('home:student_profile', kwargs={'student_id': student.id}))
 
-
+@login_required(login_url="/users/studentLogin/")
 def dashboard(request):
     print("hoolalalala")
 
@@ -791,6 +791,7 @@ def dashboard(request):
 
     return render(request, 'student/dashboard.html', context=context)
 
+@login_required(login_url="/users/studentLogin/")
 def batch_list(request, batch_id):
     student = get_object_or_404(Student, id=request.user.student.id)
     batch = get_object_or_404(Batch, id=batch_id)

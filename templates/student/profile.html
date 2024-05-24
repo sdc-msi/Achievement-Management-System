@@ -101,9 +101,9 @@
     }
 
     .download-profile{
-        {% comment %} width: 90px; {% endcomment %}
+        
         border-radius: 3px;
-        {% comment %} height: 30px; {% endcomment %}
+        
         padding:10px;
         background-color: darkblue;
         color: white
@@ -112,6 +112,10 @@
     .intro {
         margin-top: 70px;
         padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
     }
 
     .intro-name {
@@ -160,7 +164,7 @@
 
     input[type="submit"],
     button[type="button"] {
-        background-color: darkblue;
+        /* background-color: darkblue; */
         color: white;
         padding: 8px 16px;
         /* Reduced padding */
@@ -1372,6 +1376,7 @@ form input[type="date"]{
             </div>
             <div id="honours-and-awards-section-body" class="section-body">
                 {% for hons in honors %}
+                {% if hons.is_approved %}
                 <div class="award-item">
                     {% if is_own_profile %}
                     <div class="update-delete-button-container">
@@ -1384,7 +1389,9 @@ form input[type="date"]{
                         <span class="award-title">{{ hons.title }}</span>
                         <span class="award-institution">{{ hons.issuing_organization }}</span>
                     </div>
+                    
                 </div>
+                {% endif %}
         
                 <!-- Edit Honor Modal -->
                 <div id="honor-modal-{{hons.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -1506,6 +1513,7 @@ form input[type="date"]{
         
             <div id="research-projects-section-body" class="section-body">
                 {% for item in research_projects %}
+                {% if item.is_approved %}
                 <div class="each-research-project">
                     <div class="project-title">{{ item.title }}</div>
                     <div class="funding-agency">
@@ -1525,6 +1533,7 @@ form input[type="date"]{
                             <i class="fas fa-calendar-alt"></i> {{ item.start_date|date:"Y" }} - {{ item.end_date|date:"Y" }}
                         </div>
                     </div>
+                    {% endif %}
                 
                     {% if is_own_profile %}
                     <div class="update-delete-button-container">
@@ -1698,6 +1707,7 @@ form input[type="date"]{
         
             <div id="patent-section-body" class="section-body">
                 {% for item in patents %}
+                {% if item.is_approved %}
                 <div class="each-patent relative">
                     {% if is_own_profile %}
                     <div class="patent-buttons absolute top-0 right-0 space-x-2">
@@ -1712,6 +1722,7 @@ form input[type="date"]{
                     <span><i class="fas fa-seedling icon"></i> {{ item.subject_category }} <i class="fas fa-check approved icon"></i> {{ item.status|capfirst }}</span>
                     <span><i class="fas fa-calendar-alt icon"></i> Filed {{ item.filing_date }} <i class="fas fa-calendar icon"></i> Published {{ item.publication_date }}</span>
                 </div>
+                {% endif %}
         
                 <!-- Edit Patent Modal -->
                 <div id="patent-modal-{{item.id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -1901,6 +1912,7 @@ form input[type="date"]{
         
             <div id="publications-section-body" class="section-body">
                 {% for item in publications %}
+                {% if item.is_approved %}
                 <div class="each-publication">
                     <div class="publications-title">
                         {{ item.title }}
@@ -1916,6 +1928,7 @@ form input[type="date"]{
                             <span class="publications-pages">{{ item.page_number }}</span>
                         </span>
                     </div>
+                    {% endif %}
         
                     {% if is_own_profile %}
                     <div class="publication-buttons">

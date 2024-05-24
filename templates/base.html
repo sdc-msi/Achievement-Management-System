@@ -162,7 +162,7 @@
                     data-dropdown-placement="bottom">
               <span class="sr-only">Open user menu</span>
               {% if user.profile_picture %}
-              <img class="w-8 h-8 rounded-full" src="{{ user.profile_picture.url }}" alt="user photo">
+              <img class="w-8 h-8 rounded-full" style="object-fit: cover;" src="{{ user.profile_picture.url }}" alt="user photo">
               {% endif %}
             </button>
             <!-- Dropdown menu -->
